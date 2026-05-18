@@ -1,1185 +1,1372 @@
-= Линейная алгерба
-== Решение линейных систем
-Линейные уравнение: $a x + b y + c z = 0$ - решение это тройка чисел \
-будем называть такие столбцы ${vec(x, y, z)} = RR^3 (x, y,z in RR)$ \
-=== Важные операции
-$vec(x, y ,z) + vec(x_1, y_1, z_1) = vec(x+ x_1, y + y_1, z + z_1)$ \
-$k vec(x, y, z) = vec(k x, k y, k z)$ \
-= Алгебраические пространства
-== Определение
-$k$ - поле, тогда веторное пространство над полем $k$ это тройка $(V, + , times)$, $V$ - множество, $+: V times V = V, times: k * V -> V$, $k$ - скаляры \
-Такая что $(V, + )$ - абелева группа
-5. $(k_1 + k_2) u = k_1 u + k_2 u$ 
-6. $k( u + v) = k u + k v$ 
-7. $(k_1 k_2) v = k_1 (k_2 v)$ \
-8. $1_k dot v = v " " forall v in V$
-$forall k, k_1, k_2 in k, u,v in V$ \
-== Следствия
-1. $0_k dot v = 0_v$ \
-2. $-v = (-1) dot v$
-== Замечание
-Если заменить в определении $k$ на любое кольцо, то то, что получаится называется модуль над $k$. Т.е. Векторное пространство - это модуль над полем. Для модулей не над полем все гораздо сложнее \
-== Пример
-$k^n$ - векторное пространство над $k$, $k^n = { vec(x_1, x_2, dots.v, x_n), x_i in k}$ \ 
-Операции аналогично. Это очев, что векторное пространство \
-Отметим только. $k^n$ - арифметическое $n$-мерное векторное пространство \
-Грубо говоря, любое пространство изоморфно $k^n$. 
-== Определение
-$f: u -> v, u,v$ - векторное пространство над $k$ \
-$f$ - гомоморфизм, если $f(u + v) = f(u) + f(v), f(k dot u) = k dot f(u)$ \
-$f$ - изоморфизм, $<=> f$ - биективный гомоморфизм \
-==
-$u, v$ изоморфны, если есть изоморфизм $f: u->v$ \
-== Дальнейшие примеры
-$""^n k$ - пространство строк, изоморфизм очев (поворачиваем на $e^(pi/2 i)$) \
-== Кольцо многочленов
-$k[x]$ - векторное пространство над $k$ (очев.) \
-== Пример
-$k[x]_n = {f | deg (f) <= n}$ - векторное пространство \
-тут изоморфизм тоже очев $k[x]_n$ изоморфно $k^(n+1)$ \
-== Пример
-$M$ - какое-то произвольное множество, пусть конечное $abs(M) = n$ \
-$hom_"sets" (M, K) = {f: M -> K}$ \
-Определим $(f_1 + f_2) (m) = f_1 (m) + f_2 (m), (k f)(m) = k dot f(m)$ \
-$hom (M, K)$ - векторное пространство (очев), если в $M$ $n$ элементов, то оно изоморфно $k^n$
-== Пример
-$k subset L$, $k$ - поле, $L$ - поле. $L$ - векторное пространство над $k$ (все аксиомы соответствуют аксиомам поля) \
-$k = RR, L = CC$, $CC = { a + b i | a, b in RR} <-> {vec(a, b) | a, b in RR}$ \
-$RR$ над $QQ$ - векторное пространство бесконечно мерно \
-== Пример
-$a_1, a_2, a_2, dots (a_i in RR) $ - последовательность Фибоначчи, если $a_(n+2) = a_(n+1) + a_n$ \
-$Phi$ - множество фибоначевых последовательностей \
-$Phi$ векторное пространство над $RR$, $Phi$ изоморфно $RR^2$
-== Пример
-$M$ - множество $abs(M) = n$ \
-$V = 2^M = {N | N subset M}$ \
-$abs(2^M) = 2^n$ \
-$V$ - векторное пространство над $ZZ \/ 2ZZ$ \
-$X + Y := (X union Y) \\ (X subset Y) = X xor Y, 0 dot x = nothing, 1 dot x = x$\
-$N subset M: f: N -> (0, 1, 0, 1, dots)$, $epsilon_1$ если $m_i in N$, 0 понятно когда \
-При этом $f(X + Y) = f(X) xor f(Y)$, то есть $V$ изоморфен $(ZZ \/ 2ZZ)^n$ \
-=== Замечание
-$2^M$ - векторное пространство над $k$ (с симметрической разностью), то $X + X = nothing = 0, 2X = 0 =>$ в поле $k$ $2 =0$\ 
-Верно и обратное: $A$ - абелева группа, $forall a in A: a + a = 0$, тогда $A$ - векторное пространство над $ZZ \/ 2 ZZ$
-== Определение
-${v_i}_(i in I)$ - семейство векторов $V$ - векторное пространство над $k$. обычно $v_1, v_2, dots v_n$ - семейство векторов \
-Линейная комбинация - выражение вида $sum_(i in I) a_i v_i$ (только конечное число $a_i$ не равно нулю) \
-Тривиальная линейная комбинация $sum 0 dot v_i = 0_v$ \
-== Определение
-линейная оболочка ${v_i}_(i in I)$ - множество всех их линейных комбинаций $chevron.l v_1, v_2 dots , v_n chevron.r = {a_1 v_1 + a_2 v_2 + dots + a_n v_n | a_i in k}$ (наименьшее подпространство, содержащее $v_1, v_2 dots, v_n$) - подпространство, порожденное $v_1, v_2, dots v_n$ \
-Это векторное пространство $(sum a_i v_i) + (sum b_i v_i) = sum (a_i + b_i) v_i, v_i in chevron.l v_1, v_2 dots , v_n chevron.r$
-=== пример
-$chevron v chevron.r = {k v | k in K}$ - прямая натянутая на вектор $v$ \
-$chevron.l 0 chevron.r = {0}$ \
-$U <= V$ ($U$ подпространство $V$), то $v_1, v_2, dots v_n in U => a_1 v_1, a_2 v_2, dots, a_n v_n in U$ \
-== Определение 
-${v_i}_(i in I)$ - семейство векторов в $V$ - в.п над $k$ \
-${v_i}$ называется породающим если $chevron {v_i} chevron.r = V$, т.е  $forall v in V: exists a_i in k: v = sum a_i v_i$ \
-${v_i}$ называется линейно независимой (ЛНЗ), если $forall$ нетривиальной линейной комбинации $v_i$ не равна нулю \
-т.е. верно: $sum a_i v_i = 0 => a_i = 0 forall i$ \
-=== Пример
-$exists i v_i = 0 => {v_i}$ - ЛЗ \
-$exists i, j: v_i = v_j$ - ЛЗ \
-== Утвеждение
-$abs(I) > 1$ - семейство ${v_i}$ ЛНЗ $<=>$ никакой $v_i$ не выражается через остальные, то есть ${v_i}$ ЛЗ $<=> exists i: v_i = sum_(j != i) a_j v_j$ \
-$sum_(i != j) a_i v_i = - a_j v_j <=> v_j = sum_(i != j) (-a_i/a_j) v_i$ \
-Если большая система векторов независима, то любая подсистема этих векторов тоже независима \
 == Теорема
-Равносильные определения базиса \
-$v_1, v_2, dots v_n in V$ (конечность не важна), следующие условия равносильны: \
-1. ${v_i}$ - базис
-2. $forall v in V: exists! a_1, dots a_n: v = sum a_i v_i$ 
-3. ${v_i}$ максимально по включению ЛНЗ семейство
-4. ${v_i}$ минимально по включению породающее семейство
-=== Доказательство
-$1 => 2$ ${v_i}$ - порождающее $=> exists a_1 dots a_n : v = sum a_i v_i$, Единственность: $v = sum a_i v_i, v = sum b_i v_i => sum a_i v_i = sum b_i v_i, sum (a_i - b_i) v_i = 0 => forall i: a_i - b_i = 0 => a_i = b_i$ \
-$2 => 1$ ${v_i}$ - порождающее по условию. ЛНЗ-ть: пусть не так, $exists v_j = sum_(j != i) a_j v_j$, с другой стороны $v_i = 1 dot v_i + 0 dot v_1 + dots =>$ неединственность разложения, противоречие\
-$1 => 4$ ${v_i}$ - базис ${v_i}$ порождающая система. Пусть не min. $exists j: {v_i}_(i != j)$ порождающая, в частности $v_j = sum_(i!=j) b_i b_i$ - противоречие с ЛНЗ ${v_i}$ \
-$3 => 1$ ${v_i}$ - max ЛНЗ. Надо доказать: ${v_i}$ - порождающая \
-Пусть $v in V$ знаем $v_1, v_2, dots v_n$ - v ЛЗ $=>$ $exists$ нетривиальная $a_1 v_1 + a_2 v_2 + dots a_n v_n + a v = 0$ \ $a != 0$ (иначе $v_1, dots v_n$ - ЛЗ) ... 
+$cal(A); v -> v$ - оператор $U <= V$ - инв. подпростр. \
+Сначала выбрали базис $U$, потом дополнили до базиса $V$ \
+Тогда матрица $[cal(A)] = mat([cal(A)|_U], cal(B);0, [cal(overline(A))|_(V\/U)])$ \ $cal(A): v-> v, cal(A) |_U: u -> u$, $cal(A|_(V\\U)) : v\\u -> v\\ u$ \
+Заметим, что по теореме об $det$ блочной матрицы \
+$X_A = det ([cal(A)|_U] - t E) dot det([cal(overline(A))|_(V\\U)] - t E) = X_(A|_U) dot X_(overline(A)|_(V\\U))$ 
 
-
-== определение
-назовем $V$ - векторное пространство над $k$, тогда $V$ - конечномерно, если существует конечная порождающая система \
-== Теорема
-В конечном пространстве $exists$ базис \
-=== Доказательство
-$v = chevron v_1 dots v_k chevron.r$ процесс: $exists i_0: {v_i} \\ {v_j}$ - порождающая. За несколько шагов получим минимальную порождающую систему
-== Теорема
-$v_1, v_2, dots v_n$ - базис $V => V$ изоморжно $k^n$ \ 
-=== Доказательство
-построим $f: k^n -> V$ \
-$vec(a_1, a_2, dots.v, a_n) |-> a_1 v_1 + a_2 v_2 + dots + a_n v_n$ - $f$ - гомоморфизм очев. $f$ биекция по второму определению базиса \
-== Определение
-$a_1, a_2 dots a_n$ - координаты. Вектора $V$ в базисе $v_1, v_2 dots v_n$
-
-== Замечание
-$V$ - бесконечномерное, тогда всегда существует базис
-==
-Пусть $V$ изоморфно $k^n$, хотим сказать: $v$ - векторное пространство, т.е. размерность $V$ (dim V) - количество векторов в базисе
-== Лемма (о линейной зависимости линейных комбинаций)
-$u_1, u_2, dots u_m in V, v_1, v_2, dots v_n in chevron u_1, u_2, dots u_m chevron.r$ \
-$n > m => v_1, v_2 dots v_n$ - ЛЗ
-== Следствие
-$forall 2$ базиса содержат поровну элементов (dim корректно определена) \
-Доказательство:
-$v_1 dots v_n, u_1, dots u_m$ - базисы, пусть $n > m$ $v_1 dots v_n in V = chevron u_1 dots u_m chevron.r$ \
-$v_1 dots v-n in chevron u_1 dots u_m chevron.r$  и $n>m$ \
-Тогда $v_1 dots v_n$ - ЛЗ по лемме, но $v_1 dots v_n$ - базис. Фигня \
-Если $k$ - не поле, тогда
-$1$ не равносильно 3 (в определении базиса), т.е min порождающая система - не базис \
-В модулях базисов чаще не бывает, чем бывает \
-$M$ - модулю $exists n: M$ изоморфно $k^n$ - свободный модуль, доказали $k$ - поле $=> forall$ модуль свободен
-
-=== Доказательство леммы
-Индукция по $m$: База $m = 1$, $n > m$, $n$ хотя бы 2. $v_1 = a dot u_1, v_2 = b dot u_1, (a, b) = (0,0), v_1, v_2 = 0, $ \ $overline(0), overline(0)$ - лз \
-Если $(a,b) != (0,0) =>  b v_1 - a v_2 = 0$ - нетривиальная л.к. \
-Переход:\
-переход от $< m$ к $m$ $v_1 dots v_n, u_1, dots u_m$ \
-Выразим $v_i$ через $u_i$ \
-$v_1 = a_11 u_1 + a_12 u_2 + dots  + a_(1m)u_m$\
-$v_2 = a_21 u_1 + a_22 u_2 + dots  + a_(2m)u_m$\
-$v_n = a_(n 1) u_1 + a_(n 2) u_2 + dots  + a_(n m)u_m$ \
-попробуем исключить $u_m$ \
-  сл. 1. все $a_(i m) = 0$, тогда $v_i in chevron  u_1, dots u_(m-1) chevron.r$ \  $n > m > m-1$. по И.П $v_1, v_2 dots v_n$ л.з\
-сл.2 \
-$forall i : cases(v_i = sum_(j=1)^(m-1) a_(i j) u_j + a_(i m) u_m, v_n = sum_(j=1)^(m-1) a_(n j)u_(j) + a_(n m) u_m | dot (a_(i m))/(a_(n m)) = a_i)$ \
-$v_i - a_i v_n = sum_(j=1)^(m-1) (a_(i j) - a_i dot a_(n j)) dot u_j + 0$ \
-$i: 1 dots n-1$ \
-$overline(v_i) = v_i + a_i v_m in chevron u_1, u_2 dots u_(m-1 ) chevron.r$ \
-$n > m$ $n - 1 > m- 1$ по и.п. $overline(v_1) dots overline(v_(m-1))$ - л.з \
-т.е.
-$exists b_1, b_2 dots b_(n-1)$ - не все нули. $0 = sum_(i=1)^(n-1) b_i (v_i - a_i n) = sum_(i=1)^(n-1) b_i v_i + - sum(a_i b_i) v_n$ - нетривиальная линейная комбинация $v_1 dots v_n$ - л.з
-== Лемма
-$v$ - к/м векторное пространство над $k$ $=>$ $forall$ ЛНЗ систему в $k$ можно дополнить до базиса \
-=== Доказательство:
-$v_1, v_2 dots v_k$ - ЛНЗ.. $n = dim(v)$ \
-$k <= n$, иначе ЛЗ. линейных комб $v_1 dots v_(k)$ - л.з \
-Если $v_1 dots v_k$ - не $max $ ЛНЗ, добавим $v_(k+1)$ \
-$v_1 dots v_(k+1)$ ЛНЗ, продолжить процесс - он закончится ровно на шаге $n$, иначе противоречие с ЛЗ линейной комбинацией \
-max ЛНЗ система-базис
-=== Следствие
-Пусть $v$ - пространство, $u <= v$ - подпространство. 
-+ $dim u <= dim v$
-+ $dim u = dim v$ - тогда $u = v$
-==== Доказательство
-Возьмем базис $u$ - ЛНЗ система и дополним до базиса $v$. 
-=== Замечание 
-$dim v = n$, $v_1 dots v_n$ - базис $<=>$ $v_1 dots v_n$ - ЛНЗ $<=>$ $v_1 dots v_n$ - порожд.
-== Теорема
-Пусть $v$ - конечноемерное пространство над $k$ \
-Тогда $exists!$ $n: v$ изоморфно $k^n$ \
-=== Лемма 1
-$u$ изоморфно $v$ $=> dim (u) = dim (v)$  / $f$ - изоморфизм $u_1 dots u_n$ - базис $u$, $f(u_1) dots f(u_n)$ - базис $v$
-=== Лемма 2
-$dim k^n = n$  
-==== Доказательство 
-Базис $a_i = vec(0, 0, dots.v,  1, 0 , 0)$  $i = 1 dots n$, $vec (a_1, dots.v, a_n) = sum a_i l_i$ $=>l_1 dot l_k $ - базис. $dim k^n = n$
-=== Доказательство теоремы
-Единственность $n:$ $v$ изоморфно $k^n$ \\  для колец: бывают $n !=m$ $R$ - кольцо $v$ изоморфно $k^m$ \
-Пусть $v_1 dots v_n$ - базис $v$, $forall v exists : a_1 dots a_n in k: v = sum a_i v_i$ \
-Определим $f: v -> k^n$ \
-$v |-> vec(a_1, a_2, dots.v, a_n)$ обрантный отбор: $vec(a_1, a_2, dots.v, a_n) |-> sum a_i v_i => f$ - биекция \
-линейность $v = sum s_i v_i, overline(v) = sum overline(a_i) v_i => v + overline(v) = sum (a_i + overline(a_i)) v_i$ \
-т.е $vec(a_i + overline(a_i), a_n + overline(a_n)) = f (v + overline(v)) = f(v) + f(overline(v)) $  \
-$vec(a_1, dots.v, a_n)$ - над столбцом координат и в базисе $v_1 dots v_n$  (координаты зависит от базиса) \
-=== Вопрос
-${u_1 dots u_n}, {v_1 dots v_n} = $ Базисы. (координаты ${v_i}$) как они связаны (координаты ${u_i}$) \
-Сопоставим $u_i -> vec(c_(1i), c_(n i))$ - координаты в базисе ${v_i}$ \
-$({c_(i j)}_(i = 1 dots n, j = 1 dots m)) = С$ - матрица перехода от базиса $u_1 dots u_n$ к базису $v_1 dots v_n$ - определение\
-Пусть $v in V$ $vec(x_1, x_2, dots x_n)$ - это координаты в ${u_i}$ \
-$v = sum_(i=1)^n x_i u_i = sum_(i=1)^n x_i (sum_(k=1)^n c_(k i) v_k) = sum_(k=1)^n (sum_(i=1)^n x_i c_(k i)) v_k = sum_(k=1)^n (sum_(i=1)^n (c_(k i) x_i)) v_k$\ 
-Итого $vec(sum_(i=1)^n c_(1 i) x_i, dots.v, sum_(i=1)^n c_(n i) x_i)$ - координаты $v$  в ${v_i}$ \
-== Определение 
-$s$ - множество. матрица над $s$ - отображение $f: I times J -> s$, $I, J$ - множество индексов. \
-$I = {1, 2 dots m}, J = {1, 2 dots n}, (i,j) |-> a_(i j) in s$ \
-Частный случай\
-Пусть $k$ - поле $I = {1 dots m}, J = {1 dots n}$ \
-${ I times J -> k}$ - векторное пространство над $k$ \
-$M_(m,n) (k)$ - векторное пространство матриц \
-== Каноническое спаривание
-$M_(m,n) (k)$ $n = 1$  $M_(m,1) (k)$ изоморфно $k^m$ \
-$M_(1,n) (k)$ изоморфно $k^n$ (только n спереди, типо пространство строк)\
-== Спаривание
-$k^n$ (n спереди) $k^n -> k$ \
-$(a_1 dots a_n) dot vec (b_1, dots.v, b_n) = a_1 b_1 + a_2 b_2 + dots + a_n b_n$ \
-$A in M_(m,n) (*)$ $A = vec(r_1, r_2, dots, r_m) = (c_1 | c_2 | dots | c_n)$, $r_i = k^n$ (n спереди), $c_i in k^m$ \ 
-$x in k^n, A in M_(m,n) (k): A = vec(r_1, r_2, dots.v, r_m)$  \
-$A dot x := vec(r_1 x, r_2 x, dots.v, r_m x) = k^m$\
-Определили mult: $M_(m,n) times M_(n, 1) (k) -> M_(m, 1) (k)$ \ в этих терминах
-== Теорема
-$x$ - координаты и в ${u_i}$ \
-$c$ - матрица перехода от ${u_i}$ к ${v_i}$ \
-$=> c dot x$ - координаты $v$ в ${v_i}$
-== Определим умножение матриц
-$M_(m,n) (k) times M_(n, l) (k) -> M_(m,l) (k)$ Хотим $(A, B) |-> A dot B$ \ 
-$B = (c_1 | c_2 | dots | c_l)$ \
-$A dots B := (A c_1 | A c_2 | dots | A c_l) in M_(m,l) (k)$ \
-$(a_(i j)) dot (b_(i j)) = (c_(i j)) | c_(i j) = sum_k a_(i k) b_(k j)$ \
-Умножение ассоциативно, но не коммутотивно, дистрибутивно относительно сложения, частично определенная штука. 
-$m = n, M_(n, n) (k) times M_(n, n) (k) -> M_(n,n) (k)$ \
-Кольцо матриц $M_n (k)$
-== СЛУ
-$cases(a_11 x_1 + a_12 x_2 + dots a_(1 n) x_n = b_1, dots, dots, dots)$ \
-$A = (a_(i j))(i = 1 dots m, j = 1dots n)$\
-$x = vec(x_1, x_2, dots.v ,x_n)$ \
-$B = vec(b_1, b_2, dots.v, b_m)$
-$A x = B$, $x = B/A$ \ $A^(-1) A X = A^(-1) B, X = A^(-1) B$ \
-== Однородные системы
-$vec(b_1, dots.v,  b_m) = vec(0, dots.v, 0)$ \
-== Утверждение ОСЛУ всегда имеет решение
-=== Доказательство
-Возьмем все $x_i = 0, A dot 0_n = 0_m$ \
-== Когда у ОСЛУ есть нетривиальные решения?
 == Утверждение
-Если уравнений меньше, чем неизвестных $m < n$, тогда всегда существуют нетривиальные решения \
+$cal(A): v -> v$ - линейный \
+$v = v_1 xor v_2, v_i$ - инв. подпростр. \
+Тогда выберем $v_1 dots v_k$ - базис $v_1$, $v_(k+1) dots v_n$ - базис $v_2$ - базис $v$ тогда \
+$[cal(A)] = mat([cal(A)|_(v_1)], 0;0, [cal(A|_v_2)])$ оба блока нулевые, так как $v_1, v_2$ инвариантны \
+Обобщение $v = v_1 xor dots xor v_k$ $v_i$ - инв. подпространства, тогда матрица будет ну вообще очев как выглядеть, лень рисовать \
+
+самый лучший случай $k=n, dim v_i = 1$, $cal(A)$ - диагонализуемый
+
+== Теорема Гамильтона-Кэли
+напоминание гомоморфизм-эвалюации: $R$ - $K$-алгебра $R$ - кольцо + векторное пространство над $k$, такое что $(k a) b = a(k b) = k (a b), a,b in R, k in K$, например $k[t], M_n (k), L i n (v,v)$ - $K$-алгебра \
+$cal(A) in R$, тогда $exists!$ гомоморфизм $K$-алгебры $e v: k[t] -> R$, который $k[t] |-> cal(A)$, смысл в том, что $f ~> f(cal(A))$ \
+$t |-> cal(A), t^k |-> cal(A)^k, t+2 |-> cal(A) + 2 id$
+
+мораль $cal(A) compose cal(A) - id = (cal(A) - id) compose (cal(A) + id)$ \
+$cal(A)^2 - cal(B)^2 != (cal(A) - cal(B)) compose (cal(A) + cal(B))$, так как $cal(A) compose cal(B) != cal(B) compose cal(A)$
+== Собственно сама теорема
+$cal(A) in L i n (v,v). X_cal(A) (cal(A)) = 0, A in M_n (k) X_A (A) = 0$ 
+=== Доказательство (неверное)
+$X_cal(A) (cal(A)) = det(cal(A) - t E) = det (cal(A) - cal(A) E) = det (0) = 0$
+
 === Доказательство
-$x_1 vec(c_11, c_21, dots.v, c_(m_1)) + x_2 vec(c_12, c_22, dots.v, c_(m 2)) + dots + x_n vec(c_(1 n), c_(2 n), dots.v, c_(m n)) = vec(0, 0, dots.v, 0) $ \
-Ищем $x_1, dots x_n$ - не все нули \
-$sum x_i c_i = 0$ если $n > m$, то это ЛЗЛИ $qed$ \
-$c_i in k^m dim(k^n) = m$
-== Решаем СЛУ
-$X ->^(A) A dot X = B$ - знаем \
-хотим научиться искать обратные отображения при умножении матрицы на столбец \
-= Линейные отображения
-$u, v$ - векторные пространства над $k$, $u -> v$ - гомоморфизм, если для любого $u_1, u_2 in u, alpha in k $  \
-$cal(A) (alpha u_1 + u_2) = alpha cal(A) (u_1) + cal(A) (u_2) <=> cal(A)(u_1 + u_2) = cal(A)(u_1) + cal(A) (u_2) cal(A)(alpha u_1) = alpha cal(A)(u_1)$ \
-=== Пример 1
-$u = k^n, v = k^m$ \
-$A in M_(m,n) (k)$ \
-$cal(A) (X) = A dot X in k^m$
-$cal(A)$ - линейно
-$A = vec(k x_1, dots.v, k x_m) = vec(sum (a_(i j ) (k x_j)), dots.v, sum (a_(m j) (k x_j))) = vec(k sum a_(i j) x_j, dots.v , k sum a_(m j) x_j) = k dot (A dot X)$
-=== Пример 2
-$u = v = "vect"(RR^2)$ - поворот, симметрия, проекция на $y = k x$, параллельный перенос $(v |-> v + v_0)$ - нелинейно
-=== Пример 3
-$u = v = k[x]$, $A(f) = f`$ \
-$(f + g)` = f` + g`$ \
-$(k f)` = k f`$
+пусть $k$ - алгебраически замкнуто (например $k = CC$) и будем доказывать индукцией по размерности $V$ \ 
+База $dim V = 1$ \
+$A = (a), X_A (t) = a - t, x_A (A) = a dot E - A = (a) - (a) = (0)$
+
+Переход $n -> n+1:$
+
+$dim V = n + 1, k$ - алг. замкнуто $=> X_A$ имеет корень, то есть собственное число $lambda. exists v_0: cal(A) v_0 = lambda v_0, v_0, v_1, dots v_n$ - базис $v$ \
+знаем $[cal(A)] = mat(lambda,B;0, cal(overline(A))
+_(V\/(chevron v_0 chevron.r)))$ $chevron v_0 chevron.r$ - одномерное инвариантное подпространство \
+Важное отступлениее $[cal(A)] = mat( [cal(A)_1] ,, *; 0, [cal(A)_2],; 0, 0, [cal(A)]_k)$ \
+тогда $det[ cal(A) - t E] = product det (cal(A_i) - t E)$, то есть $X_A = product X_A_i$ \
+
+Знаем по И.П, что $X_(cal(overline(A))) (cal(overline(A))) = 0: v\/_(chevron v_0 chevron.r) -> v \/_(chevron v_0 chevron.r)$ \
+$X_overline(A) (t) = a_n t^n + a_(n-1) t^(n-1) + dots + a_0, a_n overline(A)^n + a_(n-1) overline(A)^(n-1) + dots a_0 id = 0$ \
+$forall overline(v) in v\/_(chevron v_0, chevron.r) a_n cal(overline(A))^n (v) + dots + a_0 dot overline(v) = overline(0)$ \
+то есть $overline( a_n cal(A)^n (v) + dots a_0 v ) = 0$, то есть $a_n overline(cal(A))^n (v)+ dots + a_b v in chevron v_0 chevron.r, forall v in V$ 
+
+$X_A (t) = (lambda - t) X_overline(A) (t)$ \ знаем: $forall v in V: X_(overline(cal(A))) cal(A) (v) = k dot v_0$ \
+$X_cal(A) (cal(A)) (v) = (lambda id - cal(A)) dot X_overline(cal(A)) (cal(A)) (v) = (cal(A) id - cal(A)) (k v_0) = lambda k v_0 - k cal(A) v_0 = 0 forall v in V qed$ \
+Почему верно для любого поля?
+$k$ - поле $exists $ алг-замкнутое поле $L, k <= L$ \
+$A in M_n (k) <= M_n (L)$, $X_A (A) = 0$ в $M_n (l)$, то $X_A (A) = 0$ в $M_n (k)$ \
+
+пример $n=2$ \
+$cal(A) = (a,b;c,d) X_A = t^2 - (a+d) t + (a d - b c)$
+$a+d = T r(A)$ - сумма диаг. элементов (отступление $A in (a_(i j))_(i = 1 dots n, j = 1 dots n)$, $T r(A) = sum a_(i i)$ - коэфф. при $t^(n-1)$ в $X_A (t)$ - не меняется при замене базисаб как следствие $sum a_(i i) = sum lambda_i$ \ аналогично $product lambda_i = plus.minus$ свободный член, $X_A (t)$ - $det(A)$) 
+
+$2 times 2$ \
+$A^2 = k_1 A + k_2 E, k_1 = T r (A), k_2 = - det(A)$
+$E , A, A^2, A^3, A^4 $ - л.з (очев), по факту $E, A, A^2$ - л.з \
+
 == Теорема
-$u, v$ - векторные пространства над $k$, $u_1 dots u_n$ - базис $u$, $v_1 dots v_n in v$ - просто каки-ето веткора\
-Тогда существует единственное линейное отображение $cal(A): u -> v$, такое что $cal(A) (u_i) = v_i, forall i = 1 dots n$ \
+$cal(A): v -> v$ - лин. оператор \
+Пусть нашли $p in k[t], p(cal(A)) = 0$ и пусть $p = p_1 dots p_2, (p_1, p_2) = 1$
+
+Тогда
++ $ker(p_i (cal(A)))$ - инвариантное пространство 
++ $v = ker p_1 (cal(A)) xor ker p_2 (cal(A))$ / $ker p(cal(A)) = V$ /
+
+Пример $cal(A)^2 = id, p = t^2 - 1 = (t-1)(t+1), t-1 = p_1, t+1 = p_2, V = ker(cal(A) - E) xor ker(cal(A) + E) = {v | cal(A) v = v} xor {v | cal(A) v = -v}$ \
+$v = (v + cal(A) (v))/2 + (v - cal(A)(v))/2$ \
+
 === Доказательство
-==== Единственность 
-Пусть $cal(A_1), cal(A_2) $ - два \
-$forall u in U, u = a_1 u_1 + dots + a_n u_n, cal(A_1) = cal(A_1) (a_1 u_1 + dots + a_n u_n) = sum cal(A_1) (a_i u_i) $
-аналогично с $cal(A_2)$ \
-дописать (см лекцию от 19 января 2k26)
-==
-$A: u->v$ - линейное \
-$ker(cal(A)) = {u in U | 
-cal(A)(u) = 0}$\
-$I m cal(A) = {v in V | exists u: v = cal(A)(u)}$
-=== утв
-$ker A, I m A$ - подпространства \
-==== Доказательсво
-$x in ker A, y in ker A$ \
-$A x = 0, A(y) => A(x + y) = A(x) + A(y) = 0 + 0 = 0 => x + y in ker A$
-аналогично с $I m$, \
-$ker A = U, Im  A = V$\
-== Теорема
-$A : U -> V$ - линейное \
-Тогда $dim(ker A) + dim (I m a) = dim U$\ 
-$$
-== Теорема 
-$dim(ker A) + dim(Im A) = dim(U)$ \
-=== Доказательство
-Следует из T\`:
-=== Tеорема о правильном базисе
-$exists$ базис $u_1 dots u_k, u_(k+1), dots u_n$ в $U$ \
-$n = dim U: cal(A)(u_1), cal(A)(u_2), dots, cal(A)(u_k)$ - базис $Im A$: 
-$u_(k+1) dots u_n -$ базис $ker(cal(A))$ \
-=== Из теоремы следует теорема
-$n = dim U, k = dim Im cal(A), n - k = dim ker(cal(A)), (n - k) + k = n$ \
-=== Доказательство теоремы о правлиьном базисе
-Выберем базис $ker cal(A)$, назовем его $u$ \
-$u_(k+1) dot u_n$ (знаем $dim(ker(cal(A))) <= dim(U) = n$)
-ЛНЗ в $U$ \
-Дополним ее до базиса $u_1 dots u_k, u_(k+1) dots u_n$ \
-Осталось проверить $cal(A)(u_1) dots cal(A)(u_k)$ - базис $Im A$ \
-ЛНЗ-то: пусть $sum_(i=1)^k a_i cal(A)(u_i) = 0, 0 = sum_(i=1)^k a_i cal(A)(u_i) = cal(A) (sum_(i=1)^k a_i u_i)$, то есть $sum_(i=1)^k a_i u_i in ker(cal(A))$ \
-$=> sum_(i=1)^k a_i u_i = sum_(j=k+1)^n b_j u_j " " sum_(i=1)^k a_i u_i + sum_(j=k+1)^n -(b_j) u_j = 0$ \
-$u_1 dots u_n$ - ЛНЗ $=>$ все $a_i = 0, b_j = 0$ \
-$cal(A)(u_1) dots cal(A)(u_k) in Im(cal(A))$ - по определению \
-т.е. $chevron cal(A)(u_1) dots cal(A)(u_k) chevron.r <= Im cal(A)$, докажем $chevron cal(A)(u_1) dots cal(A)(u_k) chevron.r = Im(cal(A))$ \
-Пусть $v im Im(cal(A)), v= cal(A)(u), u in U => u = sum(i=1)^n a_i u_i$ \
-$cal(A)(u) = cal(A) (sum_(i=1)^n a_i u_i) = sum_(i=1)^k a_i cal(A)(u_i) + sum_(j=k+1)^n a_j cal(A)(u_j) = sum_(i=1)^k a_i cal(A)(u_i)  in chevron cal(A)(u_1) dots cal(A)(u_k) chevron.r$ \
-=== Основной пример
-$A in M_(m,n) (k), U = k^n, v = k^m, cal(A)(u) = A u = in k^m$ \
-$u in k^n, cal(A): u -> v$ линейное\
-СЛУ $A dots X = B$, $B$ - столбец правых частей \
-$X$ - столбец неизвестных \
-$A$ - матрица коэффициентов \
-$ker(cal(A)) = {x | A x = 0}$ - множество решений однородной системы, заданной матрицей $A$ - подпространство \
-$Im (cal(A)) = {A X | X in k^n} = chevron A e_1, A e_2 dots A e_n chevron.r$  если $e_1 dots e_n$ - базис $k^n$ \
-Возьмем $e_i = vec(0, 0, dots.v, n, 0, 0)$ \
-$A dot e_i = vec(a_11 dot 0 + a_12 dot 0 + dots + a_(i 1) dot 1 + 0 + dots + 0, a_21 dot 0 + a_22 dot 0 + dots,,,,) = vec(a_(i 1), a_(i 2), dots.v, a_(i n)) = c_i$ - $i$тый столбец $cal(A)$ \
-т.е. $Im(cal(A))$ - линейная оболочка столбцов $A$ \
-$A X = B, x in k^n$ $B in k^m$ $m$ - количество уравнений, $n$ - количество неизвестных \
-Пусть $n > m, u = k^n, v = k^m$ \
-Т.О. Я и О, $n = dim ker cal(A) + dim (Im(cal(A))) <= dim ker cal(A) + m$, то есть $dim ker A >= n - m$ \
-В это млучае однородная система имеет хотя бы $n-m$ линейно независимых решений \
-Пусть $n = m$, тогда $n = dim ker cal(A) + dim chevron c_1 dots c_n chevron.r, c_i -$ столбцы $cal(A)$ \
-$dim ker(cal(A)) = 0 => dim Im A = n$ \
-$dim ker cal(A) > 0 => dim Im(cal(A)) < n, Im(cal(A)) <= k^n$
+1. $ker p_i (cal(A))$ - инвариантно: $v in ker p_i (cal(A)) => cal(A) v in ker(p_i (cal(A))), p_i(cal(A)) (cal(A) v) = p_i (cal(A)) compose cal(A) (v) = cal(A) compose p_i (cal(A)) (v) = cal(A) (0) = 0$ ($v in ker p_i$) 
+2. $(p_1, p_2) = 1 => q_1, q_2 in k[t]$, т.ч. $p_1 q_1 + p_2 q_2 = 1$ \ $p_1 (cal(A)) compose q_1 (cal(A)) + p_2 (cal(A)) q_2 (cal(A)) = id $, то есть $p_1 (cal(A)) (q_1 (cal(A)) (v)) + p_2 (cal(A)) (q_2 (cal(A)) (v)) = v$, заметим, что $p_2 (cal(A)) (v_2) = p_2 (cal(A)) compose p_1 (cal(A)) (dots) = 0$, то есть $v_2 in ker p_2 (cal(A))$ аналогично $v_1 in ker p_2 (cal(A))$ \ Доказали, что $v = v_1 + v_2$, осталось доказать, что $v_1 inter v_2 = {0}, q_1 p_1 + q_2 p_2 = 1, exists v in ker p_1 (cal(A)) inter ker p_2 (cal(A))$, $v in q_1 (cal(A)) p_1 (cal(A)) v + q_2 (cal(A))p_2 (cal(A))(v) = q_1 (cal(A)) (0) + q_2 (cal(A))(0) = 0$
+
+Пусть $p = X_A = p_1^(a_1) p_2^(a_2) dots p_k ^(a_k)$ $p_i$ - неприводимы, $p_i != p_j$ по тереоме $v =  xor.big ker(p_i^(a_i) (cal(A)))$ - сумма аннутяторных подпространств / $p = (p_1 p_2) p_3, v = ker (p_1 p_2^(a_2)) xor ker p_3 (cal(A))= (ker(p_1 (cal(A))) xor ker p_2 (cal(A))) xor ker p_3 (cal(A)) (p_"new" = p_1 p_2, p_1 p_2 |_(ker (p_1 p_2)) =0)$ и так далее /
+
+Пусть $k$ - алг. замкнутое $p_i = t - lambda_i, ker (t- lambda_i)^(a_i) = W_lambda_i$ - корневое подпространство соответствующее $lambda_i$ / $a_i$ - алг. кратность $lambda_i$ / 
+
+$v_lambda_i = {v_i | cal(A) v = lambda_i v} = ker (cal(A) - lambda_i id) <= ker (cal(A) - d_i id)^(a_i) = w_lambda_i$, то есть $v_lambda_i <= w_lambda_i$ / если $m_(a | g) (lambda_i) = m g (lambda_i) => v_lambda_i = w_lambda_i$
+
+== Теорема о Жорд. форме
+$cal(A): v -> v$ - лин. над $k$ - а. замкн. тогда $exists$ базис $v$ (Жорданов базис) \
+такй что $[cal(A)] = mat(J_k_1 (lambda_i_1), 0,0; dots, dots, dots; 0, 0, J_(k_n) (lambda_i_k))$, $lambda_1, dots lambda_k$ - собственные числа $lambda(A), k_i in NN$ \
+$J_k (lambda) =$ матричка у которой на основной диагонали лямбдики, а под ними единички $ =lambda E + J_k (0)$ - из теоремы в Ж Ф нильпотентна
+=== Доказательство 
+$X_A (t) = product_(i=1)^k (t-lambda_i)^(a_i)$ ($k$ - а.з) \
+знаем: $v = xor.big_(i=1)^k w_lambda_i$ \
+лемма $X_cal(A)_w_i (t) = (t - lambda_i)^(a_i)$ \
+Доказательство леммы: знаем $product (t - lambda_i)^(a_i) = X_cal(A) (t) = product X_cal(A)_w_i (t)$ \ пусть $X_(cal(A) |_w_i) $ делится на $t-lambda_i$ \
+$exists $ соб. вектор $v_i in W_i, cal(A) v_i = lambda_j v_i, (cal(A) lambda_i) id v_i = (lambda_j - lambda_i) v_i, 0 = (cal(A) - lambda_i id)^(a_i) v_i = (lambda_j - lambda_i)^(a_i) v_i => lambda_i = lambda_j$ 
+
+$X_(cal(A) |_w_i) = (t- lambda_i)^(a_i) => (cal(A_i) - lambda_i id)^(a_i) = 0$, где $cal(A)_i = cal(A) |_w_i$ \
+то есть $cal(A)_i - d_i id$ - нильпотентный оператор, по теореме о ЖФ нильп. оператора $exists$ базис $w_i$ $[cal(A)_i - d_i id]_(B_i) = $ какая-то страшная матрица, хз как ее рисовать \
+$[cal(A)_i]_B_i = [A_i - lambda_i id]_(B_i) + [lambda dot id]_B_i = $ снова какая-то херабора = $[A |_w_i]_B_i$ 
+
+Возьмем Базис (в $V$)
+
+$B = union B_i$ тогда 
+$[cal(A)]B = mat([cal(A)|_w_1]_B_1,,  0; , dots.down, ; 0,, [cal(A) |_w_k]_B_k) = $ имеет вид как в условии 
+
+== О единственности Жордановой Формы
++ Пусть $B$ - нильп и нашли базис из Жордановых цепочек $v_(1, k_1) -> dots -> v_(1, 2) -> v_(1,1) -> 0, v_(2, k_2) -> dots -> v_(2,2) -> v_(2,1) -> 0, dots$
+
+Утверждение $ker B^k = chevron v_(i,j) | j <= k chevron.r$ 
+доказательство $v_(i,j) in ker B^k$ / $B^j (v_(i,j)) = 0$/ \
+$v = sum a_(i j) v_(i j), exists i, j > k, a_(i j) != 0, B^k (v) = a_(i, j) v_(i, j -k) +$ другие базисные $!= 0$ 
+
+$dim ker B^k = b_k$, заметим, что $b_k$ возрастает $b_k - b_(k-1) = abs( v_(i,j) | j = k)$ - это количество цепочек длины $>= k$, поэтому количество цепочек длины $k = $ количество цепочек длины $>= k$ - количество цепочек $>= k+1 = b_k - b_(k-1) - (b_(k+1) b_k) = 2 b_k - b_(k-1) - b_(k+1) = 2 dim ker B^(k) - dim ker B^(k-1) - dim ker B^(k+1)$ это выражение зависит только от $B$, следовательно набор длин цепоек определен одназначно, то есть жорданова форма единственна (с точностью до перестановки формы)
+
+=== ремарка Ж. Базис не единственный
+
+Общий случай: $lambda_i$ - определены однозначно - корни $X_A (t)$ $V = xor W_i$, $W_i$ - цепочки длины ($k_i$) \
+Пусть есть Ж. Форма для $A$, тогда количество блоков $J_k (lambda)$ равно $2 dim (ker (A - lambda_i E))^k - dim ker (A - lambda_i E)^(k-1) - dim ker (A - lambda_i E)^(k+1)$, знаем, что это так на $W_i$, а на остальных $xor_(j-i) W_j$ $A - lambda_i E$ - невырожд. $=> ker (A - lambda_i E)^(a_i) = 0$
+
+=== ремарка 
+$2 dim ker B^k - dim ker B^(k-1) - dim ker B^(k+1) = (2n - 2 dim Im) - (n - dim Im) - (n - dim Im) = r k B^(n+1) + r k B^(n-1) - 2 r k B^n$ 
+
+== Пример
+Возведение матрицы в степень
+== Теорема Матричная переформулировка
+$forall A in M_N (k), exists c in G L (n,k): C A C^(-1) = mat(J_1 (lambda_(i 1)),,  0; , dots.down, ; 0,, J_k (lambda_(i k)))$ \
+$C A C^(-1) = mat( J_1, 0;0, J_k) = J, A = C^(-1) J C, A^n  = (C^(-1) J C)^n = C^(-1) J C C^(-1) J C dots  = C^(-1) J^n C$ \
+$J_k (lambda) J_k (0) + lambda E, J_k (lambda)^n = (J_k (0) + lambda E)^n = sum_(i=0)^n C_n^i J^i_k (0) lambda^(n-i)$ \
+$(J_k (0))^i$ диагональка из единичек уходит вниз на $i$ позиций $i < k$ \
+$(J_k (0))^l = 0, l >= k$
+
+Итого $J_k (lambda)^n = sum_(i=1)^(k-1) C_n^i lambda^(n-i) (mat) = mat(lambda^n ,,,,; n lambda^(n-1);(n (n-1))/2 lambda^(n-2); dots.v, dots.down; ,, n lambda^(n-1), lambda^n)$ \
+$A^n = C^(-1) J^n C$ $C, C^(-1)$ - фиксирована 
+
+При каких условиях $(A^n |_(i j))$ - ограничена $J^n$ ограничена если $abs(lambda_i) <= 1$ иначе $lambda^n -> oo$ и $lambda = 1$ - все блоки размера 1, если все собственные числа $<1$ $J^n (lambda) -> 0 => A^n -> 0$ в общем случае компоненты $A^n$ растут как $O^* (abs(lambda_"max")^n)$
+
+= Канон. форма оператора для не аз поля
++ Вещественная жорд. форма
+$cal(A): V-> V$ над $RR$, НУО: $A in M_n (RR), cal(A) (X) = A X, X in RR^n$ \
+$A in M_n (RR) subset M_n (CC)$, собственные чисал $A: lambda_1, overline(lambda_1), lambda_2, overline(lambda_2), dots, lambda_k, overline(lambda_k), underbrace(lambda_(k+1)", " dots ", " lambda_(k+s), in RR)$ \
+$X_A (t) in RR[t] => X_A (t) = (product(t-lambda_i) (t-overline(lambda_i)) underbrace(product_(i=k+1)^(k+s) (t-lambda_i), in RR )$
+
 \
-Если $A X  = 0$ имеет единственное решение $<=>$ $A X = B$ имеет единственное решение при любом $B$ (Альтернатива Фредгольна)
-=== Замечание
-Пусть $A X = B$  имеет решение  $X_0$ \
-Тогда $A X = B <=> A X = A X_0, A(X- X_0) = 0$ \
-$X - X_0 in ker(cal(A)),$ то есть $X = X_0 + y, y in ker(cal(A))$ \
-$A^(-1) (B) = {X_0 + y | y in ker(cal(A))} = X_0 + ker(cal(A))$
-$ker(cal(A)) = {0} => forall$ прообраз - точка или пустое множество \
-Иллюстрация \
-$A : RR^2 -> RR^2, ker(A) = 0, Im(A) = RR^2, A$ - бикция\ 
-== Принцип Дирихле 
-$A: u -> u, A$ - инъект. $<=>$ А - сюръективна ($u$ - конечномерна) \
-= Теорема
-Пусть $v <= k^n$ - подпространство $dim v = k, v = chevron v_1 dots v_k chevron.r$ \
-Тогда $v$ задается $n-k$ уравнениями, то есть $v$ - множество решений системы из $n-k$ уравнений \
-=== Доказательство
-ищем все уравнения которые удовлетворяют $v$ \
-$a_1 x_1 + dots a_n x_n = 0, forall vec(x_1, dots.v, x_n) in v <=> (a_1 dots a_n) v_l = 0 " " forall i = 1 dots k$ из линейности \
-Возникает отображение \
-$(a_1, a_2, dots a_n) |->^(cal(A)) vec((a_2 dots a_n)v_1, dots.v, (a_1 dots a_n)v_k)$ \
-$k^n -> k^k$ \
-$dim(ker(cal(A))) >= dim(k^n) - dim(k^k) = n -k$
-$=>$ поэтому не меньше $k$ уравнений \
-$$
-==
-Пусть теперь $cal(A): u -> v$ и линейное \
-$u_1 dots u_n, v_1 dots v_m$ - базисы в $u$ и $v$ \
-$cal(A)(u_1) = a_11 v_1 + a_21 v_2 + dots + a_(m 1) v_(m)$ \
-$cal(A)(u_2) = a_12 v_1 + a_22 v_2 + dots + a_(m 2) v_m$ \
-$dots.v$ \
-$cal(A)(u_k) sum_(k=1)^m a_(i k) v_i$ \
-$vec(a_(1 i), a_(2 i), dots.v, a_(m i))$ - столбец координат $cal(A) (u_i)$ - в базисе ${v_i}$ (обозначение $[cal(A) (u_i)]_({v_i})$) \
-$A = (a_(i j))_(i = 1 dots m, j = 1 dots n)$ - называется матрица линейного отображения $cal(A)$ в базисах ${u_i}, {v_j}$ Обозначение $A = [cal(A)]_({v_i}, {v_j})$\
-$A = ([cal(A) (u_1)] | [cal(A)(u_2)] dots | [cal(A)(u_2)])$ \
-== Теорема
-$x in U, X = [x]_{u_i}$ \
-Тогда $[cal(A)(x)]_(v_i) = A X$\ 
-$x |-> A X$ \
-=== Случай 1
-$x = u_i, [x] = a = vec(0, 0, 1, 0), A dot e_i = c_i - i$ый стоблец $A$ \
-но $i$ ый столбец $[A]$ - это $[cal(A) (u_i)]_(v_i)$ по определению\
+$forall i in 1..k$ найдем $x_i in RR^n, A x_i = lambda_i x_i$
+$=> overline( A x_i) = overline(lambda_i x_i)$ \
+$=> overline(A) overline(x_i) = overline(lambda_i) overline(x_i) => A overline(x_i) = overline(lambda_i) overline(x_i)$, $overline(x_i)$ - собтсвенный вектор для $overline(lambda_i)$ \
+Пусть $A$ - диаг. $lambda_i in RR, (i > k)$ можно найти $A x_i = lambda_i x_i$ \
+$x_i in RR^n$ 
 
-=== Слуйчай 2
-$X = sum a_i u_i, [cal(A) (sum a_i u_i)]_(v_i) = [sum a_i A(u_i)]_{v_i} = sum a_i [A(u_i)]_(v_i)$ \
-$A (a_1, a_2, a_n) = A(sum a_i e_i) = sum a_i A e_i = sum a_i [A(u_i)]_v_i$ \
-$u = v = RR^2, v_1 = u_1 = vec(1, 0), v_2 = u_2 = vec(0, 1), A_alpha$ - поворот на $alpha$ \
-$A_alpha (u_1) = cos(alpha) u_1 + sin(alpha) u_2$ \
-$A_alpha (u_2) = - sin(alpha) u_1 + cos(alpha) u_2$ \
-$A_alpha = vec(cos alpha "    " sin alpha, sin alpha "    " cos alpha)$\
-$forall v, v = vec(a, b), A_alpha vec(a,b) = vec(cos alpha a - sin alpha b, sin alpha a + cos alpha b)$ \
-==== Замечание 
-$vec(cos alpha " " - sin alpha, sin alpha "    " cos alpha) vec(cos beta "   " -sin beta, sin beta  "   " cos beta) = vec(cos(alpha + beta) "   " - sin(alpha + beta), sin(alpha + beta) "    " cos(alpha + beta)) = A_(alpha + beta)$ \
-$A_(alpha + beta) = A_beta dot A_alpha$
-== Теорема
-$U ->^(cal(A)) V ->^(cal(B)) -> W$ \
-$y_1 dots u_k, v_1 dots v_e, w_1 dots w_n$- базисы \
-Тогда $[cal(B) dot cal(A)]_({u_i} {w_i}) = [cal(B)]_({v_i}, {w_i}) dot [cal(A)]_({u_i}, {v_i})$ \
-=== Доказательство
-==== Замечание
-$A, B in M_(m,n) (k)$, такое что $A X = B X, forall X in k^n$, тогда $A = B$.
-==== Доказательство
-$A X = B X <=> (A-B) X = 0 forall X => (A-B) e_i = 0 => $ все столбцы нули $A-B$ нули \
-строим $[B dot A]_({u_i}, {w_i})$, то есть ищем $[B(A(u_i))]_{w_i}$\
-$[A] = (A_(i j))_(i = 1 dots l, j = 1 dots k)$ \
-$[B] = cal(B) = (b_(i j))_(i = 1 dots m, j = 1 dots l)$ \
-$A(u_i) = sum_(j=1)^l a_(j i) v_j$ по определению $[cal(A)]$ \
-$cal(B)(cal(A)(u_i)) = cal(B)(sum_(j=1)^l a_(j i) v_j) = sum_(j=1)^l a_(j i) cal(B)(v_j) = sum_(j=1)^l a_(j i) (sum_(s = 1)^m b_(s j) w_s) = sum_(s=1)^m (sum_(j=1)^l b_(s j) a_(j i)_ w_s = sum_(s=1)^m c_(s j) w_s$ где $B dot A = (c_(i j))$ \
-Итого $[cal(B)(cal(A)) u_i] = vec(c_(1 i), c_(2 i), dots.v, c_(m i)) - i$ый стоблец матрицы $cal(B) dot cal(A)$ \
-== Определение
-$u, v$ - векторные пространства \
-$"lin"(u ,v)$ - множество линейных отображений $u -> v$
-=== Утверждение
-это векторное пространство: и $A, B in "lin" (u, v) => A + B in "lin"(u,v)$ \
-$A(x + alpha y) = A(x) + alpha A(y)$ \
-${u_i} {v_i}$ - базисы, тогда есть баз \
-$"lin" (u, v) -> M_(m,n) (k), m = dim v, n = dim u$ \
-$A |-> [A]_({u_i} {v_i})$ это изоморфизм векторных пространств. (биекция очев, линейность тоже очев) \
-сюръективность: знаем $forall u_1 dots u_n, w_1 dots w_n$ - базисы $exists! $ линейное $A(u_i) = w_i$ \
-инъективность: из единственности той же теоремы \
-==
-$forall m = n, "lin"(u, v)-> M_(n)(k), n = dim(u)$ \
-$"             "A -> [A]_({u_i}{u_i})$ \
-изоморфизм относительно + и $dot \/ circle.small$ \
-$[A]_({u_i}{u_i}) dot [B]_({u_i}{u_i}) = [A circle.small B]_({u_i}{u_i}) (u ->^(B) u ->^(A) u)$ 
-=== Утверждение
-$"lin"(u,u)$ - ассоциативное некоммутативное кольцо с 1 отиносительно $(+, compose)$ \
-$(f compose g) compose h = f compose (g compose h)$ - композиция ассоциативна \
-нейтральные элемент $id_u in "lin"(u,u)$ \
-==== Дистрибутивность
-$(f + g) compose h = f compose h + g compose h - (f + g)(h(x)) = f(h(x)) + g(h(x)), h compose (f + g) = h compose f + h compose g $ \ \ $  h(f(x) + g(x)) = h(f(x)) + h(g(x))$ - использовали линейность $h$
-=== Следствие 
-$M_n (k)$ - ассоциативное кольцо с 1 \
-== Теорема о правильном базисе (матричная форма) \
-== Теорема о каноническом виде линейных отображений 
-$A in "lin"(u, v), exists {u_i} in u, {v_i} in v$ - базисы \
-$[A]_({u_i} {v_i}) = mat(mat(1, 0; 0, 1), 0; 0, 0)$ - какие-то блоки могут отсутствовать $vec(mat(1,0;0,1), 0)$ \
-=== Замечание
-$i$ из предыдущей теоремы \
-$i(id) = [id_u]_({u_i} {u_i}) = mat(1, dots , 0; 0, " ", 1) = E$ \
-$forall k: id(u_k) = u_k = 0 dots u_1 + 0 dots u_2 + dots + 1 dot u_k + 0 dot u_n$  \
-$k vec(0,0,1,0 ) = e_k$ \
-В теорема о канонической форме $[A] = mat(E_r, 0; 0, 0)$ \
-=== Доказательство
-$u_1 dots u_k, u_k+1 dots u_n$ из теоремы о правильном базисе - базис $u$ \
-$A(u_(k+1)) = dots = A(u_n) = 0, A(u_1) dots A(u_k)$ - базис $Im A <= V$ \
-$V_1 = A(u_i), i = 1 dots n, v_1 v_2, dots v_k$ - ЛНЗ системы в $V$ \
-Дополним $v_1 dots v_m$ - базис $V$ \
-$A(u_1) = v_1, A(u_k) = v_k, A(u_(k+i)) = 0$, то есть $A(u_(k+i)) = sum_(i=1)^m 0 dot v_i ->$ столбец $vec(0,0,,0)$ \
-$i <= k A(u_i) = sum (s_(i j) v_j) ->$ столбец $vec(0, 0, 0, 1, 0,0)$ (единичка на i-том месте) \
-== Опр
-$C$ - обратима если $exists C^(-1) : C dot C^(-1) = C^(-1) C = E$\
-Пусть $u = v, A = id$, ${u_i}, {v_i}$ - разные базисы \
-$[id]_({u_i}, {v_i}), id(u_i) = u_i = sum k_j v_j$ \
-$[id]$ - матрица перехода от ${u_i}$ к $v_j$ \
-Пусть $A: u -> v$, ${u_i}, {u_i`}, {v_i}, {v_i`}$ - базисы \
-$u ->^id u ->^A v ->^id v`$ \
-${u_i`} -> {u_i} -> {v_i} -> {v_i`}$ \
-$[A]_({u_i`} {v_i`}) = [id]_({v_i}, {v_i`}) [A]_({u_i}{v_i}) [id]_({u_i} {u_i`}) = C dot A dot D$ \
-$A$ - матрица о "исходных" базисах \
-$C, D$ - матрицы перехода от $v_i$ к $v_i`$ и от $u_i$ к $u_i`$
+$x_1, overline(x_1), dots x_k, overline(x_k), x_(k+1) dots x_(k+s)$ - базис из собственных векторов в $CC^n$, (при этом $x_(k+1) dots x_(k+s) in RR^n$) 
 
-$u_({u_i}) ->^(id) u_{u_i} ->^(id) u_{u_i} -> E = C C` - C`C$ \
-$C`$ - матрица перехода от ${u_i}$ к ${v_i}$\
-$C$ - матрица перехода от ${v_i}$ к ${u_i}$ \
-Получили матрицу пеерехода от ${u_i}$ и ${v_i}$ и от ${v_i}$ к ${u_i}$ - взаимнообратно \
-Формула замены базисов, частный случай \
-$v=u, cal(A) in "Lin" (u,u), {u_i}, {v_i}$ - базисы \
-$A_u = [cal(A)]_({u_i} {v_i})$ \
-$A_"new" = [cal(A)]_({u_i`} {u_i`})$ \
-$A_"new" = C A_"old" C^(-1), C-$ матрица перехода от ${u_i}$ к ${u_i`}$ \
-=== Замечание
-Следующие утверждения равносильны:
-+ $A$ - обратима
-+ $A$ - матрица перехода между некоторыми базисами \
-$2 => 1$ показали выше \
-$1 => 2$ $V, dim V= n, v_1, v_n$  - базис, $A$ - обратима \
-Рассмотрим $v_1`, v_2`, dots v_n` in V$ \
-$(v_1`, v_2`, dots v_n`) = (v_1 dots v_n) dot A$ \
-$A$ - матрица перехода если $v_1 dots v_n, v_1` dots v_n`$ - базисы \
-Почему $v_1` dots v_n`$ - базисы? \
-$(v_1` dots v_n`) dot A^(-1) = (v_1 dots v_n) A dot A^(-1) = (v_1 dots v_n)$, то есть $forall i: v_i in chevron v_1` dots v_n` chevron.r$ \
-== Формула замены базиса, частный случай 
-=== Наличие
-$cal(A) in "Lin"(u,v) => exists$  базисы ${u_i}, {v_i}$
-== Определение
-Ранг $A in M_(m,n) (k), A = (c_1 | c_2 | dots | c_n), c_i in k^m$ \
-$A = vec(r_1, dots.v, r_m), r_1 in k^n$ (n с другой стороны) \
-Строчный ранг $A:  r dot k_r (A) = dim chevron r_1, dots r_m chevron.r, chevron r_1 dots r_m chevron.r in ""^n k, r k_r (A) <= n$ \
-$r k_c (A) = dim chevron c_1 dots c_n chevron.r, chevron c_1 dots c_n chevron.r <= k^m, r k_c (A) <= m$ \
-=== Пример
-$r k_r mat(0,0;0,0) = 0 = r k_c mat(0,0; 0, 0)$ 
-== Теорема свойства ранка
-+ $r k_c (A + B) <= r k_c (A) + r k_c (B)$
-+ $r k (A B) <= min(r k A, r k B) ("if" A B exists)$
-+ $C$ - обратимая, тогда $r k A = r k A C$, $D$ - обратимая $r k A = r k D A$ 
-== Лемма Геометрическое определение ранга
-+ $r k_с A = dim Im(cal(A))$, если $A = [cal(A)]$
-+ $A in M_(m,n) (k), n - r k A = dim ker(A)$ - дефект матрицы
-=== Доказательство
-2. это теорема о размерности ядра и образа $A: k^n -> k^m, r = dim ker A + dim Im(A)$
-1. $A = (c_1 | dots | c_n), A = [cal(A)]$ \
-$c_i$ - столбцы координат $cal(A) (v_1)j dots cal(A) (v_n), v_1 dots v_n$ - базис \
-$dim chevron c_1 dots c_n chevron.r = dim chevron cal(A) (v_1) dots cal(A)(v_n) chevron.r = dim(cal(A)(sum a_i v_i)) = dim Im (cal(A))$ \
-=== Доказательство теоремы
-2. $A, B$ - матрицаб $cal(A), cal(B)$ - в согласованных базисахб $A dot B$ - матрица $cal(A) compose cal(B)$ \
-Тогда хотим $dim Im (A compose B) <= min(dim Im(cal(A)), dim Im(cal(B)))$ \
-1) $Im(A compose B) = {A(B(c))} <= {A(y)} = Im cal(A)$ \
-$Im(cal(A) compose cal(B)) <= Im cal(A)$ \
-$dim(Im(cal(A) compose cal(B))) <= dim Im(cal(A))$ \
-2) $Im(cal(A) compose cal(B)) = {cal(A)(cal(B) (x))} = {cal(A) (g) | y in Im cal(B)} = Im(A |_Im(B)) <= dim Im B$ \
-$cal(A): Im cal(B) -> V$ \
-$dim Im cal(A_B) = dim Im cal(B) - dim ker(cal(A_B)) <= dim Im cal(B)$ \
-3) по пункту 2 $r k (A C) <= r k (A)$ \
-$r k A <= r k (A C dot C^(-1)) <= r k (A C) => r k A = r k (A C)$ \
-$A in M_(m, n) (k)$ знаем $exists C, D, C A D$ 
-== Определение
-$A in M_(m, n) (k) A = (a_(i j)) _(i = 1 dots m, j = 1 dots n)$ \
-Транспанированная к $A$ матрица $A^T in M_(n, m) (K) = A^T = (a_(i j) `), a_(i j) ` = a_(j i) forall j,i$ \
-$mat(1,2,3;4,5,6)^T = mat(1,4;2,5;3,6)$ \
-В частности $r k _c = r k_r (A^T), r k_r (A) = r k_c (A^T)$ \
-== Лемма
-Пусть $A, B in M_(m,n) (k)$ \
-$(A + B)^T = A^T + B^T$ \
-$A in M_(m,n) (k), B in M_(n, l) (K) => (A B)^T = B^T dot A^T$ \
-=== Доказательство 2
-$A = (a_(i j)) B = (b_(i j)), A dot B = (c_(i j)), (A B)^T = (c_(i j)`)$ \
-$(B^T A^T)_(i j) = sum_(k=1)^n b_(i k)` a_(k j)` = sum b_(k i) a_(j k) = sum_(k=1)^n a_(j k) b_(k i) = c_(j i) = c_(i j)` = ((A B)^T)_(i j)$ \
-==== Следствие
-$c$ - обр $=> c^T$ - обратная  \
-== Теорема
-$r k_c (A) = r k_c (A^T)$ (т. е. $r k_c (A) = r k_r (A)$) \
-=== Доказтельство
-Приказало долго жить
-== Теорема
-$A in M_n (k)$ - следующие утверждения равносильны
-+ $exists A^(-1)$ 
-+ строки $A$ ЛНЗ
-+ столбцы $A$ ЛНЗ
-+ ослу $A X = 0$ имеет единственное (трив)
-+ СЛУ $A X = B$ имеет решение $forall B in k^n$ \
-+ $r k A = n$ 
-Такая матрица называется обратимой, невырожденной, неособой, неособенной \
-=== Докзаательство
-$2 <=> 6 <=> 3$ по определению (знаем $r k_c = A = r k A = r k_r A$) \
-2: столбцы - базис $k^n$ 3) строки - базис $""^n k$ Знаем $r k A = dim Im cal(A), cal(A) : k^n -> k^n, x |-> A x$ \
-поэтому $Im cal(A) = k^n$ (это 5), то есть $5 <=> 4$ по теорема о ядре и образе \
-$5+ 4$ означает, что $cal(A)$ - сюръективна и $cal(A)$ инъективна $=> exists A^(-1)$ \ то есть $5 -> 5 + 4  => 1, 1 => 5, exists A^(-1) => A$ - сюръективна
-== Определения
-$n in NN, k$ - поле \
-$(M_n (k))^* =: G L(n, k)$ general linear group группа обратимых матриц \
-$A in G L (n, k)$ как найти $A^(-1)$ \
-Идея представить $A$ как произведение очень простых матриц, в частности, чтобы у них было легко найти обратную, тогда, если $A = A_1 A_2 A_3, A^(-1) = A_3^(-1) A_2^(-1) A_1^(-1)$
-== Определение Элементарные матрица
-$cal(A): k^n -> k^n$ линейное отображение - элементарное, если оно меняет не более одной координаты у столбца \
-Примеры: $vec(x_1, x_2, dots.v, x_n) |-> vec(x_1, dots.v, x_i + a x_j, dots.v, x_n)$, $vec(x_1, x_2, dots.v, x_n) |-> vec(x_1, dots.v, a x_i, dots.v, x_n)$ \
-Матрицы \
-$vec(x_1, dots.v, a x_i, dots.v, x_n) = mat(1, 0,0,0; 0,a,0,0;0,0,1,0;0,0,0,1) vec(x_1 dots x_n) = m_i (a) vec(x_1,dots.v, x_n)$ \
-$m_i(a) = E + (a-1) epsilon_(i j)$ $epsilon_(i j)$ - матричная единица - дилатация \
-Ясно, что $m_i (a) in G L (n, k): m_i (a)^(-1) = m_i (1/a)$ \
-$t_(i j) (a) = E + a epsilon_(i j)$ - $a in k, t_(i j) (0) = E$ - трансвекция $t_(i j) in G L$ \
-=== Замечание
-$(x, y) ->^(t_(i j)(1)) (x, x+y) ->^(t_(i j) (-1)) (-y, x+y) ->^(m_i (1)) (y, x)$ \
-$S_(i j) = m_i (-1) t_(j i)(1) t_(i j) (-1) t_(j i) (1)$ \
-== Утверждение
-$t_(i j) (a) dot A$ - матрица полученная из $A$ прибавление к $i$ -ой строке $j$-ой строке умноженную на $a$ \
-$t_(i j) (a) dot A = (t_(i j) (a) | dots | c_m) = (t_(i j)(a) c_1 | t_(i j) c_2 | dots | dots t_(i j) (a) c_m)$
-== Утверждение
-$A dot t_(i j)(a)$ - матрица полученная из $A$ прибавлением к $j$-ому столбцу $i$-ого столбца, умноженного на $a$
-=== Доказательство
-+ руками
-+ воспользоваться транспонирование и утверждением 1
-При дилатации
-$m_i (a) dot A$ - $i$ строка умножается на $a$ \
-$A m_i (a)$ - i тый солбец умножается на $a$ \
-$A S_(i j)$ - столбцы i и j меняются местами
+это базис из собственных векторов, а мы хотим переделать это в не совсем базис из собственных векторов, но зато вещественных
 
-== Теоремма Гаусс
-$A in M_(m, n) (k)$
-+ $exists$ элемент $e_1 dots e_k in M_(m) (k): e_1 dots e_k dot A = dots (a _(i j) = 0 (i > j))$
-+ $exists$ элемент $e_1 dots e_k in M_m (k), f_1 dots f_j in M_n (k), e_1 dots e_k A f_1 dots f_k = mat(E_r, 0; 0, 0)$
-+ $A in G L (n, k)$ то просто существуют $e_1 dots e_k : e_1 dots e_k A = E$
-3\`. $A in G L(n,k)$ $exists f_1 dots f_k: A = f_1 dot f_2 dots f_k forall$ обратимая  матрица - произвеюение элементарных \
-$3 => 3`$ $e_1 e_2 dots e_k A = E$, $A = (e_1 dots e_k)^(-1) = e_k^(-1) e_(k-1)^(-1) dots e_1^(-1)$ \
-$e_i$ - элементарный $=> e_i^(-1) = f_i$ - элементарный $A = f_1 dots f_k$ \
-1. индукция по $n$ - База $n=0$ - нет столбцов нет проблем \
-$n -> n+1$ \
-$A = (c_1 | c_2 dots | c_(n+1))$ , если $A equiv 0$ - ок, если $A equiv.not 0, exists c_i != 0$, елси $c_1 = 0$, то $A = vec(0, 0, 0,dots.v, 0,) dot A`$ применяем индукцооное предположение к $A`$ \
-Пусть $c_1 != 0$ \
-$c_1 = vec(a_(11), a_21, dots.v, a_(m 1)) a_(i j) != 0$ \
-дописать лекция от второго февраля
+Осуществим такую замену базиса: $(x_k, overline(x_k)) -> (x_k + overline(x_k), (x_k - overline(x_k))i )$ - пара из $RR^n$ \
 
-== 
-
-Знаем $A in (M_n (k))^* => exists e_1 dots e_l$ - элемент. $e_1 dot e_l A = E <=> e_1 dots e_l = A^(-1)$ \
-Алгоритм для поиска $A^(-1)$ \
-$(A | E) -> (e_l A | e_l E) -> (e_(l-1) A | e_(l-1) e_l E) -> dots -> (e_1dots e_l A =E | e_1 dots e_l)$
-
-== Определение
-$A in M_n (k), A in (a_(i j))_(i = 1dots n, j = 1 dots n)$ $A$ называется верхнетреугольной $A in U T$ если $a_(i j) = 0$ при $forall i > j$ \ $A$ - нижнетреугольная ()$A in L T$) если $a_(i j) = 0$ при $forall i < j$ 
-== Теорема
-+ $L T, U T$ - подкольца в $M_n (k)$
-+ $A in L T (U T), exists A^(-1) => A^(-1) in L T (U T)$
-+ $A in L T (U T) A$ - невырожденная в $PP$ $<=> a_(i i) != 0 forall i, A$ - нильпотентна $ (exists n:  A^n = 0) <=> a_(i i) = 0 forall i$
-=== Доказательство
-$0, E in L T (U T), A,B in L T ( U T) => A + B in L T ( U T), -A in L T (U T) $ Докажем, что $A, B in U T => A B in U T$ \
-Пусть $A = (a_(i j)), B = (b_(i j)), A B = (c_(i j)), A B in U T$? $c_(i j) = 0$ при $i > j$ \
-$c_(i j) = sum_(k=1)^n a_(i j) b_(k j),$ доказательство руками на самом деле, просто перемножаем \
-=== 2) 
-Пусть $exists A^(-1)$, $A in U T => exists e_1 dots e_k, e_1 dots e_k A = E, e_i in U T$ см теорему $=> e_1 dots e_k in U T$
-=== 3) упр
-
-=== 1)
-Пусть $A in M_n (k)$, знаем, что $exists e_1 dots e_k$ - элем. $e_1 dots e_k A in U T$ \
-Метод Гаусса: Шаг елси $a_(i i) != 0$ делаем $t_(i j) (dots)$ где $j > i$. Если $a_(i i) = 0$ переставить $i$-ую и $j$-ую строки $i < j$\ 
-Предположим, что на любой шаге Гаусса $a_( i i) != 0$, тогда все $e_1 dots e_k$ - это $t_(m l) (a_s)$ где $m > l$, $t_(m l) (a_s) in L T$, то есть $e_1, e_2, dots, e_k in L T => overline(L) = e_1 e_2 dots e_k in L T$ \
-$overline(L) A = U in U T, A = overline(L)^(-1) U = L U, overline(L)^(-1) = L in L T, L in L T, U in U T = > L U$ - разложение
-
-== L U разложение
-Пусть теперь $A in (M_n (k))^(*)$, $A = L U => L, U$ - обратимы.
-== Теоерма
-$A in (M_n (k))^(*), exists L U$ разложение $<=>$ все угловые миноры $A$ невырожденные матрицы \
-== Угловой минор
-$A = (a_(i j)), A_k = (a_ (i j))_(i = 1 dots k, j = 1 dots k), (k = 1 dots n)$ \
-=== Доказательство
-надо доказать: перед $i$-ым шагом алгоритма $a_(i i) != 0$, индукция по $i$ \
-База $i = 1$ \
-$A = mat(a_11, dots; dots, dots) (a_11) = A_1$ - обр $A_11 != 0$ \
-Переход $i-1 -> i$ \
-Пусть на всех $1 dots i-1$ было оке  \
-до $i$ шага мы использвали тольк $t_(k l) (a) , k > l$, то есть $A_i -> dots e_1 dots e_s A_i$ - элементанрные преобрзаования над первыми $i$ строками. Если $A_1$ было невырожденными, то $e_1 dots e_s A_i$ тоже невырожденное, но $e_1 dots e_i A_i => a_(i i) != 0$ обратима
-== Утверждение
-$A$ - невырожденная $exists$ перестановка строк $A$, $A -> overline(A)$ $overline(A)$ удовлетворяет предыдущей теореме, то есть $overline(A) = L U$ \
-В матрицчом виде $overline(A) = P A, (P A = L U),, P $ - матрица перестановки $exists T L in S_n, P_(1 "п"(1)) = P_(2 "п"2) = 1б, P_(i j) = 0$
-= Явные формулы линейной алгебры \
-$A X = B$ - СЛУб $A in M_n (k)$, хотим получить $X = f (A, B)$, знаем, что $X = A^(-1) B,$ если $A^(-1) exists$ \
-$g: A^(-1) = g(A)$ хотя бы критерии существования $A^(-1)$ \
-$mat(a,b;c,d), exists (a,b;c,d)^(-1) => vec(a,c), vec(b,d)$ - ЛНЗ. то есть $a/b != c/d$ \
-$a d - b c != 0, exists A^(-1) = 1/(a d - b c) mat(d, -b;-c, a)$\
-== 
-$A in M_n (k), A = (c_1 | c_2 | dots | c_n)$ \
-Функции $M_n (k) -> k$ $<=>$ \
-функции $k^n + k^n + dots + k^n -> k$ \
-Хотим что-то типа $f(v_1, v_2 dots v_n) = 0 <=> v_1 dots v_n$ - ЛЗ \
-то есть $f(v_1 dots v_n) != 0 <=> v_1 dots v_n$ - базис $k^n$ \
-= 1
-$v_1 = vec(1,0), v_2 = vec(0,1), s(v_1, v_2) = 1$ \
-= 2 
-$s(v_1, v_2 + v_2`) = s(v_1, v_2) + s(v_1 v_2`)$  \
-$s(v_1, k v_2) = k s(v_1, v_2)$ - хотим имеено так (любой скаляр выносится) $s$ - ориентированная площадь (по модулю совпадает с интуитивно понятной площадью, но у нее может быть знак) \
-= 3
-$s(v, v) = 0$
-== Определение
-$u, v$ - в.п над $k$ (у нас пока $v = k$) \
-$f: u times u -> v$ $f$ называется билененйым если $f$ линейно по каждому аргументу, то есть $f(u_1 + u_2, v) = f(u_1, v) + f(u_2, v)$ \
-$f(k u, v) = k f(u, v)$ \
-$f(v_1, u_1 + u_2) = f(v_1, u_1) + f(v_2, u_2)$ \
-$f(v, k u) = k f(v, u)$ 
-$f$ - кососимметричное, если $u in  U: f(u,u) = 0$
-== Утверждение
-$f$ - билинейная $"char" k != 2$ \
-тогда $f$ - кососимметрична $<=> f$ - антикоммутитивна, то есть $f(u_1, u_2) = - f(u_2, u_1) forall u_1, u_2 in u$ \
-=== Доказательство
-$f$ - антис. $f(u_1, u_2) = - f(u_2, u_1)$ \
-$u_1 = u_2, f(u, u) = -f(u,u), 2 f(u,u) = 0 => f(u, u) = 0$ char $k != 0$ \
-$=> $ $f$ кососимметрична $f(y+v, u+v) = 0 forall u,v$ \
-$0 = f(u + v, u) + f(u,v, v) = f(u,u) + f(v,u) + f(u,v) + f(v,v) => f(u,v) + f(v,u) = 0$ $qed$
-== Определение
-$v$ - векторное пространство над $k: n in NN$ \
-$f: v^n -> k$ - полилинейно если оно линейно по каждому элементу \
-$f(v times dots times v)$ \
-$forall i: f(v_1, v_2 dots v_i` + v_i``, v_(i+1) dots v_n) = f(v_1, v_2 dots , v_i`, dots v_n) + f(v_1, v_2, dots v_i``,dots v_n)$ \
-$f(v_1, v_2, dots k v_i, dots v_n) = k dot f(...)$\
-== Утверждение
-$f_1, f_2$ - полилинейны, $e_1, e_2 dots e_n$ - базис $v$ \
-$f_1 (e_(i_1), e_i_2 dots e_i_n) = f_2 (e_i_1, dots e_i_n)$, тогда $f_1 = f_2$ \
-=== Доказательство
-$v_1, v_2 dots v_n in v$ \
-$v_i = sum a_i_k e_k$ \
-$f_1 (v_1, v_2, dots, v_n) = f_1 (sum a_(1k) e_k, sum_(k=1)^m a_(2k)e_k, dots, sum a_(n k) e_k) = sum a_(1k) f(e_k, sum a_(2i) e_i, dots, sum a_(n i) e_i) = sum a_(1k) sum a_(2i) f(dots) = dots = a_(1k 1)(sum a_(2 k 2) ( dots sum a_(n k n) f(e_k_1, dots e_k_m))) = sum_(k_1dots k_m = 1 dots m) a_(1k 1) a_(2k 2) dots a_(n k n) f_1 (e_k_1, dots e_k_2 dots, e_k_n) = sum_(k 1 dots k n) a_(1 k 1) dots a_(n k n) f_2(e_k_1, dots e_k_n) = dots = f_2 (v_1, v_2, dots v_n)$ \
-
-МоральЖ полилинейность $f$ однозначно определяется значенями на базисах ($e_(i 1) dots e_(i n)$) \
-
-== Определение
-$f: v^n -> k$ называется кососимметричным, если \
-из $exists i,j: v_i = v_j => f(v_1, v_2, dots v_n) = 0$ \
-Сужение на любые две координаты билинейно и кососимметрично
-== Следствие
-$f$ - кососимметрично \
-$f(v_1, v_2, v_i, dots, v_j, dots,  v_n) = - f(v_1, v_2, v_j, dots ,v_i, dots, v_n)$
-
-== Теорема
-Пусть $n = dim v$ (предполагаем, что количество аргументов у нашей функции равно размерность пространства) \
-Существоует не более одной, с точностью до постоянного множителя, кососимметричной функции $f: v^n -> k$, то есть $f_1, f_2 != 0$ полилинейные, косос $=> exists k in k: f_2 = k dot f_1$
-=== Доказательство
-Пусть $f(e_1, e_2, dots, e_n) =$c - полилинейна \
-Знаем, что $f$ однозначно определяется значениями $f(e_i_1, e_i_2 dots e_i_n)$ - использовали только полилинейность
-==== Случай 1
-$exists k, l, i_k = i_l => e_i_k = e_i_l => f(e_1 dots e_i_n) = 0$
-==== Случай 2
-$i_1 != i_2 != dots i_n, n = dim v$, значит, что набор этих индексов это как-то переставленные чиселки от 1 до $n$, тогда $f(e_i_1, e_i_2, dots e_i_n) = f(e_i_1, dots e_1 dots e_n)$ (найдем где единичка и поменяем местами, значит поменяется знак) $= -f(e_1, e_i_2, dots e_i_1, dots e_i_n) = dots = plus.minus f(e_1, e_2, dots, e_n) = plus.minus c$ - определено однозначно
-=== Вывод
-$f$ однозначно определяется значением $f (e_1, e_2 dots e_n)$ \
-$f_1(e_1 dots e_n) = c != 0, f_2 (e_1 dots e_n) = c_2 => f_2 = c_2/c_1 f_1$ всегда $=>$ $c_1 f_2 (e_1 dots e_n) = c_2 f_1 (e_1 dots e_n) => c_1 f("любой набор векторов") = c_2 f("любой набор векторов")$
-
-=== Следствие
-существует не более одного полилинейного кососимметричного отображения $(k^n)^n -> k$, такого что $f(e_1 dots e_n) = 1$
-== Определение
-такое отображение называется оприделителем  \
-$(c_1 , c_2 , dots | c_n) -> det (c_1 , dots , c_n )$ \
-== Теорема
-Определитель существует \
-Набросок доказательства $v_i = vec(a_(i 1), a_(i 2), dots.v, a_(i n)) = sum a_(i k) e_k$ \
-Должно быть $det(v_1, v_2, dots v_n) = sum a_(1 i_1) a_(2 i_2) dots a_(n i_n) det (e_i_1 dots e_i_2, dots e_i_n) = sum$
-
-== Четность перестановки
-$s_n$ - группа перестановок $s_n = {f: {1..n} -> {1..n} | f - "биекция"}$  \
-Операция - композиция \
-Табличная запись: \
-$1_(pi(1)), 2_(pi(2)) dots n_(pi(n))$ - $s_(i j) : s_(i j) = j, s_(i j) (j) =  i, s_(i j) (k) = k , k != i, j$ $s_(i j)$ - транспозиция \
-$"           "1, 2 dots n$ \
-$"      "pi: k_1, k_2 dots k_n$ \
-$s_(i j) compose pi: k_1, k_2, dots k_n$
-== Утверждение
-Любая перестановка $pi$ - произведение транспозиций \
-(просто перетаскиваем $pi(...)$ на свои места до победного) \
-хотим определить $epsilon(pi)$ - четность (знак) перестановки $(epsilon(pi) = plus.minus 1)$ \
-$pi = s_1 s_2 dots s_l$ \
-хотим определить $epsilon(pi) = (-1)^l = 1, $ если $pi, l$ четно, $-1$ если $pi$ нечетно \
-Оказывается это корректно определено, то есть не зависит от разложения, хотим это доказать \
-$$
-== другое определение
-$i, j in {1, dots, n}, i != j, pi in s_n$ \
-${i, j} pi - $ инверсия если $(i-j) \/ pi(i) - pi(j) < 0$, то есть $i > j$ но $pi(i) < pi(j)$ или наоборот \
-Определим: $overline(epsilon) (pi) = (-1)$ в степени количество инверсий 
-== Теорема
-$s$ - транспозиция, $pi in s_n$, то $overline(epsilon) (s dot pi) = - overline(epsilon) (pi)$ 
-=== Доказательство
-$s = s_(pi(i), pi(j)), i < j$ \
-$"     "1, 2, dots "        " i, dots "    " j, dots n$ \
-$pi: pi(1), pi(2), dots pi(i), dots pi(j), dots pi(n)$ \
-$s compose pi: pi(1), pi(2), dots pi(j), dots pi(i), dots pi(n)$\
-элементарная транспозиция \  
-$1, 2, dots, n$ \
-$k_1, k_2 dots k_l, k_(l+1), dots, k_n$ \
-$k_1, k_2 dots k_(l+1), k_l, dots, k_n$ \
-количество инверсий поменялось на $plus.minus 1$ по четности \
-$pi -> s compose pi$ это $2s + 1$ смена четности \
-То есть смена четности $epsilon(s compose pi) = - epsilon(pi)$ \
-$overline(epsilon) (id) = (-1)^0 = 1$ \
-Теперь $pi in s_n, pi = s_1, s_2, dots s_l,"   " s_i$ - транспозиция \
-$overline(epsilon) (pi) = overline(epsilon) (s_1, s_2 dots s_l) = - overline(epsilon) (s_2 dots s_l) = dots = dots = (-1)^l$ в частности $l mod 2$ значит только $pi$ (не зависит от способа разложения) \
-то есть можно определить $epsilon(s_1, dots , s_l) = (-1)^l$
-== Замечание
-$n > 1$, $s$ - транспозиция \
-$s_n = union {pi, s compose pi}$ \
-в паре одна четная, одна нечетная $=>$ всего $n!/2$ четных, $n!/2$ нечетных перестановок
-== 
-$n in NN$ - хотим построить $det (k^n)^n -> k$, такую, что $det$ - полилинеен, кососиметричен и $det$ от базиса $=1$ \
-$v_1, v_2, dots, v_n$ \
-$v_i = vec(a_(1i), a_(2i) , dots.v, a_(n i))$ \
-$(v_1 | v_2 | dots | v_n) = a_(i j)_(i = 1 dots n, j = 1 dots n)$ \
-Положим $det(v_1, v_2, dots, v_n) := sum_(pi in s_n) epsilon(pi) a_(1, pi(1)) a_(2, pi(2)) dots a_(n, pi(n))$ \
-$n!/2$  слагаемых со знаком $-$, $n!/2$ слагаемых со знаком $+$ \
-$n = 3: a_11 a_22 a_33 + a_12 a_23 a_31 + a_13 a_21 a_32 - a_12 a_21 a_33 - a_13 a_22 a_31 - a_11 a_23 a_32$  \
-== Теорема
-$det$ удовлетворяет трем аксиомам \
-=== Доказательство
-$det (e_1, e_2, dots e_n) = det(E) = $ \
-$a_(i i) = 1, a_(i j) = 0, i != j$ \
-$a_(1, pi(1)) a_(2, pi(2)) dots a_(n, pi(n)) != 0$ \
-$pi(1) = 1, pi(2) = 2, pi(n) = n, pi = id => det epsilon(id) dot 1 dot 1 dots dot 1 = 1$  \
-==== 
-Полилиненейность \
-$v_i = v_i` + v_i ``, a_(k i) = a_(k i)` + a_(k i) ``, forall k$ \
-$det(v_1 dots v_n) = det(v_1 dots v_i` dots v_n) != det (v_1 dots v_i`` dots v_n)$ \
-Верно почленно:
-$epsilon(pi) a_(1 pi(1)) dots a_(k i) dots a_(n pi(n)) = epsilon(pi) a_(1, pi(1)) dots (a_(k i)` + a_(k i)``) dots a_(n, pi(n)) = epsilon(pi) a_(1, pi(1)) dots a_(k i)` dots a_(n pi(n)) + epsilon(pi) a_(1, pi(1)) dots a_(k i``) dots a_(n, pi(n))$ \
-для $v_i -> k v_i$ очев \
-==== 
-кососимметричность $exists i != j: v_i = v_j$ \ $ => det(v_1, v_2 dots v_n) = 0$ \
-Пусть $v_i = v_j$ давайте возьмем транспозиция $s = s_(i j)$ и разобъем $s_n$ на пары вида ${pi, s pi}$ \
-выпишем перестановки $a_(1 pi(1)), dots a_(n pi(n))$ где-то есть
-$pi$: $a_(1, pi(1)) dots a_(pi^(-1)(i), j) dots a_(pi^(-1)(j), i) dots a_(n, pi(n))$ \
-$s dot pi: a_(1 pi(1)) dots a_(pi^(-1)(i) j) dots a_(pi^(-1)(j), i) dots a_(n, pi(n)) =^(v_i = v_j) = a_(1, pi(1)) dots a_(pi^(-1)(i), j) dots a_(pi^(-1)(j), i) dots a_(n, pi(n))$ \
-$epsilon(s pi) = - epsilon(pi) =>$ сумма двух соответствующих слагах равна 0, $=>$ вся сумма равна нулю
-
-== Теорема
-Построим $det: M_n (k) -> k$
-$A in M_n (k)$. $det(A) = det(A^T)$
-=== Доказательство
-$det(A^T) = sum_(pi in s_n) epsilon(pi) a_(1, pi(1))` dots a_(n, pi(n))` = sum epsilon(pi)  a_(pi(1), 1) dots a_(pi(n), n) = sum epsilon(pi) a_(1, pi^(-1) (1)) a_(2, pi^(-1) (2)) dots a_(n, pi^(-1) (n)) = sum epsilon(pi^(-1)) a_(1, pi^(-1)(1)) a_(n, pi^(-1) (n)) = sum epsilon(rho) a_(1, rho(1)) dots a_(n, rho(n)) = det(A)$ \
-$epsilon(pi) = epsilon(pi^(-1))$
-=== Следствие
-$det$ полилинеен и кососимметричен как функция от строки \
-
-== Теорема (поведения $det$ при эл. преобразованиях)
-+ $det(t_(i j) (a) A) = det(A)$ \
-+ $det(m_i (a) A) = a dot det(A)$ \
-+ $det(s_(i j) A) = - det(n)$
-и то же со столбцами
-=== Доказательство
-2. вторая часть это полилинейность
-3. второе определение кососимметричности $det(v_1 dots v_i, v_j dots v_n) = -det(v_1 dots v_j,v_i dots v_n)$ 
-1. $A = vec(r_1, r_2, dots.v, r_n), t_(i j) (a): r_i -> r_j$ \
-$det(r_1, r_2, dots r_i + a r_j, dots r_j dots r_n) = det(r_1, r_2, dots r_i, dots r_j dots r_n)_(=det A) + a dot det (r_1, r_2, dots, r_j, dots r-i dots r_n)_(=0) = det(A)$ \
-$A ->^(t_(i j)) overline(A) = mat(a_11, *; 0, a_(n n)), det(A) = det(overline(A))$ \
-== Утверждение
-определитель треугольной матрицы это произведение $a_(i i)$ \
-=== Доказательство 
-очев
-=== Следствие
-$det$ вычисляется за $O(n^3)$
-=== Следствие
-$det(A) != 0 <=> A$ обратима
-==== Доказательство
-$det(A) != 0 <=> det(overline(A)) != 0$  \
-$A$ обратима $<=> overline(A)$ обратима \
-знаем, что треугольная матица обратима $forall i: a_(i i) != 0$, то есть $product a_(i i) != 0$ \
-
-== Теорема о разложинии по строке
-$A = (a_ (i j))$ \
-$A^(k l) = (a_(i j))_(i = 1 dots n i != k, j = 1 dots n j != l)$ \
-$det(A^(k l)) = M_(k l)$ $(k l)$ - минор матрицы $A$ \
-$(-1)^(k + l) M_(k l) = A_(k l)$ - алгебраическое дополнение элемента $a_(k l)$ \
-
-$i in {1 dots n}$, тогда $det(A) = a_(i,1) dot A_(i 1) + a_(i 2) dot A_(i 2) + dots + a_(i n) dot A_(i n)$ \
-
-=== Доказательство того, что строки можно со столбцами менять
-$r_i = (a_(i 1) dots a_(i n)) = sum_(j=1)^n a_(i j) (0, dots, 1, dots 0) = sum_(i j) f_j$ \
-в силу полилинейности \
-$det A = sum_(j=1)^n a_(i j) det underbrace(vec(r_1, r_2, dots.v, r_n), = B_j) - i$ строка \
-$B_j = vec(r_1,dots.v, r_(i-1), 0000100, r_(i+1), r_n)$ сделаем $i-1$ транспозицию строка $i$ -ую наверх отправим, тогда $det(B_j) = (-1)^(i-1) dot det vec(0...1...0, r_1, r_(i-1), r_(i-2))$ сделаем еще $j-1$ транспозицию столбцов, чтобы единичку загнать в с самый левый угол \
-$det B_j = (-1)^(i-1) -1^(j-1) dot det vec(1|000000, * | A^(i j)) = -1^(i + j) det(A^(i j)) = (-1)^(i + j) M_(i j) = A_(i j)$ \
-Итого $det A = sum a_(i j) A_i j$
-=== Следствие
-$i != k in {1 dots n}$ \
-$a_(k-1) A_(i 1) a_(k 2) A_(i 2) + a_(k n) A_(i n) = 0$ \
-==== Доказательство
-$sum a_(k j) A_(i j) = det vec(e_1, e_k, e_k) = 0$ \
-== Теорема
-$A^(-1) = 1/(det(A)) dot (A_(j i)), A_(j i) = "Adj" (A)$ - присоединенная матрица \
-=== Доказательство
-$overline(a_(i j)) = (A_(j i))/(det(A)), overline(A) = (overline(a_(i j)))$ \
-$A dot overline(A)$ \
-$(A overline(A))_(i j) = sum_(k =1)^n a_(i k) overline(a_(k j)) = 1/(det(A)) sum_(k =1) a_(i k) A_(j k) = 1/(det(A)) dot det(A)$, если $i != j$ иначе 0 по предыдущему \
-итого $A dot overline(A) = 1$ или $0$
-=== Следствие (формула Крамера)
-$A X = B, A in M_n (k), det(A) != 0 => forall B exists !$ решение \
-Тогда решение находится по формуле $vec(Delta_1/Delta, Delta_2/Delta, dots.v, Delta_n/Delta), Delta = det A, Delta_i$ - $det$ матрицы полученной из $A$ заменой $i$-ого столбца на $B$
-==== Доказательство
-$A X = B <=> X = A^(-1) B$ \
-$vec(x_1, x_2, dots.v, x_n) = A^(-1) vec(b_1, b_2, dots.v, b_n)$  \\
-
-$x_i = $(итая строка $A^(-1)$) умножить на $vec(b_1, dots b_n) = sum_(j=1)^n overline(a_i j) b_j = sum_(j=1)^n 1/(det A) A_(j i) b_j = 1/Delta sum_(j=1)^n A_(j i) b_j = det(c_1 | c_n | dots | vec(b_1,b_2, dots.v, b_n) | dots | c_n)$ - формула разложения по столбцу
-
-==
-$A = (a_(i j))$ \
-Минор $M_(i_1 dots i_k, j_1, dots j_k)$ - $det $ матрицы $(a_(i j))_(i in {i_1 dots i_k}, j in {j_1 dots j_k})$ - минор $k$-ого порядка \
-минор первого порядка - какой-то элемента  \
-
-== Минорный ранг
-== Теорема
-Ранг матрицы равен порядку наибольшено ненулевого минора
-=== Доказательство
-Минорный ранг не меняется при элементарных преобразованиях (миноры не меняются), обычный ранг тоже \
-Достаточно доказать для $A$ - трапецевидная матрица, $r k A = k$ любой минор $к$ столбца
-
-== Теорема
-+ $A, B in M_n (k) => det (A B) = det(A) dot det(B)$ - гомоморфизм по умножению
-$G L (n, k) -> k\{0}$ - гомоморфизм групп. $(M_n (k))^* -> k^*$ В частности $det(A^(-1)) = det(A)^(-1). A in G L(n, k)$ - следует из гомоморфности $det(E) = 1$
-=== Доказательство
-Напоминание $det$ единстенен \
-$f: M_n (k) -> k$. $f$- полилинейная кососиметричная, то $f = det$ \
-$A$ - fix, $B$ - переменная. $B = (c_1 | c_2 | dots | c_n)$ \
-$A dot B = (A c_1 | A c_2 | dots | A c_n) -> det (A c_1 | A c_2 | dots | A c_n)$ - полилинейная и кососим. как функция от $c_1, c_2, dots c_n$ \
-$c_i = c_i` + c_i ``$ $det(A c_1 | dots | A (c_i` + c_i``) | dots | A c_n) = det (A c_1 | dots | A c_i` + A c_i`` | dots | A c_n) = det(A c_1 | dots | A c_i` | dots | A c_n) + det(A c_1 | dots | A c_i`` | dots | A c_n)$ \
-$c_i -> alpha c_i$ - аналогично \
-кососимметричность $c_i = c_j => A c_i = A c_j$   $ det( dots | A c_i` | A c_i` | dots)  = 0$
-==== случай 1
-$det(A) = gamma$ \
-$det(A) dot det(B) = 0$
-$A$ - необр $=> A dot B$ - необратима \
-$det(A B) = 0$ \
-==== случай 2
-$det(A) != 0$ \
-рассмотрим $f(b) = det(A B)/(det(A))$, $f$ - полилинейнач, кососимметричная. $f(E) = (det (A E))/det(A) = 1$
-
-== Теорема определитель блочной матрицы
-$A in M_n (k)$ $exists k: a_(i j) = 0 forall i > k, j <= k$ \
-то есть $A = mat(B, *; 0, C)$ тогда $det(A) = det(B) dot det (C)$ \
-$det (mat(A_1, *, *; 0, A_2, *; 0, 0, A_3)) $ $A_i$ - квадратичный блоки по диагонали. $=> det(A) = product det(A_i)$ \
-Случай 1 $A = mat(E_k, D; 0, E_(n-k)) ->_"гаусс" mat(E_k, 0;0,E_(n-k)) = E => det = 1 = 1 det (E_k) dot det(E_(n-k))$ \
-Случай 2 $A = mat(B, D; 0, E)$ $det (A) = f(B) = f("столбцы" B)$ \
-по $f$ - полилинеен и кососимметричен \
-$f(E) = det mat(E, D; 0, E) = 1$ по единственности $det$ $f(B) = det(B)$ \
-Случай 3 $A = mat(B, D; 0, C)$, $B, D$ - фиксированы \
-$det(A) = f(C) = f("строк" C)$ \
-$f$ - полилинейна, кососимметрична \
-$overline(f) = f(C)/(det(B)), overline(f)$ - пол. кос. $overline(f) (E) = (det mat(B, D; 0, E))/(det(B)) = det(B)/(det(B)) = 1$ \
-$=> overline(f) equiv det(C)$ \
-$det(A)/(det(B)) = det(С) dot det(A) = det(B) dot det(C) qed$ \
-если $det(B) = 0$, то $A$ - вырожденная 
-
-= Операции над подпространствами
-Добавления к предыдущей (или к постпредыдущей... или приквел к следующей) \
-== Определение
-$v$ - векторное пространство над $k$, $V_1, V_2 <= v$ - подпространства \
-Сумма $V_1 + V_2 = {v_1 + v_2 | v_1 in V_1, v_2 in V_2}$
-== Утверждение
-$V_1 + V_2, V_1 inter V_2$ - подпространства
-=== Доказательство 
-$v_1 + v_k + v_1` + v_2` = (v_1 + v_1`) + (v_2 + v_2`) in V_1 + V_2$ аналогично с $alpha V$ \
-Пересечение - очев
-== Определение Внутренняя прямая сумма 
-$V_1, V_2 <= V, V_1 +V_2$ - прямая сумма, если $V_1 inter V_2 = {0}$
-== Лемма
-$V_1, V_2 <= V$ \
-$v_1^1 dot v_k^1, v_1^2 dots v_e^2$ - базисы \
-Тогда $V_1 + V_2 = V <=> v_1^1 dots v_k^1, v_1^2 dots v_e^2$ - порождающая сумма $V$ \
-=== Доказательство
-$V = V_1 + V_2 <=> forall v in V: v = v^1 + v^2 <=> v = sum a_i v_i^1 + sum b_i v_i^2 <=> {v_i^1} union {v_i^2}$ - порожд. $V$
-
-== Теорема. Критерии прямой суммы
-$V_1, V_2 <= V$ \
-Следующие условия равносильны: \
-+ $V_1 + V_2 = V$ и сумма прямая 
-+ $forall v in V, exists! v_1 in V_1, v_2 in V_2: v = v_1 + v_2$
-+ объединение базиса $V_1$ и базиса $V_2$ дает базис $V$
-Обознаается $V = V_1 xor V_2$
-== Следствие
-$dim(V_1 xor V_2) = dim V_1 + dim V_2$ \
-=== Доказательство
-$(1=> 2)$ \
-$forall v: exists v_1, v_2: v = v_1 + v_2$ - по определению $v_i in V_1$ \
-Единственность: $v = v_1 + v_2 = v_1` + v_2`$ \
-$cases(v_1 - v_1` = v_2` - v_2, v_1 inter v_2 = {0}) => v_1 - v_1` = v_2 - v_2` = 0, v_1 = v_1`, v_2 = v_2`$  \
-$(2=>1)$ \
-$V_1 inter V_2 = {0}, v in V_1 inter V_2, v = v + 0 = 0 + v$ из единственности $v = 0, 0 = v$ \
-$(2 => 3)$ \
-$V_1 + V_2 = V =>$ объединение базисов - порождающая система
-ЛНЗ: пусть $sum a_1 v_i^1 + sum b_i v_i^2 = 0 => sum a_i v_i^1 = - sum b_i v_i^2 in V_1 inter V_2 => sum a_i v_i^1 = 0, sum b_i v_i^2 = 0$ это базисы, значит все $a_i = 0$, все $b_i = 0$ \
-$(3 => 1)$ 
-объединение базисов - порождющая $=> V_1 + V_2 = V, v in V_1 inter V_2,  v = sum a_i v_i^1 = sum b_i v_i^2$ из ЛНЗ $v equiv 0$ \
-== Определение Внешняя прямая сумма
-$V_1, V_2$ - векторные пространства над $k$ \ 
-внешн. $V_1 xor V_2 = {(v_1, v_2) | v_1 in V_1, v_2 in V_2}$ с покомпонентными опреациями
-== Утверждение
-$V_1, V_2 in V, V = V_1 xor V_2$ (во внутр. смысле) \
-$=> V` tilde.equiv V_1 xor V_2$ во внешнем смысле \
-$f: V_1 xor V_2 -> V, (v_1, v_2) |-> v_1 + v_2$ \
-Тогда $Im f = V`$ по условию $forall v exists! v_1, v_2 : v = v_1 + v_2, f$ - инъекция и сюръекция $=>$ биекция. \
-$f$ - изоморфизм 
-== Формула Грассмана
-$v_1, V_2 <= V`$ тогда $dim (V_1 + V_2) = dim V_1 + dim V_2 - dim (V_1 inter V_2)$ \
-=== Доказательство
-рассмотрим $f: V_1 xor V_2 -> V, (v_1, v_2) |-> v_1 + v_2$ \
-$Im f = V_1 + V_2, ker f{(v, - v), v in V_1, -v in V_2} = {(v, - v) | v in V_1 inter V_2}$ поэтому $ker f tilde.equiv V_1 inter V_2$ \
-$v -> (v, -v)$ \
-Знаем $dim ker f + dim im f = dim V_1 xor V_2, dim ker f = dim V_1 inter V_2 + dim V_1 + V_2 = dim V_1 + dim V_2 qed$ \
-== Замечание
-$v_1 dots v_k $ - базис $V_1$ \
-$u_1, dots u_e$ - базис $V_1$ \
-Базис $V_1 xor V_2: {(v_i , 0), v}$ \
-
-= Операторы
-== Определение. Оператор на пространстве $V$ (векторное пространство над $k$) \
-Это линейное отображение $cal(A): V -> V, cal(A) in hom(V, V)$ \
-матрица оператора - матрица в базисах ${u_i}, {u_i}, [cal(A)]_({u_i}, {u_i}) = A$ \
-например: матрица оператор $cal(A)$ - единичная $=> cal(A) = id$ 
-=== напоминание
-$A$ - матрица. $cal(A)$ - в некотором базисе \
-$C$ - матрица перехода к другому базису \
-$=> A_"new" = C A C^(-1)$ (сопряженная матрица) $A_"new"$ - матрица $cal(A)$ в новом базисе \
-=== Замечание
-заведем $tilde$ на $M_n (k): A equiv B$, если $exists C$ - обр. $A = C B C^(-1)$ это отношение эквивалентности \
-Задача: описать классы эквивалентности, в каждом классе эквивалентности найти простого и понятного представителя
+В новом базисе $[cal(A)]$ имеет вид следующий $mat(a_1, b_1; -b_1, a_2;,, a_2,b_2;,, -b_2, a_2;,,,,a_k b_k;,,,,-b_k a_k;,,,,,, dots;,,,,,,,, lambda_(k+1);,,,,,,,,,;,,,,,,,, ,dots;,,,,,,,,,, lambda_(k+s))$ - канон форма над $RR$ (что-то типа $a_i = (lambda_i + overline(lambda_i))/2, b_i = (lambda_i + overline(lambda_i))/(2i)$)
 
 == Пример
-$RR^2 = V, [cal(A)] = mat(1, 0; 0,-1), cal(A) v_1 = 1 dot v_1 + 0 v_2, cal(A) v_2 = - v_2$ $cal(A)$ - симметрия отностиельно оси \
-$C A C^(-1) = mat(3, 2; 4, 3) mat(1,0;0,-1) mat(3,-2;-4,3) = mat(3,-2;4,-3) mat(3, -2;-4, 3) = mat(17, -12; 24, 17)$  \
-== Пример. классификация инволюций
+$cal(A): RR^2 -> RR^2$ - поворот на $alpha$, сосбтвенные числа $cos alpha plus.minus i sin alpha$ \
+$mat(cos alpha + i sin alpha , 0;0, cos alpha - i sin alpha)$ - ж.ф в $CC^2$, $mat(cos alpha, - sin alpha; sin alpha, cos alpha)$ - в $RR^2$
 
-$cal(A), cal(A) compose cal(A) = id, A^2 = E$ \ 
-Заметим, что $forall v in V \\ v = (v+ cal(A)(v))/2 + (v - cal(A)(v))/2 = v_1 + v_2$ \
-$cal(A) (v_1) = (cal(A)(v))/2 + (cal(A)(cal(A) (v)))/2 = v_1$ \
-$cal(A) (v_2) = (cal(A) (v) - cal(A) (cal(A)(v)))/2 = (cal(A)(v)+ v)/2 = - v_2$ \
-$cases(v = v_1 + v_2, cal(A)(v_1) = v_2, cal(A)(v_2) = -v_2), cases(v = v_1 + v_2, cal(A) - id v_1 = 0, cal(A) + id v_2 = 0)$ \
-$V = ker(cal(A) id) xor ker(A + id)$ выберем базисы/ \
-$cal(A) u_1 = u_1, cal(A) u_2 = u_2, cal(A) u_k = u_k, cal(A) w_1 = - w_1, cal(A) w_e = - w_e |~> A = ...$
+В общем случае: ($cal(A)$ не диаг в $CC^2$) 
 
-== Определение
-$cal(A) in hom(V, V)$ - линейный опереатор $v in V\ {0}$ \
-$v$ называется собтсвенным, если $exists lambda in k: cal(A) (v) = lambda dot v$ \
-$lambda$ - собственное число $v$ и $cal(A)$ \
-$lambda$ - с.ч $A$, если $exists v != 0: cal(A) (v) = lambda v$ \
-=== пример. в $RR^2$
-+ гомотетия с коэфф. $k$. $mat(k,0;0,k), k$ - едниственное собственное число
-+ симметрия относительно $e: lambda = plus.minus 1$
-+ поворотомы на $0 < alpha < pi$ cj, собственых чисел и веткоров нет 
-Что значит, что $lambda$ - собственное число $cal(A): [cal(A)]_{v_i} = A$ \
-$lambda$ - собственное число $<=> exists v != 0: cal(A) v <=> cal(A) v - lambda v = 0$ \
-$exists v !=0: (cal(A) - lambda id) v = 0 <=> ker(cal(A) - lambda id) != 0$ \
-$cal(A) - lambda id$ - необратима (вырожденая etc) $=> det(A - lambda E) = 0$ \
-$det(A - t E) = mat(a_11 - t, a_21, dots; a_12, a_22 - t, dots; dots.v;a_(1n), dots, a_(n n) - t) = (a_11 - t) dots (a_n - t) + (dots) + dots + .. = (-1)^n t^n + dots$ - многочлен степени $n$ 
-== Определение
-$det(A - t E)$ называется характерестической матрицей $cal(A)$ \
-обозначается $X_A (t), A in M_n (k) => deg(X_A) = n$ \
-Таким образом доказывается теорема: 
-== Теорема
-$lambda$ - корень хар. многочлена его матрицы.
-== Следствие
-собственных чисел $<=n$
-== Следствие 2
-$k$ - алгебраически замкнуто $k = CC =>$ существует хотя бы одно собственное число
-== Лемма
-$A, overline(A)$ - матрицы одного оператора $<=> X_A = X_(overline(A))$
-то есть можно говорить о $X m$ оператора
+$J^RR = $ стер гад
+
+2)  Фробениусова Форма \
+$V$ - векторное п. над $k$, $cal(A) in L i n (V, V)$ \
+Выберем $v_0 != 0, v_0 in V$ строим последовательность $v_k = cal(A)^k v_0, v_k = cal(A) (v_(k-1))$ \
+Получаем $v_0, v_1, dots v_k, dots$, существует такой $s$, такой что $v_0, v_1 dots v_(s-1)$ - ЛНЗ, $v_0, v_1, dots v_s$ - ЛЗ
+
+То есть $v_s = a_0 v_0 + a_1 v_1 + dots + a_(s-1) v_(s-1)$ \
+
+
+== Утверждение
++ $chevron v_0, v_1, dots chevron.r = V_v_0$ - инв. подпростр.
+
++ $chevron v_0, v_1, dots chevron.r = chevron v_0, v_1, dots, v_(s-1) chevron.r,$ $v_0, v_1, dots v_(s-1)$ - базис $V_v_0$
++ $[cal(A)]|_(V_v_0) = mat(0,0, dots, 0, a_0;1, 0 ,dots, 0, a_1;0,1, dots, ;dots,dots,dots,dots, dots; 0,0, dots, 1,a_(s-1))$ - Фробениусова клетка $, cal(A) v_0 = v_1, cal(A) v_1 = v_2, cal(A) v_(s-1) = a_0 v_0 + a_1 v_1 + dots + a_(s-1) v_(s-1)$ 
+
 === Доказательство
-Знаем: $overline(A) = C A C^(-1)$ \
-тогда $X_(overline(A)) = det (overline(A) - t E) = det (C A C^(-1) - C t E C^(-1)) = det (C (A - t E) C^(-1)) = det(C) dot det(A - t E) dot det (C^(-1)) = det(A - t E) = X_A$
-== Лемма
-$A$ имеет с.в. $v_1, dots v_k$ - с собственными числами $lambda_1 dots lambda_k$ - при чем $lambda_i != lambda_j$ при $i != j$ \
-Тогда $v_1 dots v_k$ - лнз \
-Доказательство: индукция по $k$, база $k=1$ - определение \
-Индукционный переход: $k-> k+1$ \
-$sum_(i=1)^(k+1) a_i v_i = 0$ \
-$cal(A) (sum a_i v_i) = cal(A) (0) = 0$ \
-$sum a_i cal(A) (v_i) = sum_(i=1)^(k+1) a_i lambda_i v_i$ \
-$sum_(i=1)^(k+1) a_i lambda_i v_i =0, sum_(i=1)^(k+1) a_i v_i = 0 | dot lambda_(k+1)$ \
-$sum_(i=1)^(k) a_i (lambda_i - lambda_(k+1)) v_i = 0 =>^"и. п"_(v_1 dots v_n - "лнз") forall i = 1 dots k: a_i (lambda_i - lambda_(k+1)) = 0 => a_1 = a_2 = dots = 0$ - лнз \
++ Очев $cal(A) v_i = v_(i+1)$  
++ $v_s = cal(A) v_(s-1) in chevron v_0, dots v_(s-1), v_(s+1) = cal(A) (v_s) in cal(A) (chevron v_0 dots v_(s-1) chevron.r) subset chevron v_0, dots v_s chevron.r in chevron v_0, dots v_(s-1) chevron.r$ и так далее \ v_2 - стер гад
++ Очев
 
-== Определение
-Оператор $cal(A)$ (и его матрицы) называются диагонализуемыми, если $V$ имеет базис собственных векторов $cal(A)$ \
-$cal(A) (v_1) = lambda_1 v_1, dots, cal(A) (v_n) = lambda_n v_n => [cal(A)]_(v_1 dots v_n) = mat(lambda_1, 0, dots; 0, lambda_2, dots; 0,0, lambda_n)$
+== Замечание-упр
+Пусть $cal(A)$ - диаг $[cal(A)] = mat(lambda_1,0,0,0,0;0,lambda_2;,,lambda_3;,,,dots.down;,,,,lambda_n), lambda_i != lambda_j$ 
+
+Упр: пусть $v_0 = sum_(i=1)^n a_i v_i, v_i$ - с.в. и $a_i != 0 forall i$ - (типичная (базовая) ситуация) 
+
+Тогда $v_0, v_1, dots v_(n-1)$ - ЛНЗ. и матрица $cal(A)$ в полученном базисе Фробениусова клетка
+
+Чему равен хар. многочлен такой матрицы? 
+
+Утв: $cal(X)_t$ $mat(0,0, dots, 0, a_0;1, 0 ,dots, 0, a_1;0,1, dots, ;dots,dots,dots,dots, dots; 0,0, dots, 1,a_(n-1)) = plus.minus (t^n - a_(n-1)t^(n-1) - a_(n-2) t^(n-2) - dots - a_0))$ (вспомните т. Гамильтона-Кэли) $forall v_k: v_(k+n) = a_(n-1) v_(k+n-1) + a_(n-2) v_(k+n-2) dots$
+
+Дальше можно искать собственные числа
 
 == Теорема
-$dim V = n$ \
-$X_A$ имеет $n$ различных корней $=>$ $cal(A)$ - диаг \
+$cal(A): V-> V$, тогда в $V $  $exists$ базис относительно которого $[cal(A)] = mat( Phi_1, 0;0, Phi_2, ;,, dots.down;,,, Phi_k)$ $Phi(i)$ - Фр. клетка соотв. многочлену $phi_i$ при этом $product phi_i = cal(X)_(cal(A)) (t)  $  \ $(product_(i=1)^k (cal(X)_(cal(A) |_v_i) (t)))$ 
+и $phi_i = p_i^(a_i)$ - степень неприводимого
+
+= Двойственность
+(не)хотим геометрию на векторных пространствах
+
+ГЛАВНАЯ ОПЕРАЦИЯ - скалярное произведение: $V times V -> K, (v_1 + v_2) dot v_3 = v_1 v_3 + v_2 v_3, f(v_1 + v_2, v_3) = f(v_1, v_3) + f(v_2, v_3)$ - линейность по первому аргументу, ну и по второму аналогично \
+Скалярное произведение - Билинейная форма \
+
+Начнем с линейных - лин. отобр $V-> K$ 
+
+== Определение
+$V$ - в.п над $K$. Двойственное пространство $V^*$ - это $L i n (V, K)$
+
+== Пример
+$V = RR^3, f in V^* : f : {vec(x,y,z)} => RR$, например $X in (RR^3)^*, X vec(a_1, a_2, a_3) = a_1$ - лин. отобра, аналогично $y, z$ 
+
+коорд. функции
+== Определение
+$V$ - конечномерное пространство $v_1, dots v_n$ - базис. Двойственный базис : $v_1^*, dots, v_n^* in V^*$ \
+
+$v_i^* (v_j) = cases(1", если" i =j, 0 "иначе")$ 
+(знаем лин отобр. однозначно задается значениями на базисе)
+
+Утверждение: это действительно базис $V^*$
+
+=== Доказательство: 
+лнз-ть: пусть $sum_(i=1)^n a_i v_i^* = 0, forall k (sum a_i v_i^*) (v_k) = sum a_i v_i^* (v_k) = 0 + 0 + dots + 0 = a_k$
+
+$sum a_i v_i^* = 0 => sum a_i v_i^* (v) = 0 forall v$ в частности $a_k = 0 forall k$
+
+$v_1^*, dots v_n^*$ - порожд: $forall f in V^*: f(v_i) = c_i$ \
+Рассмотрим $overline(f) = sum c_i v_i^*$, знаем $sum c_i v_i^* (v_i) = c_i = f(v_i), f in chevron v_1^* dots v_n^* chevron.r$ \
+== Замечания
+
++ Важна конечномерность
+${v_k}$ - беск. базис $-> {v_k^*}$ - "двойственный базис" фанфакт: ЛНЗ, но не порожд. 
+
+2. $V$ конечномерно $=> exists$ "естест. изморфизм" $V equiv (V^*)^*$ естест. $V^* tilde.equiv V$ но не естественно
+
+== Глупое замечание
+$v_i -> v_i^*$ зависит не толька от $v_i$, но и от всего базиса 
+
+== Какая-то хрень
+
+Расссмотрим $V^(**) := (V^*)^* = L i n (L i n (v, k), k)$ - второе двойственное
+
+Элементы $v$ можно называть векторами, элементы $v^*$ ковекторами, $v^(**)$ коковектора и так далее
+
+== Теорема
+
+Существует естественное инъективное линейное отображение $e v: v -> v^(**)$, если $v$ конечномерно, то это изоморфизм
+
 === Доказательство
-$lambda_1 dots lambda_n$ - собственные числа $cal(A) ~> v_1 dots v_k$ - собственные вектора $cal(A)$ \
-по лемме $v_1 dots v_k$ - лнз. $n = dim V => v_1 dots v_n$ - базис 
-== Следствие
-$k = CC$, $X_A$ - не имеет кратных корней \
-$(X_A, X_A`) = 1 => cal(A)$ - диаг \
+Определим $e v$:
+$v in V, e v(v) in V^(**)$
+Для $forall f in V^*: e v (v) (f) := f(v)$
+
+Заметим, что:
+
++ $e v(v) in v^(**)$ $e v (v) (f_1 + k f_2) = e v(v)(f_1) + k e v(v) (f_2)$ $<=> (f_1 + k f_2) (v) = f_1(v) + k f_2 (v)$ определение суммы линейных отображений
++ $e v: v -> v^(**)$ - линейно. $v |-> e v(v)$ \ $e v(v_1 + v_2) = e v(v_1) + e v (v_2) <=> e v(v_1 + v_2) (f) = e v (v_1) (f) + e v(v_2) (f) forall f in V^*, f(v_1 + v_2) = f(v_1) + f(v_2)$ - верно, так как $f in V^*$ линейно
++ $e v$ инъективно: $<=> ker e v  =0$, то есть $v != 0 => e v(v) != 0$ \ $v != 0 => exists$ базис ${v} union {v_i}_(i in I)$ рассмотрим $f: f(a v + sum a_i v_i) = a, f in V^* f(v) = 1 != 0, e v (v) (f) != 0, e v(v) != 0$
+
+
+$dim V < oo, e v : v -> v^(**)$ - инъ
+
+$dim (v) <= dim (v^(**))$
+
+Но знаем, что $dim V = dim V^* = (dim V^*)^*$
+$e v$ инъекция $<=>$ сюръекция (теорема о ядре и образе)
+
+Таким образом можно отождествить вектора и коковектора: $e v(v) ~> v$ при таком отождествлении
+
+$f$ - ковектор, $v$ - вектор $v in V, f in V^*$
+
+$f(v) = v(f)$
+
+Что значит естественный
++ ествественный = кононичный
+$v = v^*$ но не каноничный
+
+Базис $e_1 |-> e_1^*, dots e_n |-> e_n^*$ двойственный базис. Это изоморфизм, но не каноничный (зависит от базиса)
+
+$e v: v -> v^(**)$ не зависит от выбора базиса (описывается инвариантом)
+
+== Категории и функторы
+
+категория: 
+- объекты ob (c)
+- мофризмы
+- $forall x, y in o b (c) ->  m o r (x ,y)$ множество
+примеры sets - категория множеств, морфизмы - любое отображение
+
+vect(k) - категория векторных пространств над $k$. морфизмы - линейно обратная
 
 == Определение
-$cal(A)$ - оператор на $V$, $lambda$ - собственное число $cal(A)$ \
-Алгебраическая кратность $m_a (lambda)$ - кратность $lambda$ как корня $X_A$ \
-Геометрическая кратность $m_g (lambda)$ - максимальное количество ЛНЗ собственных векторов собств. $lambda$
+Функтор: $F: c_1 -> c_2$ - категории $o b (c_1) -> o b (c_2), x |-> F(x)$
+
+$m o r(X, Y) -> m o r(F X, F Y)$ - ковариантный
+$m o r(X, Y) -> m o r(F Y, F X)$ - контравариантный
+
+== Пример
+$F: s e t s -> v e c t(k)$
+
+${x_1, x_2, dots x_k} -> <x_1, dots x_k > = {a_i x_i | a_i in k}$
+
+$x -> v_x$
+
+$cal(A): X -> Y |-> F(cal(A)) V_X -> V_Y$
+
+$x_i |-> y_i$ задаем линейное отображение на базисе
+
+$g: v e c t(k) -> s e t s$ забывающий $x -> x, cal(A) -> cal(A)$
+
+продолжим соответственно
+
+$V |-> V^*$ до контрав. функторах
+
+$v e c t(V) -> v e c t(K)$
+
+то есть зададим отображение
+
+$L i n(u, v) -> L i n (v^*, u^*), forall u ,v$ ${f |->^(cal(A)^*) f compose cal(A)}$
+
+== Утверждение
++ это соответствие линейно, корректно \ $cal(A)^* in L i n(v^*, u^*)$ - очев
++ $(cal(A) compose cal(B))^* = cal(B)^* compose cal(A)^*$ - условие фунториальности (для контравариантности)
+
+=== Доказательство 2
+$W ->^(f compose cal(A) compose cal(B) = cal(B)^* (cal(A) (f)) = (cal(A) compose cal(B))^* (f)) k$
+
+$W -> U -> V -> k$ между $W -> U$ отображение $cal(B)$, между $U -> V$ отображение $cal(A)$, между $U$ и $k$ отображение $f compose cal(A) = cal(A)^* (f)$, $V -> k$ отображение $f$
+
+= Евклидовы ($RR$) и Унитарные пространства ($CC$)
 
 == Определение
-$V_lambda = {v in V | cal(A)(v) = lambda v}$ - собствен. подпространство
+Евклидовы пространство $(V, f)$
 
-== Теорема
-+ $m_g (lambda) <= m_g lambda forall lambda$
-+ пусть $X_A = plus.minus product (t - lambda_i)$ $cal(A)$ - диагон. $<=> m_a (lambda) = m_g (lambda) forall lambda$
-$a_g (lambda) =dim (v_lambda) = {v | cal(A) (v) = lambda v}$\
-$X_A = plus.minus_(lambda_i != lambda_j) product(t-lambda_i)^(a_i) dot f, f$ не имеет корней.
-Знаем, что если $v_1, v_2, dots v_k$ соответствует различным собственным числам, то такие вектора линейно независимы,
-$v_i in v_lambda_i, v_i != 0, {v_i} -$ ЛНЗ
-=== Лемма
-сумма $v_lambda_1 + dots + v_lambda_k <= v$ - прямая. $forall v = v_1 + v_2 + dots v_k, v_i in v_j$ - такое разложение единственно \
-объединение базисов $v_i$ - это базис $v_1 + v_2 + dots + v_k$ \
-$<=> dim(v_1 + dots + v_k) = sum dim v_i$
-==== Доказательство леммы 
-Пусть $v = v_1 + dots + v_k = v_1` + dots + v_k`$ \
-$=> sum (v_i - v_i`) = 0$ если в этой сумме есть не нули $=>$ линейная зависимость для векторов с разными $lambda_i$ , противоречие\
-Напоминание
-$cal(A)$ - диаг $<=>^("def")$ есть базис из собственных векторов \
-=== Лемма
-$cal(A)$ диаг $<=> V = v_lambda_1 xor dots xor v_lambda_k$ \
-==== Доказательство
-Знаем, что $v_lambda_1 xor dots xor v_lambda_k = v_lambda_1 + dots + v_lambda_k$ \
-Пусть $cal(A)$ диаг, тогда ${v_i}$ - собственный базим \
-$forall v exists a_i : v = sum a_i v_i, a_i v_i in V_lambda_i$, то есть $v in V_lambda_1 + dots + V_lambda_k = V`$ \
-$$
-Пусть $V = v_lambda_1 xor dots xor v_lambda_k$ \ Объединение базисов $v_lambda_i$ - базис $V$ \
-это базис из собственных векторо $=>$ $cal(A)$ - диаг
+$V$ - векторные пространства над $RR$, $f : V times V -> RR$ (скалярное произведение), такое что 
++ $f(u_1 + u_2, v) = f(u_1, v) + f(u_2, v)$, $f (k u,v) = k f(u, v)$ и по второму аргументу (биленейность)
++ $f(x,y) = f(y,x)$ - симметричность
++ $v != 0 => f(v, v) > 0$. Положительная определенность $(f(0,0) = 0)$
 
-== Теорема
-$cal(A)$ - оперератор $lambda in k$ - собственное число $X_(cal(A)) (t) = plus.minus product (t - lambda_i) ^(m_a (lambda_i)) dot f, f$ - без корней. Тогда \
-+ $m_g(lambda) <= m_a (lambda)$
-+ $cal(A)$ - диаг $<=> f = 1$ и $m_g (lambda) = m_a (lambda) forall lambda$
-замечение $lambda$ - не собственное число $cal(A) => m_a (lambda) = 0, m_g (lambda) = 0, (v_lambda = {0})$
-=== Доказательство
-$v_1, v_2 dots v_(m_g (lambda))$ - базис $V_lambda$ \
-$v_1, v_2 dots v_n$ - бизис $V$ \
-$cal(A) (v_1) = lambda v_1 + 0 v_2 + dots $ \
-$cal(A) (v_2) = 0 dot v_2 + lambda v_2 + dots$ \
-$dots $ \
-$cal(A) (v_(m_g (lambda))) = 0 dot v_1 + 0 dots v_2 + dots + lambda v_(m_g (lambda)) + dots $ \
-$=> [A]_(v_1 dots v_2) = mat(lambda, 0, 0, dots ; 0, lambda, 0, dots; dots, dots, lambda, dots; 0, 0,0, dots; dots.v, dots.v, dots.v, dots;
-0, 0,0, dots)$ \
-$X_(cal(A)) (t) = det (A - t E) = dots = plus.minus (t - lambda) ^(m_g (lambda)) dot h(t)$ \
-$=> m_g (lambda) <= m_a (lambda)$ \
-2) \
-Знаем $cal(A)$ диаг $<=> v = V_lambda_1 xor V_lambda_2 dots xor V_lambda_k <=> dim V` = n = sum dim V_lambda_i = sum m_g (lambda_i)$ \
-$lambda_1 dots lambda_k$ - все всобственные числа \
-с другой стороны $n = deg X_a (t) = deg(product (x - lambda_i)^(m_g (lambda_i)) dot f) = sum m_a (lambda_i) + deg f$ \
-Итого $sum m_g (lambda_i) = sum m_a (lambda_i) + deg f$ \
-$sum (m_g (lambda_i) - m_a (lambda_i)) = deg f$ \
-$deg f >= 0$ \
-$m_g (lambda_i) dot m_a (lambda_i) <= 0$ по пункту 1 \
-то есть это равносильно $m_g (lambda_i) - m_a (lambda_i) = 0, deg f = 0$ \
-$<=>$ из собственных векторов $m_g (lambda_i) = m_a (lambda_i), f= 1$ \
-Итого препятствие к диагонализации \
-+ $f != 1 $ $X_a (t)$ - не раскладывается целиком \
-+ $m_g (lambda) < m_a (lambda)$ для некоторых $lambda$
-Замечаник 
-$k$ - a.з. (например $k = CC$) $=>$ 1 - ого препятствия нет 
-$m_a (lambda) = 1 => m_g (lambda) = 1$ то есть проблемы только с кратными корнями \
-Пусть теперь $k = CC$ например и у $cal(A)$ есть единственное собственное число $lambda$ \
-$=> X_a (t) = (t-lambda)^n$ \
-Пусть $B = cal(A) - lambda id$ \
-$B X = mu x <=> (cal(A) - lambda id) x = mu x, cal(A) (x) - lambda x = mu x$ \
-$cal(A) lambda = (mu  + lambda) x => mu + lambda = lambda => mu = 0$ \
-У $B$ единственное собственное число 0. $X_B (t) = plus.minus t^n$ \
-= Нильпотентые операторы
-== Определение
-$B  : v-> v$ лин. оператор \
-$B$ называется нильпотентный => $exists k : B^k = 0$ \
-то есть $forall v$ есть цепочка $v -> B(v) -> dots -> B^k (v)$ обравающаяся нулем \
-Пример \
-$k[x]_n = {f | deg f <= n}$ \
-$D(f) = f`$ - линейный оператор \
-при $k = n+1$ $D^k = 0 => D$ нильп. \
-$mat(0, 0, dots, 0; n, 0 , dots, 0; 0,n-1, dots, 0; dots, dots, 1, 0) ,  D - t E = mat(-t, 0; *, -t)$ $X_b (t) = (-t)^n$ \
-Очев $B^n = 0 => 0$ единственное собственное число \
-"ЗАДача" $B$ - нильп $<=> X_B (t) = (-t)^n$
-== МегаТеорема
-== Определение
-Набор векторов $v, B v, B^2 (v), dots, B^(e-1) (v)$, такое что $B^(e-1)(v) != 0, B^3 (v) = 0$ \
-Назовем Жордановой цепочкой \
-Пример $x^n/n! ->^B x^(n-1)/(n-1)! ->^B dots ->^B x^2/2 ->^B x$ Жорданова для $B$ и $k[x]_n$ \
-$[B] = mat(0, dots;1, 0, dots;0,1, dots;
-0,0,1, dots) = J_(n+1) (0)$ - жорд. блок. жорд. клетка \
-== Теорема
-$B: v->v$ нильп. оператор тогда в $V$ $exists$ базис из жордановых цепочек \
-$v_1 ->^B v_2 dots ->^B v_k_1 -> 0$ \
-$v_(k_1+1) ->^B -> dots -> v_k_2 -> 1$ \
-$v_(k_i + 1) ->^B dots v_k_l -> 0$ \
-$sum (k_i) = n, v{i}$ - базис $V$ \
-$B(v_i) = v_(i+1), i != k_e, B(v_k) = 0$
-=== Доказательство
-шаг 0. $exists$ порождающая система из жордановых цепочек $v_1, dots v_n$ - базис $v$ - построим каждого $v_i$ - жорданова цепочка \
-основной шаг. пусть порождающий набор ж.ц - линейно зависим, тогда его можно заменить на пор. набор ж.ц. меньшей суммарной длины. Из основного шага следуюет теорема: можно сделать конечное число уменьшейний, значи после нескольких шагом получим ЛНЗ набор (и порожд), то есть базис из ж.ц. \
-Доказательство основного шага \
-$v_1^1 -> v_1^2 -> dots -> v_1^(a_1) -> 0, v_2^1 -> v_2^2 -> dots -> v_2^(a_2) -> 0, v_s^1 -> v_s^2 -> dots -> v_s^(a_s) -> 0$ \
-$chevron {v_i^j} chevron.r = V$, пусть $sum_( i, j: a_(i j) != 0) a_(i j) v_i^j = 0$ \
-$0 = B^e (0) = b^e (sum a_(i j) v_i^j) = sum a_(i j) B^(e) (v_i^j) = sum a_(i j) = sum a_(i j) v_i^(e + j)$ \
-Для каждого $v_i ^j$ из суммы рассмотрим $f (i j) = a_i - j$ \
-$i_0, j_0: f(i ,j) - max$ тогда $sum(a_(i j) v_i^(j+ f(i_0, j_0))) = 0$ \
-$= sum_(b_k != 0) b_k v_i^(a_k) = 0$ \
-$sum b_k v_k^(a_k) = sum b_k B^(a_k - 1) (v_k^1)$ \
-пусть $k_0: a_k - min$ среди $k: b_k != 0, a_k -1 >= a_k_0 - 1: forall k : b_k != 0$ \
-Теперь $00 = sum b_k B^(a_k - 1) (v_k^1) = sum b_k B^(a_k_0 - 1 + a_k - a_k_0) (v_k^1) = B^(a_k_0 - 1) (sum_(k != k_0) b_k B^(a_k - a_k_0) (v_k^1) + b_k_0 v_(k_0)^1) = B^(a_k_0 - 1) (underbrace(sum_(k!=k_0) b_k dot v_k^(1-a_k - a_k_0) + b_k_0 v_(k_0)^1, v_"new"))$ \
-Заменим цепочку ${v_(k_0)^i}$ на ${v_"new", B v_"new", dots }$ \
-+ цепочка длины $k_0$ заменили на цепочку длины $< k_0$, так как $B%(k_0 - 1) (v_"new") = 0$ следовательносуммарный размер набора уменьшился \
-+ Новый набор по прежнему порождающий (знаем, что $chevron {v_k^i} chevron.r = V$) рассмотрим 
-$chevron {v_k^i} \\ {v_(k_0)^i} ) union (v_"new", B v_"new" dots ) chevron.r =^? V$ \
-надо доказать, что это линецная оболочка содержащая $v_(k_0)^i$ \
-$v_(k_0)^i = B^(i-1) (v_(k_0)^1) = B^(i-1) (1/b_k_0 (v_"new" - sum_(k!= k_0) b_k v_k^(1+a_k - a_k_0))) = 1/b_k_0 (B^(i-1) v_"new" - sum_(k!= k_0) b_k v_k^(1+a_k - a_0 + i)) in$ новой оболочке \ 
-$=>$ новая оболочка = $v$ то есть новый набор порождающий $qed$
-== Определение
-Полученный базис называтеся жордановым базисом оператора $B$ \
-Замечание теперь ясно, что $B$ - нильп $=> X_B (t) = (-t)^n$
-
-== Фактор пространство
-$V$ - в.п над $k$, $U <= V$ \
-Заведем отношение эквивалентности на $V$ \
-$v_1 equiv v_2 (mod U)$, если $v_1 - v_2 in U$ $v_ - v = 0 in U, v - u in u => u - v = -(v-i) in u, v-u in u, u - w in u => v-w = (v-u) + (u-w) in U$ \
-$V$ разбивается на классы эквивалентности \
-$0 = { u | u in U}, overline(v) = v + U = {v + u | u in U}$ такие штуки называются смежные классы $v$ \
-Пример $RR^2 = V, U = < vec(a,b) > $\ 
-Обозначим фактор пространство за $V \/ U$ Введем на $V \/ U$ структуру \
-векторные пространства \
-$overline(v_1) + overline(v_2) = overline(v_1 + v_2), k overline(v) = overline(k v)$ \
-корректность очев.  \
-Утверждение: для $V \/ U$ выполнены аксиомы векторного пространства 
-Доказательство: они выполнены для $V$, везде где они выполнены для $V$ поставим черточку $=>$ выполнены для $V \/U$
-== Теорема
-$dim V \/ U = dim V - dim U$, более того $u_1 dots u_k -$ базис $U$, $u_1, dots , u_k, u_(k+1) dots u_n$ - Базис $V$ \
-$=> overline(u)_(k+1) dots, overline(u)_n -$ базис $V \/ U$ \
-=== Доказзательство
-Рассмотрим отображение
-$P: V -> V \/ U$ по определению это линейное отображение \
-$ker P = {v | overline(v) = 0} = U, Im P = V \/ U$, знаем, что если $v_1 dots v_n$ - базис $v_1, dots v_k$ - базис ker. Тогда $P(v_(k+1)) dots P(v_n)$ - базис $Im (P)$ \
-$overline(v)_(k+1) dots overline(v)_n$ - базис $V \/ U$ \
-Пример $v = k^n, U = ker A, u = {x | A x = 0}$ - решения ОСЛУ \
-Смежные классы $x_0 = x_0 + u  = { x: A(x) = A x_0}$ \ Обозначим $A x_0 = B$, смежный класс - решение неоднороддной СЛУ $A x = B$ \
-$k^n \/ U <-> {B}$ - множество допустимых правых частей, то есть существует биекция между $k^n \/ U <->> Im (A)$ \
-= Инвариантные пространства
-== Определение
-$cal(A): v-> v$ - лин. опер. $W <= V$.  $W$ называется $cal(A)$-инвариантным если $cal(A) (W) <= W, w in W => cal(A) (w) in W$ \
-$cal(A) = id, cal(A) = 0$ \ Ядро $cal(A)$ и образ $cal(A)$ - всегда инвариантные пространства \
 == Замечание
-$W$ - инвариантно $=> A_W : W -> W$ - оператор \
-== Лемма
-$W$ - инв. подпростр. относительно $cal(A)$, тогда $overline(cal(A)) : V \/ W -> V \/ W$ - лин. оператор
+1 и 2 имеют смысл над $forall$ полем $k$
+
+1) биленейная форма
+
+1,2) симметрическая билинейная форма
+
+== Главный пример
+$V = RR^n$, $f (vec(x_1, dots.v, x_n), vec(y_1,dots.v,y_n)) = x_1 y_1 + x_2 y_2 + dots + x_n y_n$
+
+$(v, v) >= 0, forall v =>$ положим $norm(v):= sqrt((v,v))$ / $f(u,v) = (u,v)$ /
+
+$(u,v) -> rho(u,v) = norm(u - v)$ - расстояние
+
+Аксиомы метрического пространства
++ $rho(u,v) > 0, u != v$
++ $rho(u,v) = rho(v,y)$
++ $rho(u,v) + rho(v, w) >= rho(u,v) forall u,v,w$
+
+== Неравенство Коши-Буняковскго-Шварца
+$V$ - евклидово пространство, $forall u,v in V$
+
+$(u,v)^2 <= (u,u) (v,v)$
+
+КБШ - неравенство треугольника
+
+$abs( ((u,v))/(norm(u) dot norm(v))) <= 1, (u != 0, v != 0) => exists alpha in [0, pi]: cos alpha = ((u,v))/(norm(u), norm(v))$
+
+по определению $alpha = angle (u,v)$
+
+== Упражнение
+
+$(u,v)^2 = (u,u) dot (v,v) <=> u$ и $v$ лнз
+
+$u,v$ - лнз $<=> angle (u,v) = 0 or pi$
+
+== Определение
+$u,v$ ортогональны, если угол равен пи на два, а скалярное произведение равно 0
+
+== Определение
+$u_1, dots u_k$ - ортогональная система (О С)
+
+Если $(u_i, u_j) = 0$ при $i != 0$
+
+$u_1, dots u_k$ - ортонормированная система
+
+если к тоу же $norm(u_i) = 1$
+
+Базис ортог. систему - ортгональный базис 
+
+Базис + ортонормированная система - ортонормированный базис (ОНБ)
+
+== Утверждение
+
+$u_1, dots,  u_k$  ортог. система, $u_i != 0$
+
+${u_i/norm(u_i)}$ - ортнорм. система
+
+$(u_i/norm(u_i), u_j/norm(u_j)) = 1/(norm(u_i) norm(u_j)) (u_i, u_j) = 0 (i = j) or ((u_i, u_i))/(norm(u_i) norm(u_i)) = 1 (i = j)$
+
+== Утверждение
+$u_1, dots u_k$ - ортогональая система $u_i != 0 forall u_i => u_i dots u_k$ - лнз
+
 === Доказательство
-+ корр. $v_1 = v_2 => v_1 - v_2 in W => cal(A) (v_1 - v_2) in W, cal(A) (v_1) - cal(A) (v_2) in W <=> cal(A) v_1 = cal(A) v-2 <=> cal(A) (overline(v_1) + overline(v_2)) = cal(A) (overline(v_1 + v_2)) = overline(cal(A) (v_1 + v_2)) = overline( cal(A) v_1 + cal(A) v_2) = dots = overline(cal(A)) overline(v_1) + overline(cal(A)) overline(v_2)$
+
+пусть $sum a_i u_i = 0 => forall j: o (0, u_j) = (sum a_i u_i, u_j) = sum a_i (u_i, u_j) = a_j (u_j, u_j) =>$ все $a_j = 0$
+
+== Утверждение
+$e_1, dots e_n$ - ОНБ, $v in V: v = sum a_i e_i, v -> vec(a_1, dots.v, a_n)$
+
+Тогда $a_i = (v, e_i)$
+
+=== Доказательство
+
+$(v, e_i) = (sum a_j e_j, e_i) = sum a_j (e_j, e_i) = a_i dot 1 = a_i$
+
+== пример
+$vec(1, 0, dots, 0), vec(0,1,dots,0)$ - ОНБ в стандартном $RR^n$
+
+== Теорема
+В любом евклидовом пространстве есть ОНБ (докажем как всегда для конечномерных)
+
+Это следствие более общей теоремы
+
+== Ортоганализация Грамма-Шмидта
+
+Пусть $v_1, v_k in V$ - лнз - евклидово пространство
+
+Тогда существует ортонормированная система $e_1, e_2, dots e_k$, такая что $forall i <= k. chevron e_1, dots e_i chevron.r = chevron v_1 dots v_i chevron.r$
+
+Применим теорему Г-Ш к базису $v_1, v_2, dots v_n$, получим $chevron e_1, dots e_n chevron.r = chevron v_1, dots v_n chevron.r = V$
+
+Доказалаи предыдущую теорему
+
+== Доказательсвто Г-Ш
+Индукция по $k$
+
+база $k = 1, v_1$ - лнз, то есть $v_1 != 0, e_1:= v_1/norm(v_1), chevron e_1 chevron.r = chevron v_1 chevron.r$
+
+Переход $k -> k+1$
+
+$v_1 dots v_k, v_(k+1)$ - лнз. применим индукционное предположение для $v_1, v_2 dots v_k$ 
+
+$e_1, dots e_k$ - ОНС $chevron e_1, dots e_i chevron.r = chevron v_1, dots v_i chevron.r$
+
+В частности $chevron e_1, dots e_k chevron.r = chevron v_1, v_2 dots v_k chevron.r$
+
+Заметим, что $chevron v_1, v_2 dots v_k, v_(k+1) chevron.r = chevron e_1, dots e_k, v_(k+1) chevron.r = chevron e_1, dots e_k, v_(k+1) - sum a_i e_i$ ищем $u_(k+1) = v_(k+1) - sum a_i e_i$, такие что $chevron e_1, dots, e_k, u_(k+1) chevron.r$ - ортогональная система
+
+Хотим $(u_(k+1), e_i) = 0 forall i = 1 dots k$
+
+Но $(u_(k+1), e_i) = (v_(k+1) - sum a_j e_j, e_i) = (v_(k+1), e_i) - sum_(j) a_j (e_j, e_i) = (v_(k+1), e_i) - a_i$, то есть $a_i := chevron v_(k+1), e_k chevron.r$
+
+$chevron e_1 dots e_k, u_(k+1) chevron.r$ - ортгональная система
+
+$chevron e_1, dots, e_k, u_(k+1)/norm(u_(k+1)) chevron.r$ - ортонорм. система и выполнены условия линейной оболочки
+
+= Ортогональное дополнение
+== Определение
+Пусть $V$ - евклидово пространство, $U <= V$ определим $U^(bot) = {v in V | (u, v) = 0 forall u in U}$
+
+== Лемма
+$U^(bot) <= V$ (даже если $U ! <= V$)
+
+$v_1, v_2 in U^(bot) (v_1, u) = (v_2, u) = 0 forall u in U => (v_1 + v_2, u) = (v_1, u) + (v_2, u) = 0$ и умножение на скаляр
+
+== Теорема
++ $(U^(bot))^(bot) = U$
++ $dim U + dim U^(bot) = dim V$
++ $V = U xor U^(bot)$
+
+=== Доказательсво
+$3=> 2$ очев (свойства прямой суммы)
+
+$2 => 1: dim (U^(bot))^(bot) = dim V - dim U^bot = dim V - (dim V - dim U) = dim U$: $dim (U^bot)^bot = dim U$
+
+С другой стороны $U <= (U^bot)^bot,  "fix" u in U, (u,v) = 0 forall v in U^bot => u in (U^bot)^bot$
+
+$=>$ одно пространство содержится в дрогом пространстве, а размерности совпадают $U = (U^bot)^bot$ $qed$
+
+Докажим пункт $3$
+
+$u_1, u_2, dots u_k$ - базис $U$
+
+$u_1, dots u_k, dots u_n$ - базис $V$
+
+Применим Грама-Шмидта
+
+$u_1 dots u_n -> e_1 dots e_k, e_(k+1) dots e_n$ - ОНБ
+
+При этом $chevron e_1 dots e_k chevron.r = chevron u_1, u_k chevron.r = U$
+
+Теперь ясно, что $V = chevron e_1, dots e_k chevron.r xor chevron e_(k+1) dots e_n chevron.r = U xor chevron e_(k+1) dots e_n chevron.r$ при этом $chevron e_(k+1) dots e_n chevron.r = U^bot$
+
+$v in U^bot, v = sum a_i e_i$
+
+$v in U^bot <=> (v,u) = 0 forall u in U <==>^"бил"  forall i (v, e_i) = 0$
+
+$<=> (v, e_i) = 0, a_k = (sum a_j e_j, e_i) = 0$, то есть $sum a_i e_i in U^bot <=> a_1 = a_2 = dots a_k = 0 <=> v in chevron e_(k+1) dots e_n chevron.r$, то есть $chevron e_(k+1) dots e_n chevron.r = U^bot$
+
+Дополнения
+$U_1, U_2 <= V$
+
+$(U_1, U_2)^bot = U_1^bot inter U_2^bot$
+
+$(U_1 inter U_2)^bot = U_1^bot + U_2^bot$
+
+== Проекция на подпространство
+
+$U <= V, v in V$ по предыдущей теореме
+
+$exists ! v_U in U, v_bot in U^bot: v = v_U + v_bot$
+
+$v_U$ называется проекцией $V$ на $U$ $v - v_U in U^bot$
+
+== Теорема
+$norm(v_bot) = min_(u in U) (d(v,u))$, $norm(v_bot)$ называется расстоянием от $v$ до $U$
+
+== Теорема Пифагора
++ $v_1 dots v_k$ - ортогнальная система в евклидовом пространстве, тогда $norm(v_1 + dots + v_k)^2 = sum_(i=1)^k norm(v_i)^2$
++ $e_1 dots e_n$ - ортонормированный базис в $V$. $vec(a_1,dots.v,a_n)$ - векторы $v$ в $e_1, dots, e_n => norm(v) = sqrt(sum a_i^2)$ 
+
+=== Доказательство
++ $(v_1 + dots v_, v_1 + dots v_k) = sum_(i,j = 1)^k underbrace((v_i, v_j), 0  "при" i != j) = sum norm(v_i)^2$
+
++ по $1$ $v = sum a_i e_i, {a_i e_i}$ - ортогональная система. $norm(v)^2 = sum norm(a_i e_i)^2 = sum a_i^2 (e_j, e_i) = sum a_i^2$
+
+== Доказательство леммы
+пусть $u in U$
+
+$d(v,u)^2 = (v-u, v-u) = (v-v_U + v_U - u, v-v_U + v_U - u) = (v_bot + (v_U - u), v_bot + (v_U - u)) = norm(v_bot)^2 + norm(v_U - u)^2 >= norm(v_bot)^2 qed$
+
+= Билинейные квадартичные формы
+
+== напоминание
+$V$ - в.п над $K$. Билинейная форма на $V$ это $f: V times V -> K$
+
+$f$ называется симм, если $f(u,v) = f(v,u) forall u, v in V$
+
+$f$ кососимметрично если $f(u,u) = 0 forall u in V$
+
+$f$ антисимметричная, если $f(u,v) = -f(v,u), forall u,v in V$
+
+Значем: char $K != 2$ кососимметричность $<=>$ антисимметричность
+
+У нас $"char" K != 2$
+
+Ясно, что билинейная форма задается значениями на бизисных векторах
+
+пусть $v_1 dots v_n$ - базис $V$
+
+Матрица Грама $A_f$ в базисе $v_1 dots v_n$ это $(a_(i j))_(i = 1 dots n, j = 1 dots n), a_(i j) = f(v_i, v_j)$
+
+Пусть $x, y in V, cal(X), cal(Y) in K^n$ - их координаты в $v_1 dots v_n$, тогда $cal(X) = vec(x_1, dots, x_n), cal(Y) = vec(y_1, dots, y_n)$
+
+$f(cal(X), cal(Y)) = f(sum x_i v_i, sum y_j v_j) =^"бил" sum_(i,j=1)^n x_i y_i f(v_i, v_j) = sum_(i,j=1)^n x_i a_(i j) y_j$ доказали такое:
+предположение: $f$ - бил. форма на $V, v_1, dots v_n$ - базис
+
+$A_j$ - матрица Грама. $x, y in V, cal(X), cal(Y)$ - координаты, тогда $f(x,y)j = X^T A_f Y$
+
+$v_1 dots v_n$ - базисы
+
+$C$ - матрица перехода
+
+== Лемма
+
+$A in M_n (k)$  $forall X, Y in K^n$
+
+=== Доказательство
+(упр)
+
+$X, Y = vec(0,0,1,dots.v, 0), X^T = A Y = X^Y B Y => A = B$
+
+$A_f$ - матрица Грама в базисе $v_1, dots v_n$
+
+$F_f$ - м. Г. в базисе $v_1', dots, v_n'$
+
+Тогда $f(x,y) = X^T A_f Y = (X')^T A'_f Y'$
+
+$(C X')^T A_f Y' = (X')^T A_f' Y'$
+
+$forall X', Y': (X')^T C^T A_f C Y' = (X')^T A'_f Y'$
+
+по лемме $A'_f = C^T A_f C$
+
+итого, формула замены базиса 
+$A' = C^T A C$ для форм $, A = C^(-1) A C$ - для линейных
+
+== Заметим, что
++ $f$ - симметрично $<=> A_f = A_f^T$ $(a_(i j) = a_(j i))$
++ $f$ - кососиммтерчно $<=> A_f = -A_f^T (a_(i j) = -a_(j i))$
+
+=== Доказательство
+$=>$ по определению симметричности и кососимметричности
+
+$<=$ из билинейности или из формулы $f(X, Y) = X^T A Y, f(Y,X) = Y^T A X$
+
+пусть $A^T = A$
+
+$(X^T A Y)^T = Y^T A^T X^(T T) = Y^T A X$
+
+$(X^T A Y)^T = Y^T A X => X^T A Y = Y^T A X$
+
+$f(x,y) = f(y,x)$
+
+== Определение
+$f$ - бил. форма на $V$
+
+$f$ называется невырожденной, если $forall v in V: f(v,y) =0, forall u in V => v = 0$
+
+== Определение
+$f$ - билинейная форма
+
+Положим $f_V (u) = f(v,u)$
+
+Тогда $f_V : V -> K$ - линейно, то есть $f_V in V^*, f_V = F_V^l$
+
+Аналогично $f_v^r (u) = f(u,v)$
+
+Таким образом, имеем отображение $cal(A)_f^l: v -> v^*, v |-> f_V^l$
+
+$cal(A)_f^r : V -> V^*, v |-> f_V^r$
+
+из линейности по второму аргументу следует что $cal(A)_f^l, cal(A)_f^r$ - линейные
+
+== Теорема
+Следующие утверждения равносильны
++ $f$ - невырождены
++ $f(u,v) = 0 forall u => v = 0$ (невырожденность по второму аргументу)
++ $cal(A)_f^l$ - изоморфизм
++ $cal(A)_f^r$ - изоморфизм
++ $A_f$ - невырожденное
+
+=== Доказательство
+
+$1 <=> 2$: $f$ невырожденное $<=> f_V != 0 forall v != 0 <=> ker A_f^l {0} <=> cal(A)_f^l $ - инъекция $<=> cal(A)_f^l$ - изоморфизм $dim V = dim V^*$
+
+$1 => 3: A_f$ - вырожденная $=>$ пусть $x != 0$ $A_f X = 0 => forall Y Y^T A_f X = 0$, то есть $f(y,x) = 0 forall y$, где $x = sum x_i v_i, X =vec(x_1, dots,x_n)$ - противоречие
+
+Пусть $f(y,x) = 0$ $forall y$, то есть $Y^T A_f X = 0$ $forall Y in K^n$
+
+где $Y, X$ - координаты $Y, X$ $Y^T vec(c_1, dots, c_n) = 0 forall Y^T$ подстановка $Y^T = (0 dots 1 dots 0) => c_i = 0, A_f X = 0 => X = 0$ ($A_f$ невыржденная)
+
+
+Пусть теперь $K = RR$, НУО $V = RR^n, f(vec(x_1"," dots x_n, y_1"," dots y_n)) = sum a_(i j) x_i y_j$ - билин. форма $a_(i j)$ - матрица Грама
+
+$f$ - симм $<=> a_(i j) = a_(j i)$ как понять, положительную определенность $(f(x, x) > 0, x !=0)$
+
+то есть как понять, верно ли, что $RR^n, f$ - евклидово
+
+Пусть $f$ положительно определено, $(RR^n, f)$ - евклидово, знаем, что тогда в евклидовом пространстве есть ОНБ
+
+Матрица Грама в ОНБ: $A_f = mat(1,0,0;0,1,0;0,0,1) = E$
+
+Заметим, что в другом базисе
+$A'_f = C^T A_f C = C^T C, det(C^t C) = det (C^T) det (C) = det(C^2) > 0$
+
+Если $f$ положительно определена
+
+Итого $f$ положительно определена $=> det(A_f) > 0$ необходимое условиеf
+
+== Критерий Сильвестра
+
+$V$ - пространство над $RR$, $f$ - симм билин форма $A$ - матрица Грама в базисе $v_1, dots v_n$
+
+$A_i - i x i$ - уголовая подматрица $A_i = (a_(k l))_(k, l <= i)$ тогда $f$ - положительно определена $<=> det (A_i) > 0$
+
+=== Доказательство
+
+$f$ полож. определена $f |_(chevron v_1 dots v_i chevron.r)$ - пол. определена $det$ этой формы $>0$, матрица $f |_(chevron v_1 dots v_i chevron.r)$ это и есть $A_i$
+
+$<==$
+
+Индукция по размерности база $1$
+
+База $n = 1, A = (a), f(x_1, y_1) = a x_1 y_1, f(x, x) = a x^2 > 0$ если $x >0$, а $x != 0$
+
+$n -> n+1$
+
+$dim V = n + 1, A -> A_1, A_2, A_(n+1), det(A_i) > 0$
+
+Рассмотрим $overline(v) = chevron v_1, dots v_n chevron.r <= V$, тогда матрица Грама - это матрица $A_n$
+
+$A = mat(A_n, *; *, x)$ по индукционному предположению $f|_(chevron v_1 dots v_n chevron.r)$ - пол определена $=> (chevron v_1 dots v_n chevron.r, f|_(chevron v_1, dots v_n chevron.r))$ - евклодово пространство $=>$ есть ОНБ, $e_1 dots e_n$
+
+Хотим сделать замену $v_(n+1)' = v_(n+1) - sum a_i e_i : f(v'_(n+1), e_i) = 0$
+
+$f(v'_(n+1),e_i) = f(v_(n+1), e_i) - sum_j a_j f(e_j, e_i) = f(v_(n+1), e_j) - a_j$, то есть положим $f(v_(n+1), e_i) = a_j$ положительно определенная матрица
+
+Заметим, что $forall v in chevron v_1, dots, v_n chevron.r = chevron e_1 dots e_n chevron.r$
+
+$f(v'_(n+1), v) = f(v'_(n+1), sum b_i e_i) = 0$
+
+$(v_1 dots v_n, v_(n+1)) -> (v_1 dots v_n, v_(n+1) - v in chevron v_1dots v_n chevron.r)$ - базис $V$
+
+В нем матрица Грама Имеет следующий вид $mat(A_n,0;0,y) = A'$ ее определитель отличается от стаорого $det(A') = det(A_(n+1)) dot det(C)^2 > 0$ победа.
+
+$det(A_n) > 0, det(A_n) dot y > 0 => y > 0$
+
+$f$ - положительно определена
+
+$forall V: f(overline(v),overline(v)) = f(sum_(i=1)^n a_i v_i + a_(i+1) v_(i+1), sum_(i=1)^n a_i v_i + a_(i+1) v_(i+1)) = f(v+a v_(i+1), v+a v_(i+1)) = f(v,v) + a (v, v_(i+1)) + a f(v_(i+1), v) + a^2 f(v_(i+1), v_(i+1)) = f(v,v) + a^2 y >= 0, f(overline(v), overline(v)) = 0 => cases(f(v,v) = 0, a^2 y = 0) => cases(v = 0, a=0) => overline(v) = 0$
+
+= Квадратичные формы
+
+пусть $f$ - симм. билинейная форма, $"char" k != 2$
+
+положим $q_f (v) := f(v,v)$
+
+$q_f : v-> k$ квадратичная форма, соответствующая $f$
+
+== Свойство
+$q_f (a v) = a^2 q_f (v)$ - однородность степени 2
+
+В координатах $A = (a_(i j))$ - матрица Грама $q_f (v) = f(v,v) = sum a_(i j) x_i x_j => sum a_(i i) x_i ^2 + sum_(i < j) 2 a_(i j) x_i x_j$
+
+== Теорема
+Билинейная форма однозначно восстанавливается по соотв. квадратичной
+
+=== Доказательство
+$f(x+y, x+y) = f(x,x) + f(y,y) + 2 f(x,y) => f(x,y) = (f(x+y, x+y) - f(x,x) - f(y,y))/2 = (q_f (x+y) - q_f (x) - q_f (y))/2$
+
+== Теорема
+
+Пусть $f$ билинейная форма на пространстве $V$
+
+$q_f$ - соотв. квадратичная форма
+
+$v_1 dots v_n$ базис $X -> vec(x_1, dots, x_n)$ - векторы в $V$
+
+Тогда $exists$ базис $v'_1, dots v'_n$
+
+$q_f ((vec(x'_1, dots, x'_n))) = sum a_i x_i^2$
+
+Другими словами $A_f$ диагональна в $v'_1 dots v'_n$
+
+== Замечание
+
+Замена базиса соотв. замене коорд.
+
+$x'_1 = sum a_(1 i) x_i, x'_n = sum a_(n i) x_i, x_i = sum b_(i j) x'_j$
+
+переформулировка: любой однородных квадартичный многочлен от $n$ переменных $sum a_i x_i^2 + sum a_(i j) x_i x_j$ невырожден. лин. заменой переменных приводится к $sum b_i x_i^2$
+
+=== Доказательство
+скип
+
+== Квадратичные формы в $RR$ и $CC$
+
+$CC: f -> sum a_i x_i^2 = sum sqrt(a_i x_i)^2 = sum x'_i$ если $a_i != 0$ $(x'_i_1)^2 + (x'_i_2)^2 + dots (x'_i_k)^2$
+
+$A_f = mat(1,0,0,;0,1,0,;0,0,0)$ - полуединичная матрица
+
+Заметим, что если $k != n$ $A_f vec(0,0,0, dots,1) = vec(0,0,0,dots,0) => f$ вырожденная 
+
+Над $CC$ любоая невырожденая квадратичная форма приводится к виду $q (y_1 dots y_n) = sum_(i=1)^n y_i^2$
+
+Над $RR$ то же, но $ a_i x_i^2 = "sign"(a_i) (sqrt(abs(a_i)) x_i)^2 $
+
+$q(y_1 dots y_n) = y_1^2 + dots + y_k^2 - y_(k+1)^2 - y_(l)^2$, $l <= n$, если $f$ невырожденная, то $n = l$
+
+== Теорема (закон инерции)
+
+числа $k, l$ не зависят от способа диагонализации
+
+=== Доказательство
+
+$n - (k+l) = dim "Rad"(f) = dim {u | f(u,v) = 0 forall v in V} = dim {u | f_U = 0} = dim ker A_f$
+
+== Знаем
+
+над $RR forall$ форма приводима к виду $x_1^2 + dots x_u^2 - x_(k+1)^2 - x_l^2, k + l <=n$
+
+Матрица Грама: Сначала единички, потом минус единицчку по диагонали, $k$ и $l$ однозначно определены (закон инерции)
+
+=== Доказательство
+Покажем, что $k$ однозначно определено
+
+Пусть $q$ - квадратичная форма $A_q = mat(E_k;,-E_l;,,0)$ в базисе ${e_i}$, $A'_q = mat(E'_k;,-E'_l;,,0)$ в базисе ${e'_l}$
+
+Пусть не умоляя общности $k != k'$ и $k' > k$
+
+На подпространстве $u = chevron e_(k+1), e_(k+2), dots e_n chevron.r$ имеем $(A|_u)_q$ матрица имеет вид (минус единички на диагонали, потом нолики), то есть $q(x_(k+1) dots x_n) = -x_(k+1)^2 -x_n^2$ - неположительно определено, то есть $q(x) <= 0 forall x in u$
+
+на подпространстве $u' = chevron e'_1 dots e'_k chevron.r, A = E$, то есть $A |_U$ положительно определена
+
+$dim u = n-k, dim u' = k', dim u + dim u' = n-k + k' > 0 => U inter U' != {0}, u in U inter U', u in U => q (u) <=0, u in U' => q(u) > 0$ - противоречие
+
+== Напоминание
+
+$A = A^T$ - матрица симм. билинейной формы (квадратичной)
+
+Все угловые миноыр $A$ положитлеьны $<=>$ форма положительно определена
+
+/$A$ называется положитлеьной матрицей /$A = A^T$ и все угловые миноры $>0$ ($<=> forall$ минор симметрично относитално диагонали))
+
+$f$ - положительно определена, $=> (RR^n, f)$ - евклидово пространство $=>$ там есть ОНБ, то есть $A_f = E$
+
+Знаем, что $A, A'$ - матрицы одной формы $<=>$ $exists$ обратимая $C$, такая что $C^T A C = A'$
+
+У нас $A' = A, A = E -> A = C^T C$
+
+== Теорема
+$A$ - положительная матрица $<=> exists$ обратимая $C: A = C^T C$ (Разложение Холецкого)
+
+$A = C^T E C => A$ - матрица Грама для ск. произведения в некотором базисе $=> A$ - положительны
+
+== Лемма
+$A in M_n (k), k^n, (vec(x_1,x_2, dots,x_n), vec(y_1, y_2,dots,y_n)):= sum x_i y_i$, $f$ - симметрическая билинейная форма с матрицей $A$ в стандартном базисе. Тогда
++ $f(X, Y) = (A X, Y)$
++ $f(X, Y) = (X, A^T, Y)$
+
+=== Доказательство
+Очев
+
+$f(A X, Y) = X^T A Y = (Y^T A^T X)^T$
+
+= Унитазные пространства
+
+Хотим геометрию для $V$ над $CC$
+
+Проблема:
+
+$f(x,y) = sum x_i y_i, x_i, y_i in CC$, плохая формула, так как $f(x,x) = sum x_i^2 in.not RR$, правильная $f(x,x) = sum x_i overline(x_i), f(x,y) = sum x_i overline(y_i)$
+
+== Определение
+$V$ над $CC$
+
+$f: V times V -> CC$ называется полуторалинейной формой, если:
+
+$forall v in v, f(-,v): V -> CC$ - линейно
+
+$f(u,-): V -> CC$ - полулинейно ($f(u, v_1 + v_2) = f (u,v_1) + f(u, v_2)$, $f(u, lambda v) = overline(lambda) f(u,v)$) 
+
+== Определение
+
+$1,5$ лин. форма называется эрмитовой, если $forall u, v in V: f(v,u) = overline(f(u,v))$
+
+== Пример
+$f(x,y) = sum x_i overline(y_i)$ - эрмитова форма
+
+== Замечание
+
+$f$ - эрмитова, $f(u,u) = overline(f(u,u))$, то есть $f(u,u) in RR$
+
+== Определение
+Унитарным пространство называется пара $(V, f), V$ - векторное пространство над $CC$, $f$ - эрмитова положительно определенная форма ($f(u,u) > 0$ при $u != 0$)
+
+Переносим знания с $RR$ и билинейных форма
+
+$f$ - эрмитова, $v_1, dots v_n$ - базис $V$
+
+Матрица Грама $A = (f(v_i,v_j))_(i=1 dots n, j= 1dots n)$
+
+$f(v_i, v_j) = overline(f(v_j, v_i))$, то есть $A$ удовлетворяет уровнению $overline(A^T) = A$ - эрмитова матрица (определение)
+
+$a_(i i) in RR$
+
+Пусть $x,y in V, X, Y$ - векторы в ${v_i}$
+
+$f(x,y) = X^T A overline(Y) = sum a_(i j) x_i overline(y_j)$ (упр), $y = sum y_i v_i$
+
+$X = C X', Y = C Y'$, то $A_"new" = C^T A overline(C)$, Теорема Грама-Шмидта сохраняется дословно, в частности в $forall$ унитарном пространстве есть ОНБ
+
+$V = U xor U^bot$ сохраняются $dim U^bot = n - dim U$
+
+$(,) - $ стандартное произведение в $CC^n$
+
+$f$ - форма с матрицей $A$, тогда $f(X, Y) = (A X, Y) = (X, overline(A)^T Y)$ $(a x dot overline(y)) = x dot overline( overline(a) y)$
+
+Расстояния определяются обычным образом, $d(x,y) = sqrt((x-y, x-y))$
+
+Углы только между прямыми $(in [0, pi/2])$
+
+Операторы в Евклидовых и унитарных пространствах
+
+== Определение
+Пусть $V$ - евклидово унитарное пространство, если 
+
+а) $(cal(A) u, v) = (u, cal(A) v), forall u,v in v$
+
+б) ортгональным (над $RR$) / унитарным над $CC$ если $(cal(A) u, cal(A) v) = (u,v)$
+
+1. Самосопряженные операторы
+
+1.1. Матрица
+
+$e_1, dots e_n$ - ОНБ в $V$
+
+$cal(A) $ с/c $<=> (cal(A) (sum a_i e_i), sum b_j e_j) = (sum a_i e_i, cal(A)(sum b_j, e_j))$ $<=>$ линейность $cal(A)$ + 1.5 линейность $(,)$
+
+$(cal(A) e_i, e_j) = (e_i, cal(A) e_j) forall i,j = 1 dots n$
+
+$A$ - матрица $cal(A)$ $(cal(A) e_i, e_j) = (sum a_i e_k, e_j) = a_j sum(e_j, e_j) = a_(j i)$
+
+$(e_i, cal(A) e_j) = (e_i, sum a_(k j) e_k) = overline(a_(i j)) (e_i, e_i) = overline(a_(i j))$
+
+$cal(A)$ эрмитова матрица ($A = A^T$ если $K = RR$)
+
+== Лемма 1
+Собственные числа с/с оператора вещественны
+=== Доказательство
+$cal(A)$ - с/c, $cal(A) x = lambda x, x != 0, (cal(A)x, x) = (x, cal(A) x)$
+
+$(lambda x, x) = (x, lambda x)$
+
+$lambda (x,x) = overline(lambda) (x,x)$ $<=> x != 0, lambda = overline(lambda), lambda in RR$ 
+
+== Следствие 
+
+$cal(A)$ - c/с в еквлидом пространстве $V, cal(X)_(cal(A))(t) in RR[x]$ тогда $cal(X)_(cal(A))(t) = (t-a_1) dot (t-a_n)$ в $RR[t]$
+
+=== Доказательство
+
+$A$ - матрица $cal(A)$ в ОНБ, $cal(X)_(cal(A)) = cal(X)_A$
+
+$A in M_n (RR) subset M_n (CC), A = A^T = overline(A^T) =>$ в $CC^n$ оператор $x |-> A x$ самосопряженный
+
+$=> cal(X)_A (t) = (t-a_1) dots (t-a_n)$ в $CC$ ($CC$ - алг. замкнуто)
+
+по Лемме 1 все $a_i in RR$
+
+== Лемма 2
+
+$V$ - еквлидово/унитарно, $cal(A)$ - самосопр.
+
+$U <= V$ - инв. подпростр.
+
+Тогда $U^bot$ - инв. подпростр. $V = U xor U^bot$
+
+=== Доказательство
+
+Надо $v in U^bot => cal(A)(v) in U^bot, v in U^bot <=> (u,v) = 0, forall u in U, (v,u) = 0 forall u in U$
+
+Тогда $(cal(A) v, u) = (v, cal(A) u)) = 0, forall u in U => cal(A)(v) in U^bot$
+
+== Теорема
+
+Следующие условия равносильны
+
++ $cal(A)$ - с/с
++ существуеют ОНБ: $[cal(A)] = mat(a_1;,dots;,,a_n), a_i in RR$
+
+Геом. смысл: самосопря.енные операторы - композицие растяжений/сжатий в попарно перпендикулярных направлениях
+
+$2 => 1 overline(mat(a_1;,dots;,,a_n)^T) = mat(overline(a_1);,dots;,,overline(a_n))$
+
+$A = overline(A^T) <=> cal(A)$ с/с
+
+$1 => 2$
+
+индукция по $dim V$
+
+База: $n=1, [cal(A)] = (a), a in RR$ так как это собсвтенное число
+
+Переход $n-> n+1$
+
+$dim V = n+1$
+
+Знаем: корни $cal(X)_cal(A)$ вещ.
+
+$exists a_0 in RR$ - корень $cal(X)_cal(A)$
+
+$exists v_0: cal(A) (v_0) = a_0 v_0$
+
+$chevron v_0 chevron.r$ - инв. подпространство
+
+== Лемма
+$chevron v_0 chevron.r^T = V'$ - инв. подпростр
+
+$cal(A) |_V': V' -> V'$ - с/c оператор
+
+$dim V' n => exists$ ОНБ $e_1 dots e_n$ в $V'$
+
+$[cal(A)|_V'] = mat(a_1;,dots;,, a_n)$ ОНБ из собственноых векторов
+
+Знаем $v = chevron v_0 chevron.r xor chevron v_0 chevron.r^bot = chevron v_0 chevron.r xor V' = chevron v_0 chevron.r xor chevron e_1 dots e_n chevron.r$
+
+$v_0, e_1 dots e_n$ - Базис . $V$ - орт.
+
+$e_o = v_0/norm(v_0) => e_0 dots e_n$ - ОНБ и $cal(A) = mat(a_0,;,a_1;)$
+
+== Оценка кв. формы
+$a^2 + b^2>=2 a b >= -(a^2 + b^2)$
+
+$2 a b$ кв. форма в $RR^2$ 
+
+$abs(vec(a,b))^2 >= 2 a b >= - abs(vec(a,b))^2$
+
+Обобщение
+
+пусть $q$ - кв. форма в $RR^n$
+
+$q vec(x_1, dots, x_n) = sum a_(i j) x_i x_j$
+
+хотим $? <= q vec(x_1,dots,x_n) <= ?$ если знаем $sum x_i^2$
+
+== Теорема
+
+$lambda_min norm(X)^2 <= q(X) <= lambda_max norm(X)^2$, при чем оценка точная
+
+=== Доказательство
+
+$q(x) = f(x,x) = (A x, x)$
+
+$A = A^T$, $A$ - с/с на $RR^n$
+
+$exists$ ОНБ из собственных векторов для $e_1 dots e_n$ для $A$, $A e_i = lambda_i e_i$
+
+$x = sum a_i e_i$
+
+$(A x, x) = (cal(A) (sum a_i e_i), sum a_i e_i) = (sum lambda_i a_i e_i, sum a_j e_j) = sum lambda_i a_i^2 = q(x)$
+
+$lambda_min sum a_i^2 <= sum lambda_i a_i^2 <= sum lambda_max a_i^2 = lambda_max sum a_i^2$
+
+$sum a_i^2 = (sum a_i e_i, sum a_i e_i) = norm(sum a_i e_i)^2 = norm(x)^2$
+
+Итого получии, что хотели
+
+== Пример
+
+$2 a b = a b + b a + 0a^2 + 0b^2$
+
+$A = mat(0,1;1,0), cal(X)_A (t) = det mat(-t,1;1,-t) = (t-1(t+1))$
+
+$lambda_min = -1, lambda_max = 1, -(a^2 + b^2) <= 2 a b <= a^2 + b^2$
+
+Точная оценка: возьмем $x - e_lambda_min, x = e_lambda_max$
+
+== Следствия
+
+$q $ - пол. определена $lambda_min > 0$, то есть dct c.ч > 0
+
+$q$ - пол. определена, $exists epsilon > 0: q(x) > epsilon norm(x)^2$
+
+== Теорема
+Слудующие условия равносильны
+$A$ - ортог. $cal(A) in L i n (V)$
+
++ $cal(A)$ - ортогональный
++ $norm(cal(A) (u)) = norm(u) forall u in V$
++ В ОНБ $(A = [cal(A)])$ $A^T A = E = A A^T$
+3'. Столбцы $A$ - ОНБ в $RR^n$
+
+3". Строчки $A$ - онб в $RR^n$
+
+4. $forall$ ОНБ $e_1 dots e_n: cal(A) (e_1) dots cal(A) (e_n)$ - ОНБ
+5. $exists$ ОНБ $e_1 dots e_n: cal(A) (e_1) dots cal(A) (e_n)$ - ОНБ
+
+=== Доказательство
+
+2. $<=> (cal(A)(u), cal(A)(u)) = (u,u) forall u$
+1. $(cal(A) (u), cal(A) (v)) = (u,v)$
+
+$1=>2$ очев
+
+$2=> 1$ ...
+
+$1,2 => 4,5$
+
+$(cal(A) e_i, cal(A) e_j) = (e_i, e_j) = 0 (i != j) or 1 (i = j) => $ ОНБ $->$ ОНБ
+
+$5 => 2: e_1 dots e_n -> cal(A) e_1 dots cal(A) e_n$ - ОНБ
+
+$sum a_i e_i -> sum a_i cal(A) (e_i)$
+
+$norm(sum a_i e_i) = sum a_i^2 = norm(sum a_i cal(A) (e_i))$ $e_i$ - ОНБ. $cal(A) (e_i)$ - ОНБ
+
+$norm(X) = norm(cal(A) X)$
+
+3. $f(x,y) = (A X, Y) = (X, A^T Y)$, $f$ - форма с матрицей $A$
+
+$(cal(A) x, cal(A) y) = (x,y), forall x,y in V$
+
+В ОНБ $(A X, A Y) = (X, Y)$
+
+$(A X, A Y) = (X, A^T A Y)$
+
+Итого:
+$cal(A)$ - орт. $<=> forall X, Y in RR^n, (X,Y) = (X, A^T A Y) <=> forall x (X, Y - A^T A Y) = 0$, то есть $forall Y: Y - A^T A Y = 0 => A^T A Y = Y => A^T A = E <=> A A^T = E$
+
+$A A^T = E$, то есть $r_i r_i^T = cases(1 i =j, 0 i != j), {r_i}$ - ОНБ
+
+Аналогично со столбцами
+
+== Замечание
+
+$V$ унитарное, $cal(A)$ - унитарное 
+
+примерно то же, но $A overline(A^T) = E, overline(A^T) = A^(-1)$
+
+упражнение: что c $1<=>2$
+
+== отступление
+сопряженное отображение
+
+$u, v$ (евкл, унитарные), $cal(A) in L i n (u,v)$
+
+$cal(B)$ называется сопряженным к $cal(A) (cal(B) in L i n (V,U))$, если $(cal(A) U, V) = (U, cal(B) V), forall u in U, forall v in V$
+
+частны случай $V = U, cal(A), cal(A)^* in L i n (U,U)$ обозначение $cal(B)=cal(A)^*$
+
+== Теорема
+$cal(A)^* exists !$
+
+=== Доказательство
+
+1. случай
+Пусть ${e_i}, {f_i}$ - два ортонорм базиса в $U$ и $V$
+
+$[cal(A)]_({e_i}, {f_i}) = A [cal(B)]_({e_i}, {f_i}) = cal(B)$
+
+Тогда условие $(cal(A) u, v) = (u, cal(B) v) forall u, v$
+
+превращается в $overline(a_(i j)) = overline(b_(j i))$
+
+$A = (a_(i j)), B = (b_(i j))$
+
+(аналогично проверке) условие $A = A^*$, то есть $B = A^* <=> B = overline(A^T)$ (в ОНБ базисах)
+
+2. случай
+
+$cal(A)^*$ строится так $v -> u, u -> tilde.equiv u^*, or v tilde.equiv v%*, v^* -> u^*$
+
+$A^*: v^* -> u^*, f |-> f compose cal(A) in u^*$
+
+$v tilde.equiv v^*$ - изоморфизм. $v |-> f_v, f_v (u) = (u,v)$
+
+== Вернемся к ортог/унитарным операторым
+
+Одно из определение $cal(A) -$ ортог/унит $<=>$ столбцы $A$ - ОНБ в $RR^n (CC^n), A = [cal(A)]$ в ОНБ, то есть $A$ - матрица перехода между двумя ОНБ
+
+== Теорема о самосопр. операторах
+
+$cal(A)$ - с/с $<=> exists$ ОНБ из собственных векторов и эти собственные числа вещественны. 
+
+== Доказательство
+Пусть $A = [cal(A)]$ в некотором ОНБ, тогда теорема говорит, что $exists$ матрица перехода $C$, такая что $C^(-1) A C = $ (матричка с $u_i$ на диагональке и ноликами в остальных потаенных местах)
+
+$a_i in RR$, знаем: $C$ - орт/унитарные $C^(-1) = C^*$
+
+ИтогоШ: (матр. переформулировка теоремы о с/с операторах)
+
+Пусть $A in M_n (RR) \/ M_n (CC) и A = A^T \/ A = overline(A^T)$
+
+Тогда $exists C: C^(*) = C^(-1)$ и $C^* A C = $ (матричка с ашками на диагональке и ноликами в других местах)
+
+$V$ - евкл. $A in M_n (RR), A = A^T$
+
+$exists: C^T A C = mat(a_1,0,0;,dots.down ;0,0,a_n)$
+
+то есть доказали: Теорема $q$ на $V$ кв. форма $=> exists$ ортог. замена координат, то есть $q(x'_1, dots, x'_n) = sum a_i (x'_i)^2, q(x_1 dots x_n) = sum a_(i j) x_i x_j$
+
+== каноническая форма унитарного оператора
+== Теорема 
+След. условия равносильны, $V$ - унит. пространство $cal(A) in L i n (v,v)$
+
++ $cal(A)$ - унитарный
++ $exists$ онб $[cal(A)] = mat(z_1,0,0;,dots.down ;0,0,z_n)$ и $abs(z_i) = 1 forall i (z_i in CC)$
+=== Доказательство
+
+$2 => 1$
+
+$cal(A)$ - унитарный $<=> A^(-1) = overline(A^T), A = [cal(A)]$ в ОНБ
+
+$overline(mat(z_1,0,0;,dots.down ;0,0,z_n)^T) = mat(overline(z_1),0,0;,dots.down ;0,0,overline(z_n)) = mat(z_1,0,0;,dots.down ;0,0,z_n)^(-1)$
+
+
+Знаем, что c/c оператор: $cal(A)^* = cal(A)$, ортог/унит оператор $cal(A)^* = cal(A)^(-1)$
+
+Самосопр. операторы - векторные пространства, только над $RR$
+
+$(cal(A) + cal(B))^* = cal(A)^* + cal(B)^* = cal(A) + cal(B)$
+
+$(k cal(A))^* = overline(k) cal(A)^* = k cal(A)^* = k cal(A), k in RR$
+
+Ортог. операоторы - группа по умножению
+
+Пусть $A, B$ ортог, $A^* = A^(-1), B^* = B^(-1), (A B)^* = B^* A^* = B^(-1) A^(-1) = (A B)^(-1)$ 
+
+$1 => 2$
+
+пусть $cal(A)$ - унитарный, тогда все собственные числа по модулю равны 1. $cal(A) x = lambda x, x != 0, cal(A)^* = A^(-1), (A x, y) = (x, cal(A)^(-1) y) forall x,y, y = x: (cal(A) x, x) = (x, cal(A)^(-1) x)$
+
+$(lambda x, x) = (x, 1/lambda x)$
+
+$lambda(x, x) = overline(1/lambda) (x, x)$
+
+$lambda = overline(1/lambda)$, то есть $overline(lambda) = 1 <=> abs(lambda) = 1$
+
+$cal(A)$ - унитарный: $V$ - инв. подпространство отн. $A$ $(U <= V)$
+
+Тогда $U^bot$ - инвариантно
+
+=== Доказательство
+$cal(A)$ - унитарно $=> cal(A)$ обратим
+
+$cal(A)$ - обр. $U$ - подпространсто $cal(A) (u) <= u => cal(A) (u) = u$, то есть $U$ - нив. пространство $A^(-1), cal(A)^(-1) (u)$
+
+теперь пусть $v in U^bot$ хотим $cal(A) (v) in U^bot$
+
+$forall u in U, (cal(A) v, u) = (v, cal(A)^*, u) = (v, cal(A)^(-1) u) = 0$, то есть $cal(A) (v) bot U, cal(A) (v) in U^bot$
+
+=== Доказательство
+
+$1 => 2$  из пунктов 1 и 2 так же, как в теореме о самосопряженном операторе
+
+Структура ортогональных операторов
+$O_n$ - группа орт. операторв в $RR^n$, или $O_n= {A in M_n (RR) | A^T = A^(-1)}$
+
+$O (V)$ - орт. операторы на пространстве $V, dim V = n, O(V) tilde.equiv O_n (V)$
+
+$n = 1. O_1 = {1,-1}$
+
+$n = 1: O_2 {mat(cos alpha, - sin alpha; sin alpha, cos alpha) union mat(cos alpha, sin alpha; sin alpha, -cos alpha)}$ (первый это поворот на альфа, второй матрица симметрии относительно прямой)
+
+у первой матрице нет собственных чисел, они равны $cos alpha plus.minus i sin alpha$
+
+$n = 2k + 1$
+$X_A (t)$ имеет степень $2k+1$, а знаечит имеет корень $lambda = plus.minus 1, abs(lambda) = 1$ в нечетномерном пространстве ортог. преобразование имеет неподвижную ось
+
+== Теорема о канонической форме ортогонального оператора
+
+$V$ - евклидово пространство, $cal(A) in L i n (v, v)$ - орт.
+
+Тогда $exists$ базис $V$, такой что $[cal(A)] = mat([B_1], 0,0;,dots.down,;0,0,[plus.minus 1]) , B_i = mat(cos (alpha_i), -sin alpha_i; sin alpha_i, cos alpha_i)$ - матрица поворота
+
+Геом. формулировка $forall$ ортог. оператор - композиция двум. поворотов $cal(B)$ отрогональн. плокскостям, и симметрий отностиельно гиперплоскости
+
+=== Доказательство
+(skip-trick)
+
+считаем, что $V = RR^n$, переходим в $CC^n$ - унитарное
+
+там есть ОНБ из собственных столбцов (но они не вещественные #emoji.face.sad)
+
+Преобразуем $v : cal(A) (v) = (cos alpha + i sin alpha) v, sin alpha != 0 => A(overline(v)) = (cos alpha - i sin alpha) overline(v)$ делаем замену $v, overline(v) -> ((v+overline(v))/sqrt(2), (v-overline(v))/sqrt(2) )$ - базис одного блока
+
+= Полярное разложение
+Мысль: породить все операторы ортогональными и самосопряженными
+
+Положительные операторы:
+== Определение
+$cal(A) in L i n (v,v)$ называется положтельным, если $cal(A) = cal(A)^*$ и $(cal(A) x, x) >0 forall x != 0$
+
+$(cal(A) x, x) >= 0$ - неотр
+
+Геом смысл:
+
+$forall$ вектор отклоняется меньше, чем на $pi/2$
+
+$cal(A)$ положительный $=> cal(A)$ невырожденный
+
+== Утверждение
+Пусть $cal(A) = cal(A)^*$
+
+тогда $cal(A) > 0 (cal(A >= 0))$ если все собственные числа $cal(A) > 0$
+
+$cal(A) > 0, cal(A x) = lambda x, (cal(A) x, x) = lambda(x, x) > 0 => lambda > 0$
+
+Пусть все $lambda_i > 0, x = sum x_i e_i, cal(A) a_i = lambda_i e_i, (A x, x) = (sum lambda_i a_i e_i, sum a_i e_i) = sum lambda_i a_i^2 > 0$
+
+== Теорема
+Пусть $cal(A) > 0$, тогда $exists ! cal(B) >0 : cal(A) = cal(B)^2, cal(B) = sqrt(cal(A))$
+
+=== Доказательство
+существование:
+$cal(A) = cal(A)^*$, значит существует ОНБ $[cal(A)]$ (матрица диагональная, извлечь корень это просто корень из ашек. рассмотри $[cal(B)]_{e_i} = mat(sqrt(a_i),0,0;0,dots.down,0; 0,0,sqrt(a_n)) = cal(B)$
+
+единственность:
+
+Пусть $a$ - с.ч $cal(A)$, знаем, что $V = xor.big V_a^((A))$
+
+$B^2 = A, b$ - с.ч $B$
+
+$V = xor.big V_b^((B))$
+
+$B x = b x, B^2 x = b^2 x, A x = b^2 x$, то есть $V_b^((B)) <= V_(b^2)^((A))$
+
+$dim V_(sqrt(a))^((B)) <= dim V_a^((A))$, но $sum dim V_b^((B)) = dim V, sum dim V_a^((A)) = dim V => dim V_sqrt(a)^((B)) = dim V_a^((A))$
+
+Значит, что $forall a$ - с.ч $A$
+
+$B |_V_a = sqrt(a) dot i d => B$ - опр. однозначно
+
+== Теорема (полярное разложение)
+
+Пусть $V$ - евклидово пространство, $cal(A) in L i n (v,v)$ - невырожденный
+
+Тогда
++ $exists! s = s^*, s > 0, u = (u^-1)^*$ ортог, такое что $cal(A) = s compose u$
+
++ $exists! s_1 = s_1^*, s_1 > 0, u_1$ - ортог, $cal(A) = u_1 compose s_1$
+
+=== Доказательство
+
+Единственность
+
+$cal(A) = s u$
+
+$cal(A) cal(A)^* = s u (s u)^* = s u u^* s^* = s s^* = s^2 > 0$ (очев)
+
+$A A^* = s^2, s = sqrt(cal(A) cal(A)^*)$ восстанавливается однозначно по предыдущей теореме
+
+$u = s^(-1) cal(A)$ тоже восстаналвивается однозначно, $s$ невырожденный, так как он больше 0
+
+Существование
+
+Докажем, что $cal(A) cal(A)^* > 0$
+
+$(cal(A) cal(A^()))^* = cal(A)^(**) cal(A)^* = cal(A) cal(A)^*$
+
+$(cal(A) cal(A)^* x, x) = (cal(A)^* x, cal(A)^* x) > 0$
+
+в общем случае $cal(A) cal(A)^* >= 0$
+
+$exists! s > 0$, такое что $s^2 = cal(A) cal(A)^*$, положим $u = s^(-1) cal(A), s u = s s^(-1) cal(A) = cal(A)$
+
+$u$ - ортог: $u u^*= (s^(-1) cal(A)) (s^(-1) cal(A))^* = s^(-1) cal(A) cal(A)^* (s^(-1))^* = s^(-1) s^2 (s^(-1))^* = s (s^(-1))^* = s s^(-1) = i d$
+
+Второй случай, когда хотим $cal(A) = u_1 s_1$ аналогично только $cal(A) cal(A)^* ~> cal(A)^* cal(A)$
+
+== Упражнение
+
+$cal(A) = u_1 s_1, cal(A) = s u => u = u_1, s_1 = u^(-1) s u$ пости uwu, но нет
+
+== Оговорка
+
+Если отказываться от невырожденности $cal(A)$, то разложение существует, но неединственное, например $cal(A) = 0 = o dot u$, $u$ может быть любым
+
+$forall A in M_n (RR), exists s, u in M_n (RR), A = s dot u, s = s^T, u dot u^T = E$
+
+= Сингулярное разложение
+
+$U, V$ - евкл. пространства, $cal(A) in L i n (u,v)$
+
+$A = [cal(A)]_({e_i}, {f_i}), {e_i}$ - базис $U$, ${f_i}$ - базис $V$
+
+== Теорема
+$exists$ ОНБ ${e_i} in U, {f_i} in V$, так что $cal(A) e_i = lambda_i f_i forall i = 1 dots n, n = dim U$
+
+считаем, что $lambda_i > 0$ при $i = 1 dots k, lambda_i = 0$ при $i = k+1 dots n$
+
+=== Доказательство
+$u ->^cal(A) v ->^(cal(A)^*) u$
+
+$cal(A)^(*) cal(A) in L i n (u,u), cal(A)^*, cal(A) > 0$ (аналогично)
+
+то есть существует ОНБ $e_i$
+
+$cal(A) e_i = mu_i e_i, mu_i > 0, i = 1 dots k, mu_i = 0, i = k+1 dots n$
+
+$overline(f_i) = cal(A) (e_i), i = 1 dots k, (overline(f_i), overline(f_j)) = (cal(A) e_i, cal(A) e_j) = (e_j, cal(A)^(*) cal(A) e_j) = (e_i, mu_j e_j) = 0, i != j or mu_j, i = j, abs(overline(f_i))^2 = mu_i$
+
+$f_i := (overline(f_i))/sqrt(mu_i)$ - ОНС, дополним $f_1 dots f_k$ до ОНБ (Грам-Шмидт)
+
+теперь $cal(A) (e_i) = overline(f_i) = sqrt(mu_i) f_i, lambda_i = sqrt(mu_i)$ - синг. числа. 
+
+Теорема доказан
+
+== Оговорка
+
+для $A = A^T > 0$ сингулярные числа = собственные
+
+
+== Матричная переформулировка
+
+Пусть $A im M_(n ,m) (RR), exists cal(A): RR^m -> RR^n, cal(A) x = A X$
+
+$A$ - Матрица $cal(A)$ в ОНБ
+
+по пред. теореме $[cal(A)] = mat(lambda_1,0,0;0,dots.down,0;0,0,lambda_n)$ в других ОНБ
+
+все матрицы перехода  - ортог $=> A = C overline(A) D, overline(A), C, D$ - квадратные
