@@ -1370,3 +1370,386 @@ $A$ - Матрица $cal(A)$ в ОНБ
 по пред. теореме $[cal(A)] = mat(lambda_1,0,0;0,dots.down,0;0,0,lambda_n)$ в других ОНБ
 
 все матрицы перехода  - ортог $=> A = C overline(A) D, overline(A), C, D$ - квадратные
+
+= Теория групп
+
++ Абелевы группы (коммутативность) (числа (элементы полей, колец), вектора)
++ Не Абелевы группы (перестановки, матрицы (относитально умножения) $<->$ операторы, обычно операции = композиция)
+
+Абелевы - сильно проще
++ алгоритмически
+пусть $a = chevron a, b chevron.r$, элементы $G$ произведения $a,b,a^(-1), b^(-1)$
+
+
+Рассмотри $product_n$ - провизведения длины $<= n$
+
++ $G$ - абелева
+$g in product_n, g = a^k, b^l, abs(k), abs(l) <= n$
+
+$abs(product_n) <= (2n+1)^2$
+
++ $G$ - не абелева
+$a = underbrace(a b a dots b dots a, n) => abs(product_n) >= 2^n$
+== пример 2
+$G = chevron a,b chevron.r, a^n = e, b^m = e$
+
+$G$ - абелева $abs(G) <= n dot m, G = {a^k b^l | k <= n, l <= m}$
+
+
+$G$ - неабелева $abs(G) = oo$
+
+пример $n=m=2, a^2=b^2=e$
+
+$G_0$ -  Перестановки натурального ряда ${f: NN -> NN | f - "биекция"}$
+
+$G <= G_0, G = chevron a, b chevron.r, a = (1 2)(34)(56)dots(2k->2k-1)$
+$b=(23)(45)(67) (2k -> 2k+1)$
+
+$a^2 = b^2 = id$
+
+$b a = 1->3 -> 5 -> 7$ $dots->6->4->2 -> 14->2 -> 214->2 -> 214->2 -> 21$
+
+$(b a)^k != id, "ord"(b a) = oo, abs(chevron a"," b chevron.r) = oo$
+
+== Структурная теория
+
+$V$ - конечномерное векторная пространство над $k$
+
+$V equiv k^n$
+
+для групп (произвольных) - ООООЧЕНЬ сложная  (бесконечный зоопарк, в котором можно вылавливать какие-то классификации, какие-то кусочки, что-то там, какой-то сложный вайб, кабзда короче)
+
+Для Абелевых групп: линейная алгебра + (конечно порожденных)
+
+== Определение
+$G$ называется конечно-порожденной, если $exists g_1, dots, g_n in G : G = chevron g_1, dots g_n chevron.r$
+
+$G$ - абелева $<=> G = {g_1^(a_1), g_2^(a_2), dots g_k^(a_k) | a_1,dots a_k in ZZ}$
+
+Будем записывать аддитивно:
+$a dot b =: a + b, e-> 0, a^(-1) -> -a$
+
+== Как устроены конечнопорожденные Абелевы группы?
+
+ частный случай 1:
+
+ $G$ - конечно-порожденная абелева
+
+ $forall g != e: "ord"(g) = p$
+ (упрежнение $p$ - простое)
+
+ То есть $forall g in G: underbrace(g + g + dots + g, p)= 0$
+
+ $a in Z: a dot g = underbrace(g + dots + g, a)$ ;
+
+ Можно опрделеить умножжение $g |-> overline(a) g, overline(a) in ZZ\/ p ZZ$
+
+ $G$ - абелева группа + умножение на элементы $ZZ \/ p ZZ$ - поле
+
+ $G$ - векторное пространство над $ZZ\/ p ZZ$ - конечномерное, т. как $G$ - конечномерное
+
+ $G tilde.equiv (ZZ\/ p ZZ)^n = ZZ\/ZZ times ZZ\/p ZZ times dots times ZZ \/ p ZZ$
+
+ $abs(G) = p^n$
+
+ Пример 2
+
+ $G$ - конечно порожденная Абелева
+
+ $forall g != 0: "ord" g = oo$ (группа без кручения, то есть не крутая)
+
+ $G = chevron g_1, dots g_n chevron.r$
+
+ Пусть $n = 2$
+
+ $G = chevron a, b chevron.r, G = {k a + l b | k,l in ZZ}$
+
+ Случай 1:
+
+пусть $k a + l b != k' a + l' b, G <-> vec(k,l) in ZZ^2$ (биекция)
+
+Гомоморизм $k a + l b + k' a + l' b = (k+k') a + (l + l') b$
+
+$=> G tilde.equiv ZZ^2$ как группа.$G$ - свободная (так говорят, я верю) - есть безис. ${a,b}$ - базис $G$
+
+Случа 2:
+
+$k a + l b = k' a + l' b$
+
+$<=> exists m,n in ZZ: m a + n b = 0$
+
+выберем $m,n: m in NN, m -$ min среди таких
+
+случай 2.1:
+
+$(m,n) = d > 1$
+
+$m = d m', n = d n',  d(m'a + n' b) = 0 => m'a + n' b = 0, m' < m$ противоречие с выбором $m$
+
+случай 2ю2
+
+$(m,n) = 1 => k,l in ZZ, m k - n l = 1$
+
+Докажем, что тогда $a,b in chevron m a + n b, l a + k b chevron.r$
+
+Например $x(m a + n b) + y (l a + k b) = a$ хотим $x,y in ZZ$
+
+$cases(x m + y l = 1, x k + y k = 0) => cases(x = (dots)/(m k - n l = 1), y = (dots)/(m k - n l = 1)) => x, y in ZZ$
+
+Итого $chevron m a + n b, l a + k b chevron.r = chevron a, b chevron.r$
+
+то есть у нас получилось, что $chevron a, b chevron.r = chevron l a + k b chevron.r = chevron c chevron.r$
+
+
+$G = chevron c chevron.r$ - циклическая группа
+
+$"ord" c = oo$
+
+$G = {c^k | c in ZZ}, <-> {k | k in ZZ}, G tilde.equiv ZZ$
+
+Итого
+
+$G tilde.equiv ZZ^2 or G tilde.equiv ZZ^1$
+
+== Замечание
+
+$2a - 3 b = 0, 2a = 3b$
+
+$a in.not chevron b chevron.r, b in.not chevron a, chevron.r, chevron a chevron.r != G, chevron b chevron.r != G$
+
+$chevron a,b chevron.r = G$
+
+$a,b$ - min порождающая система (по включению)
+
+но не базис
+
+== Теорема
+
+$G$ - конечно порожденная абелева без кручения
+
+$=> exists n in NN: G tilde.equiv ZZ^n$
+
+В общем случае:
+
+$G$ - конечно пор. абелева группа, тогда $G$ изоморфан произведению циклических, то есть $G tilde.equiv ZZ times ZZ times dots times Z times ZZ \/ m_1 ZZ times Z\/ m_2 ZZ dots times ZZ\/ m_n ZZ$
+
+Частный случай $G$ - конечная абелева группа ($=>$ конечно порожденная) $=>$ это произведение групп вычетов по разным модулям
+
+
+
+= Важнейшие неабалевы группа (дофига важный. %\$@ бумажный)
+
++ $S_n$ - группа перестановок
+
++ $G L (n, k)$ - обр. матрицы $n times n$ над полем $k$
+
+$S_n$ - можно ре. как подгруппу в $G L (n)$
+
+$pi in S_n, $ оператор (обрат) $e_1 -> e_(pi(1)) e_2 -> e_(pi(2)) ~> A_pi$ - опер. $-> A_pi in G L (n, k)$
+
+Ясно: 
+
+$A_(pi_1 compose pi_2) = A_pi_1 dot A_pi_2$
+
+инъ. гомоморфизм
+$S_n ->^i G L (n,k)$
+
+$S_n tilde.equiv i (S_n)$ - подгруппа $G L (n,k)$
+
+== Теорем Кэли
+
+$G$ - конечная группа
+
+$=> exists n: G$ изоморфно некоторой подгруппе $S_n$
+== Доказательство
+$G = {g_1, dots g_n}: g := abs(G)$
+
+
+$g in GG, cases(g g_1 = g_(pi(1)), dots, g g_n = g_(pi(n)))$
+
+$g a = g b => a = b, a g = b g => a = b$
+
+ поэтому $g_(pi(i)) != g_(pi(j))$ при $i != j$
+
+тое сть $pi$ - перестановка $pi = pi_g$
+
+построили отображение
+
+$I: G -> S_n (g |-> pi_g)$
+
++ I инъект. из свойства сокр
++ I - гомоморфизм $pi_(g_1 g_2) = pi_g_1 compose pi_g_2$
+
+$G tilde.equiv I(G)$
+
+$G -> I(G)$ биекция, гомоморфзим
+
+= Подгруппы и факторгруппы
+
+$H <= G$ - подгруппа (замкнута относительно операций)
+
+$ZZ -> ZZ\/ n ZZ$
+
+Задача описать $G$ прмерно эквивалентно задаче описать $H$  и описать $G$ по модулю $H$
+
+== Определение
+
+пусть $H <= G, g in G$
+
+$g H = {g dot h | h in H}$ - правый смежный класс $g$ по $H$
+
+$H g$ - левый смежный класс
+
+(если $G$ абелева, то $g H = H g$)
+
+В частности $e H = H = H e$
+
+== Лемма
+Отношения на $G$
+
+$u tilde_L v <=> u v^(-1) in H$
+
+$u tilde_R v <=> v^(-1) u in H$
+
+Тогда это отношения эквивалентности, их классы эквивалентности - это левые/правые смежные классы
+
+=== Доказательство
+
+Рефлексивность: $ u u^(-1) = e in H$
+
+Симметричность: $u v^(-1) in H => v u^(-1) (u v^(-1))^(-1) in H$
+
+Транзитивность $u tilde v, v tilde w$
+
+$u v^(-1) in H, v w^(-1) in H, (u v^(-1)) (v w^(-1)) = u w^(-1) in H => u tilde w$
+
+Класс эквивалетности: $v$ - fix, класс $overline(v_L)$
+
+$u tilde v$ если $u v^(-1) in H$ $u v^(-1) = h in H, u = h v, h in H$
+
+$u in H v$
+
+== Знаем: классы эквивалентны дизъюнкты
+
+$G = union.big_(g in G) H g = union.big_(h in H) g H$ - диз.
+
+== Пример
+
+$G = ZZ, H = chevron n, chevron.r$
+
+$ZZ = (n ZZ) union (1+ n ZZ) union (2 + n ZZ) dots$
+
+ Количество смежных классов - индекс $H$
+
+$abs(G : H)$ - левый или правый? все равно
+
+== Теорема Лагранжа
+$abs(G) < oo, H <= G, abs(G) = abs(G : H) dot abs(H)$ в частности $abs(H) | abs(G)$
+
+=== Доказательство
+$forall h in G: abs(g H) = abs(H)$
+
+$G$ - объединение $abs(G : H)$ классов мощности $abs(H)$
+
+
+== Следствие
+$forall g in G: abs(G) dots.v "ord"(g)$
+
+=== Доказательство
+
+$H:= chevron g chevron.r$
+
+знаем $abs(H) = "ord"(g)$
+$=>$ применяем теорему Лагранжа
+
+== упраженине
+$G$ - бексноечно, но все равно $abs(G : H)_l = abs(G : H)_r$
+
+
+$G\/H$ - множество правых смежных классов
+
+$H \/ G$ - левых
+
+Хотим группу на классах
+
+$overline(g_1) dot overline(g_2) := overline(g_1 g_2)$
+
+$g_1 H dot g_2 H:= g_1 g_2 H$
+
+Может быть:
+
+$overline(g_1) = overline(g'_1), overline(g_2) = overline(g'_2)$
+
+$overline(g_1 g_2) != overline(g'_1 g'_2)$
+
+== Определение
+$G$ - группа $H <= G$
+
+$H$ называется нормальной группой ($H lt.tri.eq G$) Если выполено одно из $<=>$ утверждений:
+
++ $g_1 tilde_L g'_1, g_2 tilde_L g'_2 => g_1 g_2 tilde_l g'_1 g'_2$
+1' то же для правых
+
+2. $g H = H g forall h$ левые и правые смеждные классы совпадают
+3. $forall h in H forall g in H: g^(-1) h g in H, H$ - замкнута отосительно сопряжения
+3'. $g^(-1) H g = H$
+
+=== Доказательство
+
+$2 <=> 3:$
+
+$2 => 3: g in G, h in H, g^(-1) h in g^(-1) H tilde.equiv H g^(-1)$, то есть $exists h' g^(-1) h = h' g^(-1)$
+
+$=> g^(-1) h g = h' g^(-1) g = h' in H$
+
+$3 => 2: h g in H g$ знаем $g^(-1) h g in H, g^(-1) h g in h' => h g = g h' in g H$ 
+
+Итого $H g subset g H$ аналогично $g H subset H g$ $=> g H = H g$
+
+
+$2 => 1:$
+
+$overline(g_1) = overline(g'_1)$
+
+$g_1 in overline(g'_1), g_1 = h g'_1$
+
+$g_1 (g'_1)^(-1) in H, g_2 (g'_2)^(-1) in H$
+
+Хотим доказать, то $H in.rev (g_1 g_2) (g'_1 g'_2)^(-1) = g_1 g_2 (g'_2)^(-1) (g'_1)^(-1) = g_1 h (g'_1)^(-1) ==^(g_1 H = H g_1) = h' g_1 (g'_1)^(-1) in H$
+
+$H lt.tri.eq G =>$ умножение $overline(g_1) dot overline(g_2) = overline(g_1 g_2)$ задает структуру группы на $G\/ H$ (очев)
+
+Полученная группа называется факторгруппой ($G$ - конечна $=> abs(G\/H) = abs(G)/abs(H)$)
+
+по $G\/ H$ и $H$ восстановиться вообще говоря неоднозначно
+
+== Пример
+$G = S_3$
+
+$H_1 = chevron (1 2) chevron.r$
+
+$H_2 = chevron (123) chevron.r$
+
+$H_1 lt.tri.eq.not G$, $(13)(12)(13)^(-1) = (13)(12)(13) = (23) in.not H_1$
+
+$abs(G\/ H_2) = 6/3 = 2, H_2 = {id, (123), (132)}$
+
+$H_2 lt.tri.eq G: G = i d dot H union (1 2) dot H$
+
+$G \/ H = {overline(i d), overline((12))}$ на самом деле $H_2 = A_3$ - четные перестановки $G\/ H_2 = ZZ\/ 2 ZZ$
+
+= Гомоморфизмы и теореоемы о гомоморфизмах
+
+== Определение
+$Im f = {f(g) | g in G_1}, ker f = {g in G_1 | f(g) = e_G_2}$
+
+== Теорема
++ $ Im f, ker j$ - подгруппы (в $G_1, G_2$)
++ $ker f lt.tri.eq G_1$
++ $g_1 \/ ker f tilde.equiv Im f$
+
+=== Доказательство
++ так же, как в линале
++ $g in G_1, h in ker f, f(g^(-1) h g) = f(g)^(-1) f(h) f(g) = f(g)^(-1) e f(g) = e => g^(-1) h g in ker f, ker f lt.tri.eq G_1$
+
++ смысл: каждый смежный класс $a dot ker f$ это полный прообраз одного элемента в $G_2$ ($b = f(a)$) $f(a h) = f(a) forall h in ker f$
