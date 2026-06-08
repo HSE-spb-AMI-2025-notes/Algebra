@@ -1738,7 +1738,7 @@ $H_2 lt.tri.eq G: G = i d dot H union (1 2) dot H$
 
 $G \/ H = {overline(i d), overline((12))}$ на самом деле $H_2 = A_3$ - четные перестановки $G\/ H_2 = ZZ\/ 2 ZZ$
 
-= Гомоморфизмы и теореоемы о гомоморфизмах
+= Гомоморфизмы и теоремы о гомоморфизмах
 
 == Определение
 $Im f = {f(g) | g in G_1}, ker f = {g in G_1 | f(g) = e_G_2}$
@@ -1753,3 +1753,536 @@ $Im f = {f(g) | g in G_1}, ker f = {g in G_1 | f(g) = e_G_2}$
 + $g in G_1, h in ker f, f(g^(-1) h g) = f(g)^(-1) f(h) f(g) = f(g)^(-1) e f(g) = e => g^(-1) h g in ker f, ker f lt.tri.eq G_1$
 
 + смысл: каждый смежный класс $a dot ker f$ это полный прообраз одного элемента в $G_2$ ($b = f(a)$) $f(a h) = f(a) forall h in ker f$
+
+строим изоморфизм $overline(f): G_1 \/ ker f -> I m f$
+
+типичный элемент множества $G_1\/ker f g (ker f) |-> f(g)$
+
+$overline(g): overline(f)(overline(g)):= f (g)$
+
++ $overline(f)$ корректно задано, то есть если $g dot ker f = g' dot ker f => f(g) = f(g')$ очев, так как $g' = g dot h, f(g') = f(g) dot f(h) = f(g)$ \  $overline(f) (overline(g)) = f(g) in I m f$ по определению
++ $overline(f)$ гомоморфизм, так как $overline(f) (overline(g_1) dot overline(g_2)) = overline(f)(overline(g_1 g_2)) = f (g_1 g_2) = f(g_1) f(g_2) = overline(f)(overline(g_1)) dot overline(f) (overline(g_2))$
+
++ $overline(f)$ сюръективно по определению ($x in I m f <=> x = f(g) = overline(f) (overline(g))$)
++ $overline(f)$ инъективно: \ $overline(f) (overline(g_1)) = overline(f)(overline(g_2)) <==> f(g_1) = f(g_2) <=> f(g_1 g_2^(-1)) = e <=> g_1 g_2^(-1) in ker f <=> overline(g_1) = overline(g_2)$
+
+== Самый хороший пример
+
+Пусть $G_1 = RR^*, G_2 = RR^*_+, f: G_1 -> G_2, f(x) = abs(x), I m f = G_2, ker f = {plus.minus 1}$ Вывод: $RR^*\/RR_+^* tilde.equiv {plus.minus 1}$
+
+Наоборот. $f(x) = "sign" x = x/abs(x), I m f_2 = {plus.minus 1}, ker f_2 = RR_+$
+
+$RR^* \/ {plus.minus 1} = RR_+^*$
+
+Пример
+
+$G_1 = G L (n, k), f = det: G L (n, k) -> k^*$
+
+$I m f = k^*$
+
+$ker f = S L (n,k) = {A | det A = 1}$
+
+$G L (n,k)\/ S L (n,k) tilde.equiv k^*$, при этом ни в каком разумном смысле $G L (n,k) \/ k^* tilde.equiv.not S L (n,k)$
+
+$G L (n,k)$ есть подгруппы изоморфные $k$, например ${mat(a,0,0;0,dots.down,0;0,0,1) | a in k^*}$
+
+но все эти подгуппы не нормальны
+
+Пример
+
+$G = ZZ, H = chevron n chevron.r = N ZZ, ZZ-> ZZ\/ n ZZ, a |-> overline(a)_n$
+
+$ker f = chevron n chevron.r$
+
+но $ZZ \/ n ZZ$ нельзя реализовать как подгруппу в $ZZ$ (в $ZZ$ нет элементов конечного порядка)
+
+(${0,1,dots,n-1}$ не подгруппа в $ZZ$)
+
+$G ~> (G\/ H, H)$
+
+Вопрос: можно ли зная $H$ и $G \/ H$ восстановить $G$?
+
+$G_1, G_2, ? G : G_1 <= G, G\/G_1 = G_2$
+
+Пример $G = G_1 times G_2$, выберем $overline(G)_1 <= overline(G_1) = {(g, e) | g in G_1}$ очев $overline(G_1) tilde.equiv G_1, g <-> (g,e)$
+
+$p: G_1 times G_2 -> G_2, (g_1, g_2) -> g_2$ - гомоморфизм и $ker p = overline(G_1), G \/ overline(G_1) tilde.equiv G_2$
+
+Вообще говоря $G tilde.equiv.not H times (G \/ H)$ если $H lt.tri.eq G$ (см. другие. примеры)
+
+$G_ 1 = G_2 = ZZ\/ 2 ZZ$
+
+1) $ZZ\/ 2 ZZ times ZZ\/2 ZZ$
+
+2) $ZZ\/ 4 ZZ, G_2 = chevron overline(2) chevron.r, G_1 tilde.equiv ZZ\/ 2 ZZ$
+
+$abs(G \/ G_1) = 4/2 = 2$
+
+$G \/ G_1 tilde.equiv ZZ \/ 2 ZZ$, но $ZZ\/ 4 ZZ tilde.equiv.not ZZ\/ 2 ZZ times ZZ\/ 2 ZZ$
+
+Пусть $G_1, G_2 <= G$ когда можно утверждать, что $G tilde.equiv G_1 times G_2$
+
+== Утвержднеие
+
+Следующие наборы условия равносильны:
+
+1. $m : G_1 times G_2 -> G, (g_1, g_2) |-> g_1 g_2$ - изоморфизм
+
+2.
+  1. $G_1 inter G_2 = {e}$
+  2. $forall g in G exists g_1, g_2: g = g_1 g_2 (g_i in G_i)$
+  3. $forall g_1 in G_1, g_2 in G_2 g_1 g_2 = g_2 g_1$
+
+3. Первые два такие же, как и во втором, однако третье: $G_1, G_2 lt.tri.eq G$
+
+=== Доказательство
+
+$1 <=> 2$
+
+$m$ сюръективно равносильно условию 2
+
+$m$ гомоморфизм $<=> m( (g_1, g_2) (g'_1, g'_2)) = m (g_1, g_2) dot m (g'_1, g'_2)$
+
+$m(g_1 g'_1, g_2 g'_2) = m (g_1, g_2) m (g'_1, g'_2)$
+
+$g_1 g'_1 g_2 g'_2 = g_1 g_2 g'_1 g'_2$
+
+$g'_1 g_2 = g_2 g'_1$ а это в точности условие 3
+
+$m$ инъективен $<=> m(g_1, g_2) = m (g'_1, g'_2) => g_1 = g'_1, g_2 = g'_2$, то есть $g_1 g_2 = g'_1 g'_2 => g_1 = g'_1, g_2 = g'_2$
+
+$(g'_1)^(-1) g_1 = (g'_2) g_2^(-1) => (g'_1)^(-1) g_1 = g'_2 g_2^(-1) = e, forall g_1, g'_1 in G_1, g_2, g'_2 in G_2$
+
+$g''_2 = g''_2 => g''_1 = g''_2 = e$, то есть $G_1 inter G_2 = {e}$
+
+Знаем. что если $G$ конечная и абелева, то можно разложить до циклических $G = ZZ\/ n_1 ZZ times dots times ZZ\/ n_k ZZ$
+
+В общее случае: можно делать разложение $G -> (G_1, G_2), G\/ G_1 tilde.equiv G_2,(G_1, G_2) -> (G_1, G_3, G_4), G_3 <= G_2, G_2 \/ G_3 tilde.equiv G_4, ->$ и так далее
+
+== Теорема Фейта-Томпсона
+
+$abs(G)$ конечная группа нечетная порядка, тогда $G$ раскладывается до циклических
+
+== Определение
+
+$G$ назыается простой, если 
+
+$H lt.tri.eq => H = G or H = {e}$
+
+Ясно, что процесс выше приводит $forall$ конечную группу к набору простых групп
+
+$abs(G) = n, abs(H) = n_1, abs(G\/ H) = n_2, n = n_1 dot n_2$
+
+== Пример
+
+$n in NN, k$ - поле, $abs(k) < oo$
+
+$S L (n, k) = {A in M_n (k) | det A = 1}$ не проста и конечна, если поле конечно
+
+Но $S L (n,k) \/ {mat(a,0;0,a) | a in k^*} = P S L (n,k)$ - проективная группа
+
+$(a E) A = A( a E) =>$ это нормальная подгруппа 
+
+Вот уже проективная группа обычно проста, то есть $(n,k) -> P S L (n,k)$ - матричная серия простых групп
+
+== Теорема CSFG
+
+$G$ - проста, тогда либо:
++ $G tilde.equiv ZZ \/ p ZZ, p$ простое
++ $G tilde.equiv A_n, n>= 5$
++ либо одная из матричных $(n,k)$ серйи (примерно 20 штук)
++ либо одна из 26 исключитальных групп
+
+= Действие группы на множестве
+
+== Определение
+
+$G$ - группа, $M$ - множество действие $G$ на $M$ ($G arrow.cw.half M$)
+
+это бинарная операция $G times M -> M$, такая что 
+
++ $(g_1 g_2) dot m = g_1 (g_2 m)$
++ $e m = m forall m in M$
+
+== Пример 
+
+$m = k^n, G L (n,k) arrow.cw.half k^n$
+
+$G = S_n, m = I_n = {1,2,dots, n}$
+
+$S_n arrow.cw.half I_n$ по определению $forall x in I_n pi x = pi(x)$
+
+$S_n arrow.cw.half I_n times I_n, pi(x,y) = (pi x, pi x), S_n arrow.cw.half 2 I_n pi {x_1, x_2} = {pi(x_1), dots pi (x_k)}$
+
+== Пример
+
+$Gamma$ - помеценные графы на $n$ вершинах $S_n arrow.cw.half Gamma$
+
+== Пример
+
+$M = CC, G = S_3,  G arrow.cw.half: s = (1 2), r = (1 2 3), S_3 = chevron s, r chevron.r$ положим $r dot x = (-1/2 + sqrt(3)/2 i) x = e^((2 pi i)/3 x)$
+
+$s dot x = overline(x)$
+
+$r x = e^((2 pi i)/3) x) x$
+
+$s x  = - x$
+
+действие для $ZZ \/ 3 ZZ times ZZ\/ 2 ZZ$
+
+== Утверждение
+
+Задание действия $G$ на $M$ равносильно заданию гомоморфизма $pi: G -> S (M)$ биекция $M -> M$
+
+Пусть $G times M -> M$ действие
+
+$forall g in G: exists f g: M -> M, m |-> g m, $ (очев есть обратные просто домножение на $g^(-1)$)
+
+$pi M -> S(M), g |-> f g$ - гомоморфизм $f g_1 g_2 = f g_1 g g_2, t_e = i d$ аксиома 2
+
+$H o m (G times M, M) tilde.equiv H o m(G, H o m(M, M))$
+
+Обратно:
+
+Пусть задано $pi$, тогда определим $g dot m = pi (g) (m)$ аксиомы - упр.
+
+= Орбиты и стабилизаторы
+
+== Определение
+$G arrow.cw.half M, m in M, G m = {g m | g in G}$ - орбита $M$
+
+$G_m = {g in G | g dot m = m}$ - стабилизатор
+
+$G m subset M$
+
+$G_m <= G$ - подгруппа очев $g_2 m = m , g_1 m = m, (g_2 g_1) m = g_2 (g_1 m) = g_2 m = m$
+
+== Замечание
+Определеим $~$ на $M$
+
+$m_1 ~ m_2$ если $g in G: g m_1 = m_2$ это отношение эквивалентности (очев)
+
+Орбита это очевидно класс эквивалентности
+
+$M$ - дизъюнктное объединение орбит
+
+(действие $G$ задано отдельно на какой-то орбите)
+
+== Лемма
+
+$G arrow.cw.half M, m in M, G_m = H, G = union.big g H$
+
+Тогда $g H = {g' in G | g' m = g m}$
+
+=== Доказательство
+$g' in g H, g' = g dot h, h (m) = m, g' m = (g h) m = g(h m) = g m$
+
+Обратно
+
+Пусть $g' m = g m => g^(-1) g' m = e m, g^(-1) g' m = m <=> g^(-1) g' in H => g' in g H$
+
+Таким образом 
+
+$exists$ биекция между ${g G_m | g in G}$
+
+и элементами вида $g m$, то есть $G m$
+
+Вывод $abs(G : G_m) = abs(G m)$ - длина орбиты
+
+Пусть $G, M$ - конечные
+
+$abs(G)/abs(G_m) = abs(G m)$, то есть
+
+$G arrow.cw.half M => abs(G) = abs(G m) dot abs(G_m)$
+
+== Пример
+
+Сколько самосовмещений у куба
+
+$O_3$ - ортогональные преобразованеия в $RR^3$
+
+$k$ - куб с центром в $O$
+
+$G <= O_3, G = {g in O_3 | g k = k}$
+
+Ясно, что $g$ однозначно задается тремя точками
+
+$abs(G) = abs(G dot 1) = abs(G_1) = 8 dot abs(G_1) = 8 dot abs((G_1) dot 2) dot abs(G_(1,2)) = 8 3 dot abs(G_(1,2)) = 8,3 abs(G_(1,2) 3) dot abs(G_(1,2,3)) = 8 dot 3 dot 2 abs({id}) = 48$
+
+Пусть $S_n arrow.cw.half 2^(I_n), m = {1,2,3,dots k}$
+
+$abs(G m) = C_n^k$
+
+$G_m pi: {1 dots k} ->^pi {1 dots k}, {k+1 dots n} ->^pi -> {k+1 dots n}$
+
+$abs(G_m) = k! (n-k!), abs(G) = n!$
+
+$n! = C_n^k (k!) (n-k)!$
+
+== Лемма Бернсайда
+
+$G arrow.cw.half M, G, M$ - конечные
+
+$F i x (g) = {m in M | g m = m}$
+
+количество орбит действия равно среднему рзамеру фиксатора, то есть $(sum_(g in G) abs(F i x (g)))/abs(G)$
+
+=== Доказательство
+
+$T := {(g,m) | g m = m}$
+
+$abs(T) = union_g abs((g,m) | g m =m) = sum abs(F i x (g))$
+
+С другой стороны $abs(T) = abs(union_(m in M) {(g,m) | g m = m}) = sum_(m in M) abs(G_m)$
+
+Итого $sum_(g in G) abs(F i x(g)) = sum_(m in M) abs(G_m) = sum_(m in M) abs(G)/(abs(G m)) = abs(G) sum_(m in M) 1/abs(G m)$
+
+Орбита длины $k$ вносит в сумму вклад $1/k$, а таких ребят $k$ и получается единичка, поэтому общая сумма $sum_(m in M) 1/abs(G m) = 1 + dots + 1 =$ количество орбит
+
+$=> $ количество орбит $= (sum (F i x (g)))/abs(G)$
+
+
+= Перестановки
+
+$n in NN, pi in S_n, G = chevron pi chevron.r$
+
+$I_n = {1,2, dots, n}, S_n arrow.cw.half I_n$
+
+$G arrow.cw.half I_n => I_n = union.big C_i$ - дизъюнктное объединение $C_i$ - орбиты отн. $G$
+
+$C_i: x_i -> pi x_i -> pi^2 x_i -> dots -> pi^k x_i -> x_i$ - орбита
+
+$pi^k x_i = pi^l x_i, k > l => pi ^(k-l) x_i = x_i$
+
+$pi -> Gamma_pi$ - граф перестановки, перестановки $I_n$, стрелки $x -> pi(x)$
+
+$Gamma_pi$ - объединение непересекающихся циклов длин
+
+$k_1, k_2, dots k_s (k_1, k_2, dots k_s)$ - цикловой тип перестановки
+
+цикловая запись $(x pi(x) pi^2 (x) dots) (y, pi(y), pi^2(y))$
+
+== Пример
+
+$n = 10, pi(x) = 3 x mod 10$
+
+$Gamma_pi: 1 -> 3 -> 9 -> 7 -> 1, 2 -> 6 -> 8 -> 4 -> 2, 5 -> 5, 10 -> 10$, цикл. тип $4 + 4 + 1 + 1$, цикл. запись $(1397)(2684)=pi$
+
+$(1397) = pi_1$ - цикл, $1,2,5,4,10,6,8$ петли
+
+$(2684) = pi_2$ аналогично
+
+$pi = pi_1 pi_2 = pi_2 pi_1$
+
+== Общее утверждение
+
+Любая перестановка раскладывается единственным образом в произведение независимых циклов (в точности до порядка множителей)
+
+=== Доказательство
+Используем доказательство методом Антипова: 
+
+(существование доказали)
+
+Единственность упр
+
+== Утверждение
+
+$pi$ - перестановки типа $k_1 + k_2 + dots + k_s => "ord" pi = "НОК" (k_1, dots k_s) = abs(chevron pi chevron.r)$
+
+Пусть теперь $pi_1, dots, pi_k in S_n$
+
+Сколько и какие перестановки выражаются через $pi_1, dots, pi_k?$
+
+Рассмотриваем $G = chevron pi_1, dots, pi_k chevron.r$, хотим знать
+
++ $abs(G) = ?$
++ $pi in S_n, pi in G ?$ если да, то как выражается через $pi_1, pi_2, dots pi_k$
+
+$G arrow.cw.half I_n, abs(G) = abs(G dot 1) dot abs(G_1), G_1 arrow.cw.half {2,3,dots,n}, abs(G_1) = abs(G_1 dots 2) dots abs((G_1)_2 = G_(1,2))$ дальше итерируем...
+
+Получаем, что $abs(G) = abs(G 1) dot abs(G_1 2) dots abs(G_(1,2) 3) dots abs(G_(1,2,dots,n-1) n) dot abs(G_(1,2,dots n))$
+
+$G >= G_1 (= G^1) >= G_(1,2) (= G^2) >= G_(1,2,3) (= G^3)$
+
+== Общая задача
+
+$G = chevron g_1, g_2, dots g_n chevron.r, H <= G, G\/ H = {x_1 H, x_2 H, dots x_k H} (forall x in G exists i: x H = x_i H)$
+
+считаем, что $x_1 = e, x_1 H = H$
+
+Обозначение: $overline(x) = x_i$ если $x H = x_i H (exists ! i) <=> x_i^(-1) x in H$ 
+
+== Теорема (Лемма Шрайера)
+
+$S = {overline(g_i x_i)^(-1) g_j x_i}_(i = 1 dots k, j = 1 dots n)$ - порожд. система для $H$
+
+=== Доказательство
+
++ $overline(g_j x_i)^(-1) (g_j x_i) in H$ - по построению
+
+$(overline(x)^(-1)) dot x_i$, то есть $S subset H$
+
+Пусть $h in H$, хотим $h = s_1^(plus.minus 1) dots s_l^(plus.minus 1), s_i in S$
+
+$h in G. h = g^(plus.minus 1)_i_1 g^(plus.minus 1)_i_2 dots g^(plus.minus 1)_i_l$
+
+$x^(-1)_i_0 h = x^(-1)_i_0 g^(plus.minus 1)_i_1 x_i_1 x^(-1)_i_1 g^(plus.minus 1)_i_2 x_i_2 x^(-1)i_2 dots x_i_(l-1) x^(-1)_i_(l-1) g^(plus.minus 1)_i_l x_i_l$, где $x_i_l = e$
+
+$x_i_(l-1), x_i_(l-2) dots x_i_0$ определяем последовательно, так чтобы $forall s: x^(-1)i_(s-1) g^(plus.minus 1)_i_s x_i_s$ это элемент $S$ или обратный к элементу $s$
+
+случай 1 хотим $x^(-1)_i_(s-1) g_i_s x_i_s in S, x_i_(s-1): overline(g_i_s x_i_s) =>$ ок, $overline(g_i_s x_i_s)^(-1) g_i_s x_i_s in S$
+
+случай 2. Хотим $x^(-1)_i_(s-1) g^(-1)i_s x_i_s = (x^(-1)_i_s g_i_s x_i_(s-1))^(-1)$
+
+Хотим $x^(-1)_i_s g_i_s x_i_(s-1) in S$, то есть $x_i_s = overline(g_i_s x_i_(s-1)) <=> x_i_s H = g_i_s x_i_(s-1) H$
+
+$g^(-1)_i_s x_i_s H = x_i_(s-1) H <=> x_i_(s-1) overline(g^(-1)_s x_i_s)$ можем так выбрать $x^(-1)_i_1$
+
+Итого $x^(-1)_i_0 h = s^(plus.minus 1)_1 s^(plus.minus 1)_2 dots s^(plus.minus 1)_l, s_i in S$, хотели так выразить $h$
+
+$x_i in H => s^(plus.minus 1)_1 dots s^(plus.minus 1)_l in H => x^(-1)_i_0 h in H => x_i_0 in H = e H => x_i_0 = e => h  = s^(plus.minus 1)_1 s^(plus.minus 1)_2 dots s^(plus.minus 1)_l$
+
+Возвращаеся в $S_n$
+
+$П = chevron pi_1 dots pi_m chevron.r <= s_n$
+
+$pi_i =: pi^((0))_i$
+
+Шаг $abs(G^k) = abs(G^(k) (k+1)) dot abs(G^(k+1))$
+
+Знаем $G^k = {pi^((k))_1, pi^((k))_2, dots, pi^((k))_(i_k)}$
+
+Орбита $G^(k) dot (k+1)$
+
+Рисуем общий (тотальный граф)
+
+Для $pi^((k))_1, pi^((k))_2, dots pi^((k))_i_k$
+
+
+Тогда $G^K (k+1)$ - компонента связности $k+1$
+
+Напоминание $G arrow.cw.half M, m in M, g in G, g G_m = {g' in G | g' m = g m}$ $<->$ один элемент орбиты $m$ (а именно $g_m$)
+
+У нас $G^(k+1) (G^k)_(k+1)$
+
+$G^k (k+1) = {k_1, k_2, dots k_s}$
+
+$forall k_i exists g_i: g_i (k+1) = k_i, g_i = (pi^((k))_i_1)^(plus.minus 1) dots (pi^((k))_i_k)^(plus.minus 1)$
+
+путь из $k+1$ в $k_i$ в общем графе
+
+Переобозначим $g_i = x_i^((k))$
+
+Теперь $G^k\/ G^(k+1) = {x_1^((k)) G^(k+1), x_2^((k)) G^(k+1) dots x^((k))_s_k G^(k+1)}$
+
+Есть порождающая система для $G^k$ и предъявили смежный класс $=>$ находим $G^(k+1) chevron {pi_i^(k+1)} chevron.r$
+
+Переходим к следующему $k$
+
+Итог (алгоритм Шрайера-Симса)
+
+построили ${x^((j))_i}_(j = 0, 1, dots n-1, i = 1,2,dots s_j)$ - сильная база
+
+$forall x_i^((j))$ знаем его выражение через начальный набор перестановок
+
+$abs(G)$ - научились считать (на любом шаге знаем $abs(G^k (k+1))$)
+
+
+
+== Теорема (Membership Test)
+
+$chevron {x_i^((j))} chevron.r = G$, более того любой элемент $S_n$ эффективно выражается через $x_i^((j))$ или выражается, что он $in.not G$
+
+=== Доказательство
+
+$pi in S_n, pi dot 1 in G dot 1$ если нет, то $pi in.not G$, а иначе знаем, что $exists ! x_i^((0))$, такой что $pi dot 1 = x^((0))_i_0 dot 1$
+
+$pi_1 = (x^((0))_i_0)^(-1) pi, pi_1 dot 1 = 1, pi_1 in (s_n)_1$
+
+$x^((0))_i_0 in G$, так что $pi in G <=> pi_1 in G$
+
+Если $pi_1 dot 2 in.not G_1 dot 2 => pi_1 in.not G_1 => pi_1 in.not G$ иначе существует $x^((1))_i_1$, такой, что $pi_1 dot 2 = x^((2))_i_2 dot 2$, то есть $(x^((2))_i_1)^(-1) pi_1 in G_(1,2)$
+
+Продолжаем ...
+
+Либо $exists k: pi_k (k+1) in.not G_k (k+1) => pi_k in.not G, pi in.not G$
+
+Либо $exists s: pi_s = i d, (x^((s))_i_s)^(-1) dots (x^((1))_i_1)^(-1) (x^((0))_i_0)^(-1) pi = id$
+
+$<=> pi = x^((0))_i_0 x^((1))_i_1 dots x^((s))_i_s$
+
+$G$ - группа
+
+Верно ли, что все $min$ (по включению) порождающие системы равномощны?
+
+нет: $s_n = chevron {(i j)} chevron.r = chevron (1 2) (2 3) dots (n-1, n) chevron.r$ - $min$ по включению (если выкенем, то будет две орбиты)
+
+$min$ по количеству $S_n = chevron (12), (123 dots n) chevron.r$
+
+Положим $dim G$ - $min$ размер системы образующих
+
+$\"dim\" G$ не монотонная:
+
+== Пример
+
+$S_(2n) \"dim\" S_(2n) = 2, H <= S_(2n), H = chevron (12) (34) (56) dots (2n-1)(2n) chevron.r = chevron s_1, s_2 dots s_n chevron.r$
+
+$s_i^2 = id, s_i s_j = s_j s_i, abs(H) = 2^n$
+
+$H = {s_i_1 s_i_2 dots s_i_k | i_1 < i_2 < dots < i_k}, forall h in H : h^2 = e => h_1 dots h_k in H => abs(chevron h_1 dots h_k chevron.r) <= 2^k$
+
+У $H$ нет порождающей системы меньше $n$
+
+== Теорема
+
+$H <= S_n, exists h_1, dots h_k, chevron h_1 dots h_k chevron.r = H? k <= n/2$
+
+=== Доказательство
+
+сложно, использует CFSG
+
+Докажем оченку $k < n$
+
+== Доказательство
+
+нам кидают по очереди 
+
+$u_1, u_2, u_3 dots in S_n$
+
+$H_i = chevron u_1, dots u_i chevron.r$
+
+Построим $Gamma_(u_1 dots u_i)$ - граф
+
+Вершины $I_n$. стрелки: $forall i$ рассмотри $k_i = min {k | u_i (k) != k}$ (номер первого подвижного элемента) и нарисуем $e_i: k_i ->^(u_i) u_i (k_i)$, $e_1, dots e_i$ - ребра $Gamma_(u_1, dots u_i)$
+
+Докажем: на каждом шаге можем найти систему $v_1^i, v_2^i, dots v^i_s_i in S_n: chevron v_16i v_2^i dots v^i_s_i chevron.r = H_i$ и граф был бы лесом (лучше бы шел бы)
+
+Отсюда следует $s_i < n$
+
+То есть то, что надо (система из $< n$ образующих)
+
+База $i = 1$ (ясно)
+
+переход $k -> k+ 1$
+
+$H_k = chevron v^k_1, v^k_2, dots v^k_(s_k)  chevron.r$  добавили $u_(k+1)$
+
+$H_(k+1) = chevron u_1, dots, u_(k+1) chevron.r = chevron v_1^k, v^k_2, dots v^k_(s_k) u_(k+1) chevron.r$
+
+$Gamma_(v^k dots v^(k)_s_k, u_(k+1))$ - лес, то ок
+
+Пусть возник цикл
+
+$v_1^(k+1) = v_1^k dots v^(k+1)_s_k = v^k_(s_k), v^(k+1)_(s_k + 1) = u_(k+1)$
+
+Докажем: на каждом шаге можем найти систему
+
+$v^(plus.minus 1)_i_l v^(plus.minus 1)_i_(l-1) v^(plus.minus 1)_i_1 (k_1) = k_n$
+
+Заменим $v_i_1 -> v^(plus.minus 1)_i_l dots v^(plus.minus 1)_i_1 = v^"new"_i_1$
+
+$chevron v_1, v_2, dots v_(s_(k+1)) chevron.r = H_(k+1)$
+
+Но теперь $v^"new"_i_1 (k_1) = k_1$ новый граф может иметь цикл, тогда повторим операцию
+
+Процесс закончится: увеличивается сумма номеров в началах стрелок $(k_1  ->^(v_i)) ~> (k_(> k_1) ->^(v_i)) => $  придем к ацикличному графу
